@@ -23,7 +23,7 @@ public class ArmaPistola : Objeto
     {
         //contador de segundos para el cooldown
         secondsCounter += Time.deltaTime;
-        Debug.Log(secondsCounter);
+        //Debug.Log(secondsCounter);
         
         if (Input.GetKeyDown(KeyCode.Space)  && interactuable == true && numUsos > 0){
             secondsCounter = 0;
@@ -33,7 +33,6 @@ public class ArmaPistola : Objeto
         }
 
         if(secondsCounter > 0.5){
-            secondsCounter = 0;
             interactuable = true;
         }
     //NOTE: Si se queda sin balas se desactiva el objeto
