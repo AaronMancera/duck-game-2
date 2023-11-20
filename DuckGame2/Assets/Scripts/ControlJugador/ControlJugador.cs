@@ -1,13 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class ControlJugador : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator animator;
 
+    [SerializeField] int vida = 1;
+
+    #region Movimiento
     [Header("Movimiento")]
     [SerializeField] float playerSpeed;
     [HideInInspector] float horizontalInput;
@@ -39,6 +46,16 @@ public class ControlJugador : MonoBehaviour
     [SerializeField] int extraJumps = 1;
     public int extraJumpsValue;
     [SerializeField] float airLinearDrag = 2.5f;
+    #endregion
+
+    [Header("Inventario")]
+    [SerializeField] GameObject[] objetosInventario;
+
+    [SerializeField] GameObject armaEnMano, secundariaEnMano;
+
+    Dictionary<String, Objeto> inventario;
+    /*EnumObjetos enumObjetos;*/
+
 
     [Header("Raycasts")]
     [SerializeField] Vector3 groundRaycastOffset;
@@ -83,9 +100,13 @@ public class ControlJugador : MonoBehaviour
         }*/
     }
     #endregion
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
@@ -93,19 +114,67 @@ public class ControlJugador : MonoBehaviour
 
     }
 
-    private void GetMoveInput()
+    public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
-        movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+        //Añades el arma al diccionario
+        //inventario.Add(queArma, );
 
-        if (movement.x > 0.1f || movement.x < -0.1f)
+        //Activas el arma que toca
+        if (armaEnMano != null)
         {
-            horizontalInput = movement.x * playerSpeed;
+            foreach (GameObject item in objetosInventario)
+            {
+                if (item.name == queArma)
+                {
+                    armaEnMano = item;
+                }
+            }
+
+            armaEnMano.SetActive(true);
+
+
         }
-        else
+
+        
+    }
+
+    public void SoltarArma()
+    {
+        //Quitas el arma del diccionario
+        //inventario.;
+
+
+        //Desactivas arma que toca
+
+
+    }
+
+
+    public void EfectoNegativo(string queEfecto)
+    {
+        switch (queEfecto)
         {
-            horizontalInput = 0;
+            default:
+
+            case "Ralentizar":
+
+            break;
+
         }
     }
+
+    public void Morir()
+    {
+        vida--;
+        if (vida <= 0)
+        {
+            //Te mueres
+
+        }
+    }
+
+
+
 
     private void FixedUpdate()
     {
@@ -114,14 +183,14 @@ public class ControlJugador : MonoBehaviour
         CheckCollisions();
         MoveCharacter();
 
-        if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
+        /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
         {
             canJump = true;
         }
         else
         {
             canJump = false;
-        }
+        }*/
 
 
 
@@ -141,6 +210,21 @@ public class ControlJugador : MonoBehaviour
             Fall();
             coyoteTimeCounter -= Time.fixedDeltaTime;
             if (rb.velocity.y < 0f) isJumping = false;
+        }
+    }
+
+    #region MOVIMIENTO
+    private void GetMoveInput()
+    {
+        movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+
+        if (movement.x > 0.1f || movement.x < -0.1f)
+        {
+            horizontalInput = movement.x * playerSpeed;
+        }
+        else
+        {
+            horizontalInput = 0;
         }
     }
 
@@ -188,6 +272,20 @@ public class ControlJugador : MonoBehaviour
 
         }
 
+    }
+    #endregion
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.name == "ObjArmaPistola")
+        {
+            RecogerArma("ArmaPistola", 0);
+            Destroy(collider.gameObject);
+        }
+        else if (true)
+        {
+
+        }
     }
 
     #region COLLISIONS
