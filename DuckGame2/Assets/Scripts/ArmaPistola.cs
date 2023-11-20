@@ -46,7 +46,7 @@ public class ArmaPistola : Objeto
 /// </summary>
     private void Activar(){
         gameObject.SetActive(true);
-        numUsos = 6; //Numero de balas
+        numUsos = 2; //Numero de balas
         interactuable = true;
     }
 }
