@@ -602,60 +602,6 @@
             "id": "d7224a68-6c4f-47d6-8922-bed2e721cd6e",
             "actions": [
                 {
-                    "name": "CambiarIzq",
-                    "type": "Button",
-                    "id": "e593f1dc-85db-4cf7-8b13-769dd4562ea1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CambiarDerecha",
-                    "type": "Button",
-                    "id": "8358cd27-9f8a-4283-8844-0a6ae7201fc2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ElegirEspacioArriba",
-                    "type": "Button",
-                    "id": "f7d50183-7af2-4a17-8972-092ddb5c511d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ElegirEspacioIzq",
-                    "type": "Button",
-                    "id": "9c8030de-4cee-4ef0-8f7d-cf5f5ca2b19e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ElegirEspacioAbajo",
-                    "type": "Button",
-                    "id": "44d8a102-6c71-4731-ab9f-3fb049c2cb2d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ElegirEspacioDrch",
-                    "type": "Button",
-                    "id": "78b1b731-d9e5-4579-8c6b-5b068ab4ade5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "f6f7861d-49ff-475e-b780-80b9f263f4ed",
@@ -665,7 +611,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "Saltar",
                     "type": "Button",
                     "id": "58fbb951-38ea-4b6a-8fa4-d0c9a2bff536",
                     "expectedControlType": "Button",
@@ -675,138 +621,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "06a71680-acc5-477b-a4bc-57182a4191cb",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CambiarIzq",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a579d3dd-d67d-4503-9a7d-f5679a96de7e",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "CambiarIzq",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a9b9b3ed-4f1f-4e0c-8b92-0de2a6b5daf7",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CambiarDerecha",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "597657a1-be6d-41e6-93bb-06ecd94234e4",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "CambiarDerecha",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2d62384-3e98-434a-9718-a0f2129be481",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ElegirEspacioArriba",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1c0f56ce-501e-47ec-a52e-c52557bc5e71",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ElegirEspacioArriba",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2a9ec6e0-63b3-48c2-a9c5-9c316819f760",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ElegirEspacioDrch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c379f21-d9ec-48a1-a0fb-5a8b46ed7b1e",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ElegirEspacioDrch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3edb7153-8811-4a60-8e4a-266e90ca374e",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ElegirEspacioAbajo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7c01a70f-938f-4af4-b4cd-cb5a4f01d033",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ElegirEspacioAbajo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7dcb058c-a4f6-4a40-8e55-18e5fc07fb06",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ElegirEspacioIzq",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "560db6cc-367c-4583-ac69-781fa78e349c",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ElegirEspacioIzq",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "93f5dcd5-0cb7-4a42-b721-5bd7ad8ef9a0",
@@ -924,7 +738,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Jump",
+                    "action": "Saltar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -935,7 +749,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Jump",
+                    "action": "Saltar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

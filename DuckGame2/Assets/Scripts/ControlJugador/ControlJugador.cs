@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class ControlJugador : MonoBehaviour
 {
     Rigidbody2D rb;
 
@@ -54,19 +54,19 @@ public class CharacterController : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.playerControls.Player.Jump.performed += GetJumpInput;
-        InputManager.playerControls.Player.Jump.canceled += JumpCut;
+        InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
+        InputManager.playerControls.Player.Saltar.canceled += JumpCut;
     }
 
     private void OnDisable()
     {
-        InputManager.playerControls.Player.Jump.performed -= GetJumpInput;
-        InputManager.playerControls.Player.Jump.canceled -= JumpCut;
+        InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
+        InputManager.playerControls.Player.Saltar.canceled -= JumpCut;
     }
     #endregion
 
     #region GETEO INPUTS
-    private void GetJumpInput(InputAction.CallbackContext context)
+    void GetSaltoInput(InputAction.CallbackContext context)
     {
         if (context.performed && extraJumpsValue > 0)
         {
@@ -90,7 +90,6 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        GetMoveInput();
 
     }
 
@@ -110,6 +109,8 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        GetMoveInput();
+
         CheckCollisions();
         MoveCharacter();
 
@@ -181,7 +182,7 @@ public class CharacterController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
 
         }
-        else if (rb.velocity.y > 0 && InputManager.playerControls.Player.Jump.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
+        else if (rb.velocity.y > 0 && InputManager.playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
 
