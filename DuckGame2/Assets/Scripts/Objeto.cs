@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objeto
+public class Objeto : MonoBehaviour
 {
     private int numUsos;
     private bool interactuable;
