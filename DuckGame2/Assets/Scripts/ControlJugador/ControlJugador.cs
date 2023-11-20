@@ -77,10 +77,10 @@ public class ControlJugador : MonoBehaviour
     }
     void JumpCut(InputAction.CallbackContext context) // salto corto
     {
-        if (rb.velocity.y > 0)
+        /*if (rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCut);
-        }
+        }*/
     }
     #endregion
     private void Start()
