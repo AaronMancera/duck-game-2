@@ -47,6 +47,10 @@ public class ControlJugador : MonoBehaviour
     [Header("LayerMasks")]
     [SerializeField] LayerMask groundLayer;
 
+    [Header("INVENTARIO")]
+    public Dictionary<String, Objeto> inventario = new Dictionary<String, Objeto>();
+    //public Dictionary<String, String> inventario = new Dictionary<string, string>();
+
 
 
 
@@ -86,6 +90,13 @@ public class ControlJugador : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        //INVENTARIO
+        //ACTUALMENTE ESTÁ EN <STRING, STRING>, CAMBIAR A <STRING, OBJETO> CUANDO SE CREEN
+        inventario.Add("Arma", null);
+        inventario.Add("Objeto", null);
+
+        
     }
 
     private void Update()
