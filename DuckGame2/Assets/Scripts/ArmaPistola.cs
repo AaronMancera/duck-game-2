@@ -10,7 +10,7 @@ public class ArmaPistola : Objeto
     void Start()
     {
         nombre = "armaPistola";
-        Activar();
+        Inicializar();
 
         Application.targetFrameRate = 60;
     }
@@ -35,23 +35,27 @@ public class ArmaPistola : Objeto
         }
     //NOTE: Si se queda sin balas se desactiva el objeto
         if(numUsos == 0){
-            gameObject.SetActive(false);
+            Reiniciar();
         }
          
     }
 /// <summary>
 /// Método que reinicia el arma cuando un jugador la obtenga
 /// </summary>
-    private void Activar(){
+    private void Inicializar(){
         gameObject.SetActive(true);
         numUsos = 2; //Numero de balas
         interactuable = true;
     }
 
-    private void Disparar(){
+    public void Disparar(){
         secondsCounter = 0;
         numUsos = numUsos - 1;
         interactuable = false;
         Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+    }
+
+    public void Reiniciar(){
+        gameObject.SetActive(false);
     }
 }
