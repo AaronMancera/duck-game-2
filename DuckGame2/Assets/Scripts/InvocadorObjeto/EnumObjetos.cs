@@ -8,5 +8,5 @@ public enum EnumObjetos
     LanzarCaja,
     LanzarSenuelo,
     LanzarPollo,
-    LanzarArmadura
+    LanzarEscudo
 }

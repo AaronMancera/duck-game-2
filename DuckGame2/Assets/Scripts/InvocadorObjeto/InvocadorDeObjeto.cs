@@ -41,7 +41,6 @@ public class InvocadorDeObjeto : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && tengoArma)
         {
             Debug.Log($"Cogiendo objeto, dando a {collision.gameObject.name}");
-            tengoArma = false;
             OtorgarArma(collision.gameObject.GetComponent<ControlJugador>());   //DAR ARMA A JUGADOR
 
         }
@@ -74,21 +73,32 @@ public class InvocadorDeObjeto : MonoBehaviour
         //PONERLO EN EL INVENTARIO
 
 
-        if (objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma"))
+        if (objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().principalEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 0);
 
-            jugador.inventario["Arma"] = objetoInvocado; 
+            jugador.inventario["Arma"] = objetoInvocado;
+
+
+            tengoArma = false;
+
+
+            Destroy(objetoInvocado);
             //Debug.Log($"El jugador ahora tiene el arma: {jugador.inventario["Arma"].getNombre()}");
         } 
-        else
+        else if(!objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().secundariaEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 1);
             jugador.inventario["Objeto"] = objetoInvocado;
+
+            tengoArma = false;
+
+
+            Destroy(objetoInvocado);
             //Debug.Log($"El jugador ahora tiene el objeto: {jugador.inventario["Objeto"].getNombre()}");
         }
            
-        Destroy(objetoInvocado);    //DESTRUIR OBJETO DEL PEDESTAL
+        //Destroy(objetoInvocado);    //DESTRUIR OBJETO DEL PEDESTAL
     }
 
     #endregion

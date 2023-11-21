@@ -51,7 +51,7 @@ public class ControlJugador : MonoBehaviour
     [Header("Inventario")]
     [SerializeField] GameObject[] objetosInventario;
 
-    [SerializeField] GameObject armaEnMano, secundariaEnMano;
+    public GameObject principalEnMano, secundariaEnMano;
 
     //Dictionary<String, Objeto> inventario;
     /*EnumObjetos enumObjetos;*/
@@ -120,7 +120,7 @@ public class ControlJugador : MonoBehaviour
 
     private void Update()
     {
-
+        SoltarArma();
     }
 
     public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
@@ -131,17 +131,17 @@ public class ControlJugador : MonoBehaviour
         //Activas el arma que toca
         if (quePuesto == 0)
         {
-            if (armaEnMano == null)
+            if (principalEnMano == null)
             {
                 foreach (GameObject item in objetosInventario)
                 {
                     if (item.name == queArma)
                     {
-                        armaEnMano = item;
+                        principalEnMano = item;
                     }
                 }
 
-                armaEnMano.SetActive(true);
+                principalEnMano.SetActive(true);
             }
 
         }
@@ -171,7 +171,22 @@ public class ControlJugador : MonoBehaviour
 
 
         //Desactivas arma que toca
-
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (principalEnMano != null)
+            {
+                principalEnMano.SetActive(false);
+                principalEnMano = null;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (secundariaEnMano != null)
+            {
+                secundariaEnMano.SetActive(false);
+                secundariaEnMano = null;
+            }
+        }
 
     }
 
@@ -209,6 +224,8 @@ public class ControlJugador : MonoBehaviour
         CheckCollisions();
         MoveCharacter();
 
+        SueloControl();
+
         /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
         {
             canJump = true;
@@ -218,9 +235,10 @@ public class ControlJugador : MonoBehaviour
             canJump = false;
         }*/
 
+    }
 
-
-
+    private void SueloControl()
+    {
         if (isGrounded)
         {
             if (rb.velocity.y < 0)
@@ -300,28 +318,6 @@ public class ControlJugador : MonoBehaviour
 
     }
     #endregion
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.name == "ObjArmaPistola")
-        {
-            RecogerArma("ArmaPistola", 0);
-            Destroy(collider.gameObject);
-        }
-        else if (collider.name == "ObjArmaEspada")
-        {
-            RecogerArma("ArmaEspada", 0);
-            Destroy(collider.gameObject);
-
-        }
-
-        else if (collider.name == "ObjEscudo")
-        {
-            RecogerArma("SecundarioEscudo", 1);
-            Destroy(collider.gameObject);
-
-        }
-    }
 
     #region COLLISIONS
     private void CheckCollisions()

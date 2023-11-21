@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7083361569816590916}
   - component: {fileID: 5548474089167431985}
   m_Layer: 0
-  m_Name: LanzarArmadura
+  m_Name: LanzarEscudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  nombre: LanzarArmadura
+  nombre: LanzarEscudo
   numUsos: 0
   interactuable: 0
   bala: {fileID: 0}
