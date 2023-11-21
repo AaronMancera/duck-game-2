@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmaBomba : MonoBehaviour
+public class ArmaBomba : Objeto
 {
     [Header("Atributos")]
     [SerializeField] private GameObject bomba;
     // Start is called before the first frame update
     void Start()
     {
-        
+        nombre = "ArmaBomba";
+        numUsos = 1;
+        interactuable = true;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space) && numUsos > 0)
         {
             Disparar();
+        }
+        else
+        {
+            Debug.Log("El jugador soltará este arma");
         }
     }
 
@@ -28,7 +35,9 @@ public class ArmaBomba : MonoBehaviour
     {
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
-        Instantiate(componenteBomba, transform.position, transform.rotation);
+        Instantiate(componenteBomba, bomba.gameObject.transform.position, bomba.gameObject.transform.rotation);
+
+        numUsos--;
     }
 
     /// <summary>
