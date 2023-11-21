@@ -24,6 +24,9 @@ public class ArmaEspada : Objeto
     #region START/UPDATE
     private void Start()
     {
+        //TODO: Utilizar parametros de la clase objeto (padre)
+        numUsos = durabilidad;
+        animator = animEspada;
         puedeAtacar = true;
         Application.targetFrameRate = 60;
         gameObject.SetActive(false);//Activar en otro script al cogerlo ya que este estará desactivado de inicio.
@@ -37,7 +40,7 @@ public class ArmaEspada : Objeto
     #endregion
     void Atacar() 
     {
-        if (puedeAtacar && Input.GetKeyDown(KeyCode.LeftControl) && durabilidad > 0)
+        if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
         {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)
