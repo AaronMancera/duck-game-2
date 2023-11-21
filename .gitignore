@@ -70,3 +70,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /DuckGame2/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /DuckGame2/[Aa]ssets/[Ss]treamingAssets/aa/*
+DuckGame2/Assets/Scenes/SampleScene.unity.meta
+DuckGame2/Assets/Scenes/SampleScene.unity
