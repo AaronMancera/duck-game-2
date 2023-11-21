@@ -49,7 +49,7 @@ public class ControlJugador : MonoBehaviour
     #endregion
 
     [Header("Inventario")]
-    [SerializeField] GameObject[] objetosInventario;
+    [SerializeField] List<GameObject> objetosInventario;
 
     public GameObject principalEnMano, secundariaEnMano;
 
@@ -64,8 +64,8 @@ public class ControlJugador : MonoBehaviour
     [Header("LayerMasks")]
     [SerializeField] LayerMask groundLayer;
 
-    [Header("INVENTARIO")]
-    public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
+    //[Header("INVENTARIO")]
+    //public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
 
 
@@ -112,9 +112,10 @@ public class ControlJugador : MonoBehaviour
 
         Application.targetFrameRate = 60;
 
+        /*
         inventario.Add("Arma", null);
         inventario.Add("Objeto", null);
-
+        */
 
     }
 
@@ -123,42 +124,43 @@ public class ControlJugador : MonoBehaviour
         SoltarArma();
     }
 
-    public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
+    public void RecogerArma(string queItem, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
-        //Añades el arma al diccionario
-        //inventario.Add(queArma, );
-
         //Activas el arma que toca
         if (quePuesto == 0)
         {
-            if (principalEnMano == null)
-            {
-                foreach (GameObject item in objetosInventario)
-                {
-                    if (item.name == queArma)
-                    {
-                        principalEnMano = item;
-                    }
-                }
+            principalEnMano = objetosInventario.Find(item => item.name == queItem);
+            principalEnMano.SetActive(true);
+            /* if (principalEnMano == null)
+             {
+                 foreach (GameObject item in objetosInventario)
+                 {
+                     if (item.name == queArma)
+                     {
+                         principalEnMano = item;
+                     }
+                 }
 
-                principalEnMano.SetActive(true);
-            }
+                 principalEnMano.SetActive(true);
+             }*/
 
         }
         else if(quePuesto == 1)
         {
-            if (secundariaEnMano == null)
-            {
-                foreach (GameObject item in objetosInventario)
-                {
-                    if (item.name == queArma)
-                    {
-                        secundariaEnMano = item;
-                    }
-                }
+            secundariaEnMano = objetosInventario.Find(item => item.name == queItem);
+            secundariaEnMano.SetActive(true);
+            /* if (secundariaEnMano == null)
+             {
+                 foreach (GameObject item in objetosInventario)
+                 {
+                     if (item.name == queArma)
+                     {
+                         secundariaEnMano = item;
+                     }
+                 }
 
-                secundariaEnMano.SetActive(true);
-            }
+                 secundariaEnMano.SetActive(true);
+             }*/
         }
 
         
@@ -166,10 +168,6 @@ public class ControlJugador : MonoBehaviour
 
     public void SoltarArma()
     {
-        //Quitas el arma del diccionario
-        //inventario.;
-
-
         //Desactivas arma que toca
         if (Input.GetKeyDown(KeyCode.O))
         {

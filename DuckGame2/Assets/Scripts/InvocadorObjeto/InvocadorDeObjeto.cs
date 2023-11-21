@@ -6,7 +6,6 @@ using UnityEngine;
 public class InvocadorDeObjeto : MonoBehaviour
 {
     Transform parent;
-    //private EnumObjetos enumObjetos;
     [SerializeField] private GameObject objetoInvocado;
     [SerializeField] private List<GameObject> objetos;
     private bool tengoArma;
@@ -60,7 +59,6 @@ public class InvocadorDeObjeto : MonoBehaviour
 
         Debug.Log($"El objeto generado es:  {nombreObjeto}");
 
-        //objetoInvocado.GetComponent<Objeto>().setNombre(nombreObjeto);  //SET OBJETO
         objetoInvocado = Instantiate(objetos[objetoAleatorio], objetoInvocado.transform.position, Quaternion.identity, parent);
 
         tengoArma = true;
@@ -77,28 +75,18 @@ public class InvocadorDeObjeto : MonoBehaviour
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 0);
 
-            jugador.inventario["Arma"] = objetoInvocado;
-
-
             tengoArma = false;
 
-
             Destroy(objetoInvocado);
-            //Debug.Log($"El jugador ahora tiene el arma: {jugador.inventario["Arma"].getNombre()}");
         } 
         else if(!objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().secundariaEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 1);
-            jugador.inventario["Objeto"] = objetoInvocado;
 
             tengoArma = false;
 
-
             Destroy(objetoInvocado);
-            //Debug.Log($"El jugador ahora tiene el objeto: {jugador.inventario["Objeto"].getNombre()}");
         }
-           
-        //Destroy(objetoInvocado);    //DESTRUIR OBJETO DEL PEDESTAL
     }
 
     #endregion
