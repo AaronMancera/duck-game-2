@@ -252,7 +252,7 @@ MonoBehaviour:
   nombre: 
   animator: {fileID: 0}
   lineaDeDisparo: {fileID: -8885072505946424846, guid: d8bccfff6170c21408535358026a55a5, type: 3}
-  limpiezaSpeed: 0.1
+  velocidadDeLimpiezaAsignada: 0.1
 --- !u!65 &1608460516
 BoxCollider:
   m_ObjectHideFlags: 0
