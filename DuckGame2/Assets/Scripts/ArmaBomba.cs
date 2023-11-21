@@ -10,8 +10,6 @@ public class ArmaBomba : Objeto
     void Start()
     {
         nombre = "ArmaBomba";
-        numUsos = 1;
-        interactuable = true;
         Application.targetFrameRate = 60;
     }
 
@@ -46,5 +44,7 @@ public class ArmaBomba : Objeto
     private void Activar()
     {
         gameObject.SetActive(true);
+        numUsos = 1;
+        interactuable = true;
     }
 }

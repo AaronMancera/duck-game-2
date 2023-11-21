@@ -16,9 +16,10 @@ public class ArmaRayo : Objeto
     // Start is called before the first frame update
     void Start()
     {
-        numUsos = 50;
+        //TESTING
+        //numUsos = 50;
+        //interactuable = true;
         nombre = "ArmaRayo";
-        interactuable = true;
         Application.targetFrameRate = 60;
     }
 
@@ -41,6 +42,7 @@ public class ArmaRayo : Objeto
     public void Inicializador()
     {
         numUsos = 50;
+        interactuable = true;
         gameObject.SetActive(true);
     }
     /// <summary>
@@ -49,7 +51,6 @@ public class ArmaRayo : Objeto
     /// <returns></returns>
     private bool SinMunicion()
     {
-        Debug.Log(numUsos);
         if (numUsos <= 0)
         {
             if (puntosDelTrail.Count <= 0)
