@@ -26,12 +26,10 @@ public class ArmaPistola : Objeto
         //Debug.Log(secondsCounter);
         
         if (Input.GetKeyDown(KeyCode.Space)  && interactuable == true && numUsos > 0){
-            secondsCounter = 0;
-            numUsos = numUsos - 1;
-            interactuable = false;
-            Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+            Disparar();
         }
 
+        //retardo de disparo
         if(secondsCounter > 0.5){
             interactuable = true;
         }
@@ -48,5 +46,12 @@ public class ArmaPistola : Objeto
         gameObject.SetActive(true);
         numUsos = 2; //Numero de balas
         interactuable = true;
+    }
+
+    private void Disparar(){
+        secondsCounter = 0;
+        numUsos = numUsos - 1;
+        interactuable = false;
+        Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
     }
 }

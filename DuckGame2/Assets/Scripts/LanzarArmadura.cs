@@ -5,6 +5,7 @@ using UnityEngine;
 public class LanzarArmadura : Objeto
 {
     public GameObject PrefabEscudo;
+    [SerializeField] private Collider2D colisionJugador;
     public float secondsCounter=0;
     // Start is called before the first frame update
     void Start()
@@ -20,13 +21,11 @@ public class LanzarArmadura : Objeto
         secondsCounter += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space)  && interactuable == true){
-            PrefabEscudo.SetActive(true);
-            gameObject.transform.parent.gameObject.GetComponent<Collider2D>().enabled=false; //peta
-            secondsCounter = 0;
+            Escudo();
         }
 
         if(secondsCounter > 5){
-           PrefabEscudo.SetActive(false);
+           FinEscudo();
         }
         
         if(numUsos == 0){
@@ -36,7 +35,19 @@ public class LanzarArmadura : Objeto
 
     private void Activar(){
         gameObject.SetActive(true);
-        numUsos = 1; //Numero de balas
+        numUsos = 1;
         interactuable = true;
+    }
+
+    private void Escudo(){
+        PrefabEscudo.SetActive(true);
+            Debug.Log(gameObject.transform.parent.name);
+            colisionJugador.enabled= false;
+            secondsCounter = 0;
+    }
+
+    private void FinEscudo(){
+        PrefabEscudo.SetActive(false);
+        colisionJugador.enabled = true;
     }
 }
