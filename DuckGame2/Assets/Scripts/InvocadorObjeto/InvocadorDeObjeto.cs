@@ -41,8 +41,6 @@ public class InvocadorDeObjeto : MonoBehaviour
 
     }
 
-
-
     #endregion
 
     #region MÉTODOS

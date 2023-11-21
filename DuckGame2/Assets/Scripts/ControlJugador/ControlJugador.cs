@@ -92,7 +92,6 @@ public class ControlJugador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         //INVENTARIO
-        //ACTUALMENTE ESTÁ EN <STRING, STRING>, CAMBIAR A <STRING, OBJETO> CUANDO SE CREEN
         inventario.Add("Arma", null);
         inventario.Add("Objeto", null);
 
