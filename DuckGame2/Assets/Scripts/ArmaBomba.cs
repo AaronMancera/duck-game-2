@@ -34,7 +34,7 @@ public class ArmaBomba : MonoBehaviour
     /// <summary>
     /// Activa el gameObject
     /// </summary>
-    private void Activacion()
+    private void Activar()
     {
         gameObject.SetActive(true);
     }
