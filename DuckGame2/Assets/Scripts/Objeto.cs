@@ -5,10 +5,10 @@ using UnityEngine;
 public class Objeto : MonoBehaviour
 {
     [Header("Características Objeto")]
+    [HideInInspector] public Animator animator;
     public string nombre;
     public int numUsos;
     public bool interactuable;
-    [HideInInspector] public Animator animator;
 
     public string getNombre()
     {

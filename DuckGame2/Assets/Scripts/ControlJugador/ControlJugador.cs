@@ -65,7 +65,7 @@ public class ControlJugador : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     [Header("INVENTARIO")]
-    public Dictionary<String, Objeto> inventario = new Dictionary<String, Objeto>();
+    public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
 
 
@@ -145,7 +145,7 @@ public class ControlJugador : MonoBehaviour
             }
 
         }
-        else
+        else if(quePuesto == 1)
         {
             if (secundariaEnMano == null)
             {
