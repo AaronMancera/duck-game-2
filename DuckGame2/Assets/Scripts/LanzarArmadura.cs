@@ -29,7 +29,7 @@ public class LanzarArmadura : Objeto
         }
         
         if(numUsos == 0){
-            gameObject.SetActive(false);
+            Reiniciar();
         }
     }
 
