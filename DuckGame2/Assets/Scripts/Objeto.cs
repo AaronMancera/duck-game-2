@@ -14,4 +14,10 @@ public class Objeto : MonoBehaviour
     {
         return nombre;
     }
+
+    public void setNombre(string nombre)
+    {
+        this.nombre = nombre;
+    }
+
 }
