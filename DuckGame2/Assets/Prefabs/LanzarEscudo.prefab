@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7622244988909784400}
   - component: {fileID: 8477268879969120914}
   m_Layer: 0
-  m_Name: EscudoPrefab
+  m_Name: LanzarEscudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.21, y: 1.49, z: -0.09142548}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.27522, y: 0.27522, z: 0.27522}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2224008410992441349}
@@ -233,6 +233,7 @@ MonoBehaviour:
   nombre: 
   animator: {fileID: 0}
   PrefabEscudo: {fileID: 1459788393756394421}
+  colisionJugador: {fileID: 0}
   secondsCounter: 0
 --- !u!61 &8477268879969120914
 BoxCollider2D:

@@ -138,6 +138,7 @@ public class ControlJugador : MonoBehaviour
                     if (item.name == queArma)
                     {
                         principalEnMano = item;
+                        //Activar item (Arma)
                     }
                 }
 

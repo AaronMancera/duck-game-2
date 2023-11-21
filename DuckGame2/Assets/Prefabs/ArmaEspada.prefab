@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2114048406850505825}
   - component: {fileID: 5601367296658601530}
   m_Layer: 0
-  m_Name: Espada
+  m_Name: ArmaEspada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,9 +104,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5435159907408495058}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 4.506, y: 1, z: 1}
+  m_LocalScale: {x: 1.5189275, y: 0.33709, z: 0.33709}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3297287726476538835}

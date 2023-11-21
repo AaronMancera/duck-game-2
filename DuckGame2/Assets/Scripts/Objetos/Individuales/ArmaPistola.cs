@@ -2,25 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmaPistola : Objeto 
+public class ArmaPistola : Objeto
 {
-    float cadenciaDisparo;
-    [SerializeField] GameObject bala;
-
+    public GameObject BalaPrefab;
+    public float secondsCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        ////TESTING
+        //Inicializar();
+        //Application.targetFrameRate = 60;
+        nombre = "armaPistola";
     }
 
+    /// <summary>
+    /// La pistola dispara y tiene un retardo de 0.5 segundos para poder disparar de nuevo
+    /// </summary>
     // Update is called once per frame
     void Update()
     {
-        
+        //contador de segundos para el cooldown
+        secondsCounter += Time.deltaTime;
+        //Debug.Log(secondsCounter);
+
+        if (Input.GetKeyDown(KeyCode.Space) && interactuable == true && numUsos > 0)
+        {
+            Disparar();
+        }
+
+        //retardo de disparo
+        if (secondsCounter > 0.5)
+        {
+            interactuable = true;
+        }
+        //NOTE: Si se queda sin balas se desactiva el objeto
+        if (numUsos == 0)
+        {
+            Reiniciar();
+        }
+
+    }
+    /// <summary>
+    /// Método que reinicia el arma cuando un jugador la obtenga
+    /// </summary>
+    private void Inicializar()
+    {
+        gameObject.SetActive(true);
+        numUsos = 2; //Numero de balas
+        interactuable = true;
     }
 
-    void Disparar()
+    public void Disparar()
     {
+        secondsCounter = 0;
+        numUsos = numUsos - 1;
+        interactuable = false;
+        Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+    }
 
+    public void Reiniciar()
+    {
+        gameObject.SetActive(false);
     }
 }

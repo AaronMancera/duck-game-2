@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2853246343641535219}
   - component: {fileID: 3226883029120051332}
   m_Layer: 0
-  m_Name: LanzaBombas
+  m_Name: ArmaBomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

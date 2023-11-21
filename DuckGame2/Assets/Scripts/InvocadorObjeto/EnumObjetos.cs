@@ -5,8 +5,8 @@ public enum EnumObjetos
     ArmaEspada,
     ArmaRayo,
     ArmaBomba,
-    LanzarCaja,
+   /*LanzarCaja,
     LanzarSenuelo,
-    LanzarPollo,
+    LanzarPollo,*/
     LanzarEscudo
 }
