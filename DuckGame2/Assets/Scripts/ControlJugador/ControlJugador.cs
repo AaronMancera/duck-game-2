@@ -120,19 +120,36 @@ public class ControlJugador : MonoBehaviour
         //inventario.Add(queArma, );
 
         //Activas el arma que toca
-        if (armaEnMano != null)
+        if (quePuesto == 0)
         {
-            foreach (GameObject item in objetosInventario)
+            if (armaEnMano == null)
             {
-                if (item.name == queArma)
+                foreach (GameObject item in objetosInventario)
                 {
-                    armaEnMano = item;
+                    if (item.name == queArma)
+                    {
+                        armaEnMano = item;
+                    }
                 }
+
+                armaEnMano.SetActive(true);
             }
 
-            armaEnMano.SetActive(true);
+        }
+        else
+        {
+            if (secundariaEnMano == null)
+            {
+                foreach (GameObject item in objetosInventario)
+                {
+                    if (item.name == queArma)
+                    {
+                        secundariaEnMano = item;
+                    }
+                }
 
-
+                secundariaEnMano.SetActive(true);
+            }
         }
 
         
@@ -282,8 +299,17 @@ public class ControlJugador : MonoBehaviour
             RecogerArma("ArmaPistola", 0);
             Destroy(collider.gameObject);
         }
-        else if (true)
+        else if (collider.name == "ObjArmaEspada")
         {
+            RecogerArma("ArmaEspada", 0);
+            Destroy(collider.gameObject);
+
+        }
+
+        else if (collider.name == "ObjEscudo")
+        {
+            RecogerArma("SecundarioEscudo", 1);
+            Destroy(collider.gameObject);
 
         }
     }
