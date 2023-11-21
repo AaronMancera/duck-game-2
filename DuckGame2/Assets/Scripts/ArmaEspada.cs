@@ -10,48 +10,72 @@ public class ArmaEspada : Objeto
 
     [Header("Variables de golpeo")]
     [SerializeField] float cadenciaGolpe = 0.5f;//Cuantos golpes x segundos podemos dar.
+    [SerializeField] int durabilidad = 3;//Cantidad de golpes que podemos dar hasta que se rompa.
 
     [Header("Ajustes detector de colisiones")]
     [SerializeField] GameObject detectorColision;//Encargado de detectar los objetos atacables.
-    [SerializeField] bool EnRango;//Comprueba que exista un objeto atacable en rango, al cual se le aplicara el daño del arma.
-    [SerializeField] bool Atacando;//Saber si se está realizando el ataque.
-
-
+    [SerializeField] bool EnRango;//Comprueba que exista un objeto atacable en rango, al cual se le aplicara el daño del arma. No hacer caso al warning de momento.
+   
     [Header("Animaciones")]//Parametro;  HeAtacado para cambiar la animacion de AtaqueEspada a IdleEspada y controlar la variable cadenciaGolpe.
     [SerializeField] Animator animEspada;
-    [SerializeField] bool puedeAtacar = true; // Variable para controlar si puede atacar
+    [SerializeField] bool puedeAtacar; // Variable para controlar si puede atacar
 
 
-
+    #region START/UPDATE
     private void Start()
     {
-        animEspada = GetComponent<Animator>();
+        puedeAtacar = true;
         Application.targetFrameRate = 60;
+        gameObject.SetActive(false);//Activar en otro script al cogerlo ya que este estará desactivado de inicio.
+
     }
     private void Update()
     {
         Atacar();
+        EspadaManager();
     }
-
+    #endregion
     void Atacar() 
     {
-        if (puedeAtacar && Input.GetKeyDown(KeyCode.LeftControl))
+        if (puedeAtacar && Input.GetKeyDown(KeyCode.LeftControl) && durabilidad > 0)
         {
-            animEspada.SetBool("PuedoAtacar", true);
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
+            foreach (Collider2D collider in colliders)
+            {
+                Debug.Log(collider.gameObject.tag);
+                if (collider.CompareTag("Player") && EnRango)
+                {
+                    // Manejar la lógica de ataque y posible destrucción aquí
+                    // collider.GetComponent<Player>().RecibirGolpe();
+                    Debug.Log("¡Ataque realizado!");
+                }
+            }
+            animEspada.SetBool("PuedoAtacar", true);//Esto es para el funcionamiento de la animacion.
             StartCoroutine(ControlarCadencia());
+        }
+    }
+
+    void EspadaManager() //Resetear arma si nos quedamos a 0 de durabilidad y desactivarla.
+    { 
+    if(durabilidad <= 0) 
+        {
+            gameObject.SetActive(false);
+            durabilidad = 3;
         }
     }
 
     IEnumerator ControlarCadencia()
     {
-        puedeAtacar = false; // Desactivar la capacidad de atacar
-        Atacando = true;
-        yield return new WaitForSeconds(cadenciaGolpe); // Esperar el tiempo de cadencia
-        animEspada.SetBool("PuedoAtacar", false);
-        animEspada.SetBool("HeAtacado", true);
-        puedeAtacar = true; // Reactivar la capacidad de atacar
-        Atacando = false;
+        puedeAtacar = false; // Desactivar la capacidad de atacar.
+        yield return new WaitForSeconds(cadenciaGolpe); // Esperar el tiempo de cadencia.
+        durabilidad--;//Le quitamos un punto de durabilidad.
+        animEspada.SetBool("PuedoAtacar", false);//Esto es para el funcionamiento de la animacion.
+        animEspada.SetBool("HeAtacado", true);//Esto es para el funcionamiento de la animacion. Este se puede ver de quitarlo.
+        puedeAtacar = true; // Reactivar la capacidad de atacar.
+       
     }
+    #region TRIGGERS
+    //COMPROBAMOS QUE ESTÉ EN RANGO.
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,8 +83,6 @@ public class ArmaEspada : Objeto
         {
             EnRango = true;
         }
-       
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -69,23 +91,8 @@ public class ArmaEspada : Objeto
             EnRango = false;
         }
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        //aqui controlo el detectorColision para saber si tengo una colision.
-        //si detectorColision colisiona con un tag player , destruye el tag player) 
-        Debug.Log(collision.name);
-        if (collision.tag == "Player" && EnRango && Atacando) // Comprobar si el objeto tiene el tag "player"
-        {
-            Debug.Log("Lo he matado");
-            Destroy(collision.gameObject); // Destruir el objeto
-            //EVENTO DE MATAR PLAYER.
-
-        }
-    }
-
+    #endregion
 }
-
 
 
 
