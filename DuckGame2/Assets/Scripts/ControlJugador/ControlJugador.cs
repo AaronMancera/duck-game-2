@@ -53,7 +53,7 @@ public class ControlJugador : MonoBehaviour
 
     [SerializeField] GameObject armaEnMano, secundariaEnMano;
 
-    Dictionary<String, Objeto> inventario;
+    //Dictionary<String, Objeto> inventario;
     /*EnumObjetos enumObjetos;*/
 
 
@@ -63,6 +63,10 @@ public class ControlJugador : MonoBehaviour
 
     [Header("LayerMasks")]
     [SerializeField] LayerMask groundLayer;
+
+    [Header("INVENTARIO")]
+    public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
+    //public Dictionary<String, String> inventario = new Dictionary<string, string>();
 
 
 
@@ -107,6 +111,11 @@ public class ControlJugador : MonoBehaviour
         animator = GetComponent<Animator>();
 
         Application.targetFrameRate = 60;
+
+        inventario.Add("Arma", null);
+        inventario.Add("Objeto", null);
+
+
     }
 
     private void Update()
@@ -136,7 +145,7 @@ public class ControlJugador : MonoBehaviour
             }
 
         }
-        else
+        else if(quePuesto == 1)
         {
             if (secundariaEnMano == null)
             {
