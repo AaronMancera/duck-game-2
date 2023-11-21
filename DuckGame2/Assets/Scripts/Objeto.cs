@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Objeto : MonoBehaviour
+
 {
     public int numUsos;
     public bool interactuable;
