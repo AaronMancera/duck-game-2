@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1193128481949469590}
   - component: {fileID: 7378904961297173335}
   - component: {fileID: 1035664344224489861}
+  - component: {fileID: 2844568628660168410}
   - component: {fileID: -3917067198321388223}
   m_Layer: 0
   m_Name: Pollo
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8262465849835698438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.85, y: -3.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,6 +160,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &2844568628660168410
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262465849835698438}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.53277266}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8032038, y: 0.15945268}
+  m_EdgeRadius: 0
 --- !u!114 &-3917067198321388223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,11 +218,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  secondsCounter: 0
-  velocidad: {x: 5, y: 0}
+  vidaSecondsCounter: 0
+  saltoFuerza: 5
+  velocidad: 1
   flip: 0
   flipBool: 1
-  segundosParaActivarFlip: 0.5
+  segundosParaActivarFlip: 1
   wallRaycastOffset: {x: 0, y: 0, z: 0}
   wallRaycastLength: 0.7
   checkWall: 0

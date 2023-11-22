@@ -9,6 +9,8 @@ public class MovimientoPollo : MonoBehaviour
     public float vidaSecondsCounter = 0;
     private Rigidbody2D rb2d;
 
+    public float saltoFuerza;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +20,12 @@ public class MovimientoPollo : MonoBehaviour
 
 
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         CheckCollisions(); 
-
         FlipLlamada();
+
 
         vidaSecondsCounter += Time.deltaTime;
 
@@ -44,6 +45,21 @@ public class MovimientoPollo : MonoBehaviour
             Destroy(gameObject);
             //stunplayer
         }
+
+        if (other.gameObject.tag == "Suelo")
+        {
+            Debug.Log("Salta");
+            Saltar();
+        }
+    }
+
+    private void Saltar()
+    {
+        int fuerzaAleatoria = UnityEngine.Random.Range(2, 8);
+
+        rb2d.velocity = new Vector2(rb2d.velocity.x, 0f);
+        rb2d.AddForce(Vector2.up * (float)fuerzaAleatoria, ForceMode2D.Impulse);
+
     }
 
     private void FinPollo()
@@ -54,7 +70,7 @@ public class MovimientoPollo : MonoBehaviour
 
 
     #region FLIP
-    public Vector2 velocidad;
+    public float velocidad;
 
     public bool flip, flipBool;
     [SerializeField] float segundosParaActivarFlip;
@@ -117,13 +133,15 @@ public class MovimientoPollo : MonoBehaviour
 
     private void FlipLlamada()
     {
+        Vector3 movimiento = transform.position;
         if (flip)
         {
-            rb2d.MovePosition(rb2d.position - (velocidad * Time.fixedDeltaTime));
+            rb2d.velocity = new Vector2(rb2d.velocity.x - (velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
+
         }
         else
         {
-            rb2d.MovePosition(rb2d.position + (velocidad * Time.fixedDeltaTime));
+            rb2d.velocity = new Vector2(rb2d.velocity.x + (velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
         }
     }
     #endregion
