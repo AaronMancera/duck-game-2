@@ -109,7 +109,7 @@ public class ControlJugador : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         Application.targetFrameRate = 60;
 
@@ -122,8 +122,147 @@ public class ControlJugador : MonoBehaviour
     private void Update()
     {
         SoltarArma();
+
+        
+
     }
 
+
+
+
+    private void FixedUpdate()
+    {
+        GetMoveInput();
+
+        CheckCollisions();
+        MoveCharacter();
+
+        SueloControl();
+
+        /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }*/
+
+
+        //Animator
+        animator.SetBool("EstaEnElSuelo", rb.velocity.y < 0 && isGrounded);
+    }
+
+    public void EfectoNegativo(string queEfecto)
+    {
+        switch (queEfecto)
+        {
+            default:
+
+            case "Ralentizar":
+
+                break;
+
+        }
+    }
+    public void Morir()
+    {
+        vida--;
+        if (vida <= 0)
+        {
+            //Te mueres
+
+        }
+    }
+
+    #region MOVIMIENTO
+    private void GetMoveInput()
+    {
+        movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+
+        if (movement.x > 0.1f || movement.x < -0.1f)
+        {
+            horizontalInput = movement.x * playerSpeed;
+        }
+        else
+        {
+            horizontalInput = 0;
+        }
+    }
+
+    private void MoveCharacter()
+    {
+        float velocidadHorizontal = rb.velocity.x;
+        velocidadHorizontal += horizontalInput;
+
+        if (Mathf.Abs(horizontalInput) < 0.01f && isGrounded) // si paramos
+            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
+        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de dirección
+            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
+        else if (!isGrounded) // si estoy en el aire
+            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenInAir, Time.fixedDeltaTime * 10f);
+        else
+            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingBasic, Time.fixedDeltaTime * 10f);
+
+        rb.velocity = new Vector2(velocidadHorizontal, rb.velocity.y);
+
+        //Para activar Animator
+        animator.SetFloat("Velocidad", Mathf.Abs(velocidadHorizontal));
+    }
+
+    private void Jump(Vector2 direction)
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(direction * jumpForce, ForceMode2D.Impulse);
+
+
+        jumpBufferCounter = 0f;
+        coyoteTimeCounter = 0f;
+        isJumping = true;
+
+        //Animator
+        animator.SetTrigger("Saltar");
+
+    }
+
+    void Fall() // mejoras en la caida
+    {
+
+        if (rb.velocity.y < 0) // Si estamos cayendo del salto, añadimos multiplicador de gravedad
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
+
+        }
+        else if (rb.velocity.y > 0 && InputManager.playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
+
+        }
+
+    }
+
+    private void SueloControl()
+    {
+        if (isGrounded)
+        {
+            if (rb.velocity.y < 0)
+            {
+                extraJumpsValue = extraJumps;
+                coyoteTimeCounter = coyoteTime;
+
+            }
+        }
+        else
+        {
+            //ApplyAirLinearDrag();
+            Fall();
+            coyoteTimeCounter -= Time.fixedDeltaTime;
+            if (rb.velocity.y < 0f) isJumping = false;
+        }
+    }
+    #endregion
+
+    #region INVENTARIO
     public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
         //Añades el arma al diccionario
@@ -192,134 +331,6 @@ public class ControlJugador : MonoBehaviour
                 secundariaEnMano.SetActive(false);
                 secundariaEnMano = null;
             }
-        }
-
-    }
-
-
-    public void EfectoNegativo(string queEfecto)
-    {
-        switch (queEfecto)
-        {
-            default:
-
-            case "Ralentizar":
-
-                break;
-
-        }
-    }
-
-    public void Morir()
-    {
-        vida--;
-        if (vida <= 0)
-        {
-            //Te mueres
-
-        }
-    }
-
-
-
-
-    private void FixedUpdate()
-    {
-        GetMoveInput();
-
-        CheckCollisions();
-        MoveCharacter();
-
-        SueloControl();
-
-        /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }*/
-
-    }
-
-    private void SueloControl()
-    {
-        if (isGrounded)
-        {
-            if (rb.velocity.y < 0)
-            {
-                extraJumpsValue = extraJumps;
-                coyoteTimeCounter = coyoteTime;
-
-            }
-        }
-        else
-        {
-            //ApplyAirLinearDrag();
-            Fall();
-            coyoteTimeCounter -= Time.fixedDeltaTime;
-            if (rb.velocity.y < 0f) isJumping = false;
-        }
-    }
-
-    #region MOVIMIENTO
-    private void GetMoveInput()
-    {
-        movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
-
-        if (movement.x > 0.1f || movement.x < -0.1f)
-        {
-            horizontalInput = movement.x * playerSpeed;
-        }
-        else
-        {
-            horizontalInput = 0;
-        }
-    }
-
-    private void MoveCharacter()
-    {
-        float velocidadHorizontal = rb.velocity.x;
-        velocidadHorizontal += horizontalInput;
-
-        if (Mathf.Abs(horizontalInput) < 0.01f && isGrounded) // si paramos
-            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
-        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de dirección
-            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
-        else if (!isGrounded) // si estoy en el aire
-            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenInAir, Time.fixedDeltaTime * 10f);
-        else
-            velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingBasic, Time.fixedDeltaTime * 10f);
-
-        rb.velocity = new Vector2(velocidadHorizontal, rb.velocity.y);
-    }
-
-    private void Jump(Vector2 direction)
-    {
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(direction * jumpForce, ForceMode2D.Impulse);
-
-
-        jumpBufferCounter = 0f;
-        coyoteTimeCounter = 0f;
-        isJumping = true;
-
-
-    }
-
-    void Fall() // mejoras en la caida
-    {
-
-        if (rb.velocity.y < 0) // Si estamos cayendo del salto, añadimos multiplicador de gravedad
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
-
-        }
-        else if (rb.velocity.y > 0 && InputManager.playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
-
         }
 
     }
