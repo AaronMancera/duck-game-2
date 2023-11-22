@@ -10,6 +10,9 @@ using static UnityEditor.Progress;
 
 public class ControlJugador : MonoBehaviour
 {
+    [Header("ID")]
+    public int idPlayer;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -68,8 +71,7 @@ public class ControlJugador : MonoBehaviour
     [Header("INVENTARIO")]
     public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
-    [Header("ID")]
-    [SerializeField] private int idPlayer;
+    
 
 
 
