@@ -76,13 +76,13 @@ public class ControlJugador : MonoBehaviour
     private void OnEnable()
     {
         InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
-        InputManager.playerControls.Player.Saltar.canceled += JumpCut;
+        //InputManager.playerControls.Player.Saltar.canceled += JumpCut;
     }
 
     private void OnDisable()
     {
         InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
-        InputManager.playerControls.Player.Saltar.canceled -= JumpCut;
+        //InputManager.playerControls.Player.Saltar.canceled -= JumpCut;
     }
     #endregion
 
@@ -146,7 +146,7 @@ public class ControlJugador : MonoBehaviour
             }
 
         }
-        else if(quePuesto == 1)
+        else if (quePuesto == 1)
         {
             if (secundariaEnMano == null)
             {
@@ -162,7 +162,7 @@ public class ControlJugador : MonoBehaviour
             }
         }
 
-        
+
     }
 
     public void SoltarArma()
@@ -200,7 +200,7 @@ public class ControlJugador : MonoBehaviour
 
             case "Ralentizar":
 
-            break;
+                break;
 
         }
     }

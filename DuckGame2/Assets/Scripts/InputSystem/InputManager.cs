@@ -26,12 +26,12 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.onControlsChanged += OnControlsChanged;
+        //playerInput.onControlsChanged += OnControlsChanged;
     }
 
     private void OnDisable()
     {
-        playerInput.onControlsChanged -= OnControlsChanged;
+        //playerInput.onControlsChanged -= OnControlsChanged;
     }
 
 
