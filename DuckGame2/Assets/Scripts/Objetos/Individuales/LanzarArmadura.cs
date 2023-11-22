@@ -11,8 +11,8 @@ public class LanzarArmadura : Objeto
     void Start()
     {
         nombre = "LanzarArmadura";
-        Inicializar();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -20,11 +20,15 @@ public class LanzarArmadura : Objeto
         //contador de segundos activos
         secondsCounter += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space)  && interactuable == true){
+        //if (Input.GetKeyDown(KeyCode.Space) && secondsCounter==0){
+        //    PonerseEscudo();
+        //}
+        if (InputManager.playerControls.Player.DispararPrincipal.enabled && secondsCounter == 0)
+        {
             PonerseEscudo();
         }
 
-        if(secondsCounter > 5){
+        if (secondsCounter > 5){
            FinEscudo();
         }
         
@@ -33,17 +37,17 @@ public class LanzarArmadura : Objeto
         }
     }
 
-    private void Inicializar(){
-        gameObject.SetActive(true);
-        numUsos = 1;
-        interactuable = true;
-    }
-    public void Reiniciar()
+    //private void Inicializar(){
+    //    gameObject.SetActive(true);
+    //    numUsos = 1;
+    //    interactuable = true;
+    //}
+    private void Reiniciar()
     {
         gameObject.SetActive(false);
     }
 
-    public void PonerseEscudo(){
+    private void PonerseEscudo(){
         PrefabEscudo.SetActive(true);
             Debug.Log(gameObject.transform.parent.name);
             colisionJugador.enabled= false;
@@ -51,6 +55,7 @@ public class LanzarArmadura : Objeto
     }
 
     private void FinEscudo(){
+        numUsos = 0;
         PrefabEscudo.SetActive(false);
         colisionJugador.enabled = true;
     }

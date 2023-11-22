@@ -53,9 +53,6 @@ MonoBehaviour:
   - {fileID: 2646804664267661910, guid: 4f0404a153f0b73418a3020a21508390, type: 3}
   - {fileID: 7260469618542834095, guid: fbce9c513461b5e4f99c971912596607, type: 3}
   - {fileID: 7260469618542834095, guid: 6aff946565356c242bce542fb0dbe636, type: 3}
-  - {fileID: 7260469618542834095, guid: 03b6a5e6764e64e4aabea74be1d9243e, type: 3}
-  - {fileID: 7260469618542834095, guid: 6a79694d10169af46a5d7ff7c2c37bd0, type: 3}
-  - {fileID: 7260469618542834095, guid: f551617069e65954ab1c01c03255cd80, type: 3}
   - {fileID: 5921736279431767288, guid: d5e59d7dca3cee8448780535ffc1dd2e, type: 3}
 --- !u!61 &1266323263515074519
 BoxCollider2D:
@@ -283,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d189b94d4ae0ec4fa75ed7ee805eaf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numUsosMaximo: 0
   numUsos: 0
-  interactuable: 0
   nombre: 
   animator: {fileID: 0}

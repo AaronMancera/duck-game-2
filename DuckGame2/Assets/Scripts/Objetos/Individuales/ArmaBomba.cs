@@ -41,10 +41,10 @@ public class ArmaBomba : Objeto
     /// <summary>
     /// Activa el gameObject
     /// </summary>
-    private void Activar()
-    {
-        gameObject.SetActive(true);
-        numUsos = 1;
-        interactuable = true;
-    }
+    //private void Activar()
+    //{
+    //    gameObject.SetActive(true);
+    //    numUsos = 1;
+    //    interactuable = true;
+    //}
 }

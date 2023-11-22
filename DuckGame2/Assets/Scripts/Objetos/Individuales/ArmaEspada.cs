@@ -25,7 +25,7 @@ public class ArmaEspada : Objeto
     private void Start()
     {
         //TODO: Utilizar parametros de la clase objeto (padre)
-        numUsos = durabilidad;
+        //numUsos = durabilidad;
         animator = animEspada;
         puedeAtacar = true;
         Application.targetFrameRate = 60;
@@ -34,14 +34,16 @@ public class ArmaEspada : Objeto
     }
     private void Update()
     {
+        numUsos = durabilidad;
         Atacar();
         EspadaManager();
     }
     #endregion
     void Atacar() 
     {
-        if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
-        {
+        //if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
+        if (puedeAtacar && InputManager.playerControls.Player.DispararPrincipal.enabled && durabilidad > 0)
+            {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)
             {

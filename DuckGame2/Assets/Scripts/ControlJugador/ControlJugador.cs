@@ -5,14 +5,15 @@ using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 
 public class ControlJugador : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Animator animator;
+    private Rigidbody2D rb;
+    private Animator animator;
 
-    [SerializeField] int vida = 1;
+    [SerializeField] private int vida = 1;
 
     #region Movimiento
     [Header("Movimiento")]
@@ -143,6 +144,8 @@ public class ControlJugador : MonoBehaviour
                 }
 
                 principalEnMano.SetActive(true);
+                principalEnMano.GetComponent<Objeto>().Activar();
+
             }
 
         }
@@ -159,6 +162,8 @@ public class ControlJugador : MonoBehaviour
                 }
 
                 secundariaEnMano.SetActive(true);
+                secundariaEnMano.GetComponent<Objeto>().Activar();
+
             }
         }
 

@@ -640,6 +640,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DispararPrincipal"",
+                    ""type"": ""Button"",
+                    ""id"": ""96314edf-b46f-466a-92d2-afb3a56435a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -774,6 +783,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Saltar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1882d699-cf33-4517-99de-201132d95e87"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": ""Tap,Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DispararPrincipal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -828,6 +848,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Saltar = m_Player.FindAction("Saltar", throwIfNotFound: true);
+        m_Player_DispararPrincipal = m_Player.FindAction("DispararPrincipal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1041,12 +1062,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Saltar;
+    private readonly InputAction m_Player_DispararPrincipal;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Saltar => m_Wrapper.m_Player_Saltar;
+        public InputAction @DispararPrincipal => m_Wrapper.m_Player_DispararPrincipal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1062,6 +1085,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Saltar.started += instance.OnSaltar;
             @Saltar.performed += instance.OnSaltar;
             @Saltar.canceled += instance.OnSaltar;
+            @DispararPrincipal.started += instance.OnDispararPrincipal;
+            @DispararPrincipal.performed += instance.OnDispararPrincipal;
+            @DispararPrincipal.canceled += instance.OnDispararPrincipal;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1072,6 +1098,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Saltar.started -= instance.OnSaltar;
             @Saltar.performed -= instance.OnSaltar;
             @Saltar.canceled -= instance.OnSaltar;
+            @DispararPrincipal.started -= instance.OnDispararPrincipal;
+            @DispararPrincipal.performed -= instance.OnDispararPrincipal;
+            @DispararPrincipal.canceled -= instance.OnDispararPrincipal;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1128,5 +1157,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSaltar(InputAction.CallbackContext context);
+        void OnDispararPrincipal(InputAction.CallbackContext context);
     }
 }
