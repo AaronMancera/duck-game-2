@@ -16,14 +16,11 @@ public class ArmaBomba : Objeto
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space) && numUsos > 0)
+        if(InputManager.playerControls.Player.DispararPrincipal.IsPressed() && numUsos > 0)
         {
             Disparar();
         }
-        else
-        {
-            Debug.Log("El jugador soltará este arma");
-        }
+        gameObject.SetActive(Municion());
     }
 
     /// <summary>
@@ -47,4 +44,15 @@ public class ArmaBomba : Objeto
     //    numUsos = 1;
     //    interactuable = true;
     //}
+    /// <summary>
+    /// Devuelve un booleano para saber si tenemos balas
+    /// </summary>
+    private bool Municion()
+    {
+        if (numUsos <= 0)
+        {            
+            return false;
+        }
+        return true;
+    }
 }
