@@ -36,15 +36,17 @@ public class ArmaRayo : Objeto
         Disparar();
 
     }
+
     /// <summary>
     /// Metodo que nos servira para recoger el arma y activarlo
     /// </summary>
-    public void Inicializador()
-    {
-        numUsos = 50;
-        interactuable = true;
-        gameObject.SetActive(true);
-    }
+    //public void Inicializador()
+    //{
+    //    //numUsos = 50;
+    //    //interactuable = true;
+    //    //gameObject.SetActive(true);
+    //    setNumUsosMaximo(numUsos);
+    //}
     /// <summary>
     /// Metodo que nos indicara si estamos sin municion y tenemos en cuenta si existe aun una linea de rayo
     /// </summary>

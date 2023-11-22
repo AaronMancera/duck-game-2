@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906009f459d44d64aba68168dc515d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsos: 0
-  interactuable: 0
+  numUsosMaximo: 0
+  numUsos: 50
   nombre: 
   animator: {fileID: 0}
   lineaDeDisparo: {fileID: -8885072505946424846, guid: d8bccfff6170c21408535358026a55a5, type: 3}

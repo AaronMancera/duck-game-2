@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 
 public class ControlJugador : MonoBehaviour
@@ -143,6 +144,8 @@ public class ControlJugador : MonoBehaviour
                 }
 
                 principalEnMano.SetActive(true);
+                principalEnMano.GetComponent<Objeto>().Activar();
+
             }
 
         }
@@ -159,6 +162,8 @@ public class ControlJugador : MonoBehaviour
                 }
 
                 secundariaEnMano.SetActive(true);
+                secundariaEnMano.GetComponent<Objeto>().Activar();
+
             }
         }
 

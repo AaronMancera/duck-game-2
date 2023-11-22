@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5101643208924720626}
   - component: {fileID: 5333046919056106345}
   - component: {fileID: 8021035069599367811}
+  - component: {fileID: 784360628136649824}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,6 +206,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &784360628136649824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333865150358924716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c426c5c6ea74cd4fac9b7c77ed9723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1472149704185627153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,6 +229,14 @@ PrefabInstance:
     - target: {fileID: 4232659554598744196, guid: 373970fcf090db04282cee044b28940e, type: 3}
       propertyPath: m_Name
       value: ArmaRayo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232659554598744196, guid: 373970fcf090db04282cee044b28940e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599928175501978795, guid: 373970fcf090db04282cee044b28940e, type: 3}
+      propertyPath: numUsosMaximo
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7527485708351728442, guid: 373970fcf090db04282cee044b28940e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,6 +305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmaPistola
       objectReference: {fileID: 0}
+    - target: {fileID: 2538521604678995870, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3263660837677564880, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.06
@@ -324,6 +349,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8583689243390427219, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: numUsos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583689243390427219, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: numUsosMaximo
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -350,6 +383,10 @@ PrefabInstance:
     - target: {fileID: 3217150310755893012, guid: 9e59344dff7583d44a53a4e1a9eab659, type: 3}
       propertyPath: m_Name
       value: LanzarEscudo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217150310755893012, guid: 9e59344dff7583d44a53a4e1a9eab659, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906445363016230691, guid: 9e59344dff7583d44a53a4e1a9eab659, type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,6 +495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmaEspada
       objectReference: {fileID: 0}
+    - target: {fileID: 5435159907408495058, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -484,6 +525,10 @@ PrefabInstance:
     - target: {fileID: 2017655883127774692, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: m_Name
       value: ArmaBomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017655883127774692, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2853246343641535219, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -25,7 +25,7 @@ public class ArmaEspada : Objeto
     private void Start()
     {
         //TODO: Utilizar parametros de la clase objeto (padre)
-        numUsos = durabilidad;
+        //numUsos = durabilidad;
         animator = animEspada;
         puedeAtacar = true;
         Application.targetFrameRate = 60;
@@ -34,6 +34,7 @@ public class ArmaEspada : Objeto
     }
     private void Update()
     {
+        numUsos = durabilidad;
         Atacar();
         EspadaManager();
     }

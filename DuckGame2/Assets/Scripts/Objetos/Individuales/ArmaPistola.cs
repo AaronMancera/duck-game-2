@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ArmaPistola : Objeto
 {
-    public GameObject BalaPrefab;
-    public float secondsCounter = 0;
+    [SerializeField] private GameObject BalaPrefab;
+    private float secondsCounter = 0;
+    private bool puedeDispara;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class ArmaPistola : Objeto
         secondsCounter += Time.deltaTime;
         //Debug.Log(secondsCounter);
 
-        if (Input.GetKeyDown(KeyCode.Space) && interactuable == true && numUsos > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && puedeDispara == true && numUsos > 0)
         {
             Disparar();
         }
@@ -33,7 +34,7 @@ public class ArmaPistola : Objeto
         //retardo de disparo
         if (secondsCounter > 0.5)
         {
-            interactuable = true;
+            puedeDispara = true;
         }
         //NOTE: Si se queda sin balas se desactiva el objeto
         if (numUsos == 0)
@@ -45,18 +46,18 @@ public class ArmaPistola : Objeto
     /// <summary>
     /// Método que reinicia el arma cuando un jugador la obtenga
     /// </summary>
-    private void Inicializar()
-    {
-        gameObject.SetActive(true);
-        numUsos = 2; //Numero de balas
-        interactuable = true;
-    }
+    //private void Inicializar()
+    //{
+    //    gameObject.SetActive(true);
+    //    numUsos = 2; //Numero de balas
+    //    interactuable = true;
+    //}
 
     public void Disparar()
     {
         secondsCounter = 0;
         numUsos = numUsos - 1;
-        interactuable = false;
+        puedeDispara = false;
         Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
     }
 
