@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Mathias.unity
+    guid: b717c202725bbb549963226f732a4bab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 59235ffef9090e34aa083f1bbc304183, type: 2}
