@@ -618,6 +618,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DispararPrincipal",
+                    "type": "Button",
+                    "id": "96314edf-b46f-466a-92d2-afb3a56435a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -750,6 +759,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1882d699-cf33-4517-99de-201132d95e87",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "Tap,Hold",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DispararPrincipal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

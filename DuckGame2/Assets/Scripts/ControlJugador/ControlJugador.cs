@@ -10,10 +10,10 @@ using static UnityEditor.Progress;
 
 public class ControlJugador : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Animator animator;
+    private Rigidbody2D rb;
+    private Animator animator;
 
-    [SerializeField] int vida = 1;
+    [SerializeField] private int vida = 1;
 
     #region Movimiento
     [Header("Movimiento")]
