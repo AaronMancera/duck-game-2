@@ -684,64 +684,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""c906d241-ed3b-4b3f-9f6f-8e5e7e599243"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4e134830-a738-426b-91b0-e6ae09770ec1"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""316984e4-f595-4614-ac1d-2eb4652c04be"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""5a8d14d4-e3e6-473b-b20a-0d7054c946c6"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""left"",
                     ""id"": ""34c626ce-138e-40a9-b4fc-82f16977718a"",
                     ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ca433e69-43ac-4547-8fae-27a2834cfb50"",
-                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -761,20 +706,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""511d6add-74a4-462d-8825-78e6fa37a5c0"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""3bdffa7e-0231-4fdc-b39f-b54865cf43f9"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -812,6 +746,138 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DispararSecundario"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerP2"",
+            ""id"": ""fb2604ef-6773-4258-be77-93f7a1809973"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""1d1834e0-419b-4242-91fc-73c8c531074f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Saltar"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c456878-1f0d-4a56-8d69-33ec2567e179"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DispararPrincipal"",
+                    ""type"": ""Button"",
+                    ""id"": ""4449e7b0-92d2-4f37-8870-56ef8c032826"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DispararSecundario"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd294adf-ac69-4533-b9cd-0efeabd8d218"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aa19eeb1-90da-4fea-a78a-445c8a0d6fc0"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DispararPrincipal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f67c89d-6d8c-4382-a8bf-757934e33eb5"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DispararSecundario"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3774d9b-35d0-4cc3-ae82-8d011d9be35d"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""88cfe182-00e7-47fd-ba7f-ffccbe23f3b7"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7e4d0bde-55f6-4a1b-ae65-a55edb33e1c7"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""62633286-325e-4cce-8d87-94d77ed0da4e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c2128b5-aa94-441b-a2d8-dc74973696b5"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Saltar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24d7692e-910a-44fb-816c-eb9d32e8e2e5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Saltar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -870,6 +936,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Saltar = m_Player.FindAction("Saltar", throwIfNotFound: true);
         m_Player_DispararPrincipal = m_Player.FindAction("DispararPrincipal", throwIfNotFound: true);
         m_Player_DispararSecundario = m_Player.FindAction("DispararSecundario", throwIfNotFound: true);
+        // PlayerP2
+        m_PlayerP2 = asset.FindActionMap("PlayerP2", throwIfNotFound: true);
+        m_PlayerP2_Movement = m_PlayerP2.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerP2_Saltar = m_PlayerP2.FindAction("Saltar", throwIfNotFound: true);
+        m_PlayerP2_DispararPrincipal = m_PlayerP2.FindAction("DispararPrincipal", throwIfNotFound: true);
+        m_PlayerP2_DispararSecundario = m_PlayerP2.FindAction("DispararSecundario", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1147,6 +1219,76 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // PlayerP2
+    private readonly InputActionMap m_PlayerP2;
+    private List<IPlayerP2Actions> m_PlayerP2ActionsCallbackInterfaces = new List<IPlayerP2Actions>();
+    private readonly InputAction m_PlayerP2_Movement;
+    private readonly InputAction m_PlayerP2_Saltar;
+    private readonly InputAction m_PlayerP2_DispararPrincipal;
+    private readonly InputAction m_PlayerP2_DispararSecundario;
+    public struct PlayerP2Actions
+    {
+        private @PlayerControls m_Wrapper;
+        public PlayerP2Actions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_PlayerP2_Movement;
+        public InputAction @Saltar => m_Wrapper.m_PlayerP2_Saltar;
+        public InputAction @DispararPrincipal => m_Wrapper.m_PlayerP2_DispararPrincipal;
+        public InputAction @DispararSecundario => m_Wrapper.m_PlayerP2_DispararSecundario;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerP2; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerP2Actions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerP2Actions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerP2ActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerP2ActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @Saltar.started += instance.OnSaltar;
+            @Saltar.performed += instance.OnSaltar;
+            @Saltar.canceled += instance.OnSaltar;
+            @DispararPrincipal.started += instance.OnDispararPrincipal;
+            @DispararPrincipal.performed += instance.OnDispararPrincipal;
+            @DispararPrincipal.canceled += instance.OnDispararPrincipal;
+            @DispararSecundario.started += instance.OnDispararSecundario;
+            @DispararSecundario.performed += instance.OnDispararSecundario;
+            @DispararSecundario.canceled += instance.OnDispararSecundario;
+        }
+
+        private void UnregisterCallbacks(IPlayerP2Actions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Saltar.started -= instance.OnSaltar;
+            @Saltar.performed -= instance.OnSaltar;
+            @Saltar.canceled -= instance.OnSaltar;
+            @DispararPrincipal.started -= instance.OnDispararPrincipal;
+            @DispararPrincipal.performed -= instance.OnDispararPrincipal;
+            @DispararPrincipal.canceled -= instance.OnDispararPrincipal;
+            @DispararSecundario.started -= instance.OnDispararSecundario;
+            @DispararSecundario.performed -= instance.OnDispararSecundario;
+            @DispararSecundario.canceled -= instance.OnDispararSecundario;
+        }
+
+        public void RemoveCallbacks(IPlayerP2Actions instance)
+        {
+            if (m_Wrapper.m_PlayerP2ActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerP2Actions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerP2ActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerP2ActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerP2Actions @PlayerP2 => new PlayerP2Actions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -1183,6 +1325,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
     }
     public interface IPlayerActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnSaltar(InputAction.CallbackContext context);
+        void OnDispararPrincipal(InputAction.CallbackContext context);
+        void OnDispararSecundario(InputAction.CallbackContext context);
+    }
+    public interface IPlayerP2Actions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSaltar(InputAction.CallbackContext context);

@@ -9,8 +9,10 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ArmaRayo : Objeto
 {
+    [Header("Prefab con line renderer")]
     [SerializeField] private LineRenderer lineaDeDisparo;
     private LineRenderer lineaDeDisparoActual;
+    [Header("Velocidad para limpiar")]
     [SerializeField] private float velocidadDeLimpiezaAsignada;
     private List<Vector3> puntosDelTrail = new List<Vector3>();
     private bool pulsarFire1;
@@ -31,9 +33,9 @@ public class ArmaRayo : Objeto
     {
         //NOTE: Refactorizacion para el InputManager
         //pulsarFire1 = Input.GetButtonDown("Fire1");
-        pulsarFire1 = InputManager.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
+        pulsarFire1 = InputManager.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
         ////mantenerFire1 = Input.GetButton("Fire1");
-        mantenerFire1 = InputManager.playerControls.Player.DispararPrincipal.IsPressed();
+        mantenerFire1 = InputManager.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
     }
     // Update is called in 0.2 seg
     private void FixedUpdate()
@@ -42,17 +44,6 @@ public class ArmaRayo : Objeto
         Disparar();
 
     }
-
-    /// <summary>
-    /// Metodo que nos servira para recoger el arma y activarlo
-    /// </summary>
-    //public void Inicializador()
-    //{
-    //    //numUsos = 50;
-    //    //interactuable = true;
-    //    //gameObject.SetActive(true);
-    //    setNumUsosMaximo(numUsos);
-    //}
     /// <summary>
     /// Metodo que nos indicara si estamos sin municion y tenemos en cuenta si existe aun una linea de rayo
     /// </summary>

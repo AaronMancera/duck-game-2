@@ -68,7 +68,8 @@ public class ControlJugador : MonoBehaviour
     [Header("INVENTARIO")]
     public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
-
+    [Header("ID")]
+    [SerializeField] private int idPlayer;
 
 
 
@@ -76,14 +77,34 @@ public class ControlJugador : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
+
+        //InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
         //InputManager.playerControls.Player.Saltar.canceled += JumpCut;
+        if (idPlayer == 1)
+        {
+            InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
+
+        }
+        else if (idPlayer == 2)
+        {
+            InputManager.playerControls.PlayerP2.Saltar.performed += GetSaltoInput;
+        }
     }
 
     private void OnDisable()
     {
-        InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
+        //InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
         //InputManager.playerControls.Player.Saltar.canceled -= JumpCut;
+        if (idPlayer == 1)
+        {
+            InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
+
+        }
+        else if (idPlayer == 2)
+        {
+            Debug.Log(InputManager.playerControls.PlayerP2.Saltar);
+            InputManager.playerControls.PlayerP2.Saltar.performed -= GetSaltoInput;
+        }
     }
     #endregion
 
@@ -266,8 +287,17 @@ public class ControlJugador : MonoBehaviour
     #region MOVIMIENTO
     private void GetMoveInput()
     {
-        movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(movement);
+        if (idPlayer == 1)
+        {
+            movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+        }
+        else if (idPlayer == 2)
+        {
+            movement = InputManager.playerControls.PlayerP2.Movement.ReadValue<Vector2>();
+
+        }
+        //movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+        //Debug.Log(movement);
         
         if (movement.x > 0.1f || movement.x < -0.1f)
         {
