@@ -21,7 +21,7 @@ public class LanzarPollo : Objeto
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && interactuable == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             GenerarPollo();
         }
@@ -42,7 +42,6 @@ public class LanzarPollo : Objeto
     {
         gameObject.SetActive(true);
         numUsos = 1;
-        interactuable = true;
     }
 
     public void Reiniciar()
