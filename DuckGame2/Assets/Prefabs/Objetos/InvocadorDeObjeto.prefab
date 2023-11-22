@@ -280,10 +280,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7333776143308661574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54067c3aad675fc49944ac5b664328b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d189b94d4ae0ec4fa75ed7ee805eaf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: 
   numUsos: 0
   interactuable: 0
+  nombre: 
+  animator: {fileID: 0}
