@@ -267,10 +267,13 @@ public class ControlJugador : MonoBehaviour
     private void GetMoveInput()
     {
         movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
-
+        Debug.Log(movement);
+        
         if (movement.x > 0.1f || movement.x < -0.1f)
         {
             horizontalInput = movement.x * playerSpeed;
+            Vector3 scale = new Vector3(movement.x, transform.localScale.y, transform.localScale.z);
+            transform.localScale = scale;
         }
         else
         {
