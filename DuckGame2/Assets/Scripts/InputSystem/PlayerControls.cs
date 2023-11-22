@@ -788,7 +788,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""1882d699-cf33-4517-99de-201132d95e87"",
                     ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": ""Tap,Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""DispararPrincipal"",

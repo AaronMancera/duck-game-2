@@ -26,7 +26,8 @@ public class ArmaPistola : Objeto
         secondsCounter += Time.deltaTime;
         //Debug.Log(secondsCounter);
 
-        if (Input.GetKeyDown(KeyCode.Space) && puedeDispara == true && numUsos > 0)
+        //if (Input.GetKeyDown(KeyCode.Space) && puedeDispara == true && numUsos > 0)
+        if (InputManager.playerControls.Player.DispararPrincipal.enabled && puedeDispara == true && numUsos > 0)
         {
             Disparar();
         }
@@ -39,7 +40,7 @@ public class ArmaPistola : Objeto
         //NOTE: Si se queda sin balas se desactiva el objeto
         if (numUsos == 0)
         {
-            Reiniciar();
+            SinMunicion();
         }
 
     }
@@ -61,7 +62,7 @@ public class ArmaPistola : Objeto
         Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
     }
 
-    public void Reiniciar()
+    public void SinMunicion()
     {
         gameObject.SetActive(false);
     }

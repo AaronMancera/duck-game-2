@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ArmaRayo : Objeto
@@ -26,8 +29,11 @@ public class ArmaRayo : Objeto
     // Update is called once per frame
     void Update()
     {
-        pulsarFire1 = Input.GetButtonDown("Fire1");
-        mantenerFire1 = Input.GetButton("Fire1");
+        //NOTE: Refactorizacion para el InputManager
+        //pulsarFire1 = Input.GetButtonDown("Fire1");
+        pulsarFire1 = InputManager.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
+        ////mantenerFire1 = Input.GetButton("Fire1");
+        mantenerFire1 = InputManager.playerControls.Player.DispararPrincipal.IsPressed();
     }
     // Update is called in 0.2 seg
     private void FixedUpdate()
@@ -92,14 +98,12 @@ public class ArmaRayo : Objeto
             LimpiarPuntosTrail();
         }
         UpdatePuntosTrail();
-
     }
     /// <summary>
     /// Se llamara para crear una nueva linea de disparo
     /// </summary>
     private void CrearTrailActual()
     {
-
         lineaDeDisparoActual = Instantiate(lineaDeDisparo);
         lineaDeDisparoActual.transform.SetParent(transform, true);
     }
