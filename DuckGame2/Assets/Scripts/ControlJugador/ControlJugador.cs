@@ -107,6 +107,7 @@ public class ControlJugador : MonoBehaviour
 
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -123,6 +124,7 @@ public class ControlJugador : MonoBehaviour
     {
         SoltarArma();
     }
+
 
     public void RecogerArma(string queItem, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
