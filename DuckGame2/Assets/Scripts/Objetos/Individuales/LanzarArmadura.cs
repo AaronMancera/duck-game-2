@@ -23,7 +23,7 @@ public class LanzarArmadura : Objeto
         //if (Input.GetKeyDown(KeyCode.Space) && secondsCounter==0){
         //    PonerseEscudo();
         //}
-        if (InputManager.playerControls.Player.DispararPrincipal.IsPressed() && secondsCounter == 0)
+        if (InputManager.playerControls.Player.DispararSecundario.WasPressedThisFrame() && secondsCounter == 0)
         {
             PonerseEscudo();
         }

@@ -627,6 +627,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DispararSecundario",
+                    "type": "Button",
+                    "id": "c1a0df4a-6591-414b-964c-20add2df45e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -770,6 +779,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "DispararPrincipal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "893c6a04-f02c-4cd4-a557-4cadf2653f31",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DispararSecundario",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

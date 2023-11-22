@@ -649,6 +649,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DispararSecundario"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1a0df4a-6591-414b-964c-20add2df45e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -794,6 +803,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""DispararPrincipal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""893c6a04-f02c-4cd4-a557-4cadf2653f31"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DispararSecundario"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -849,6 +869,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Saltar = m_Player.FindAction("Saltar", throwIfNotFound: true);
         m_Player_DispararPrincipal = m_Player.FindAction("DispararPrincipal", throwIfNotFound: true);
+        m_Player_DispararSecundario = m_Player.FindAction("DispararSecundario", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1063,6 +1084,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Saltar;
     private readonly InputAction m_Player_DispararPrincipal;
+    private readonly InputAction m_Player_DispararSecundario;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1070,6 +1092,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Saltar => m_Wrapper.m_Player_Saltar;
         public InputAction @DispararPrincipal => m_Wrapper.m_Player_DispararPrincipal;
+        public InputAction @DispararSecundario => m_Wrapper.m_Player_DispararSecundario;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1088,6 +1111,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DispararPrincipal.started += instance.OnDispararPrincipal;
             @DispararPrincipal.performed += instance.OnDispararPrincipal;
             @DispararPrincipal.canceled += instance.OnDispararPrincipal;
+            @DispararSecundario.started += instance.OnDispararSecundario;
+            @DispararSecundario.performed += instance.OnDispararSecundario;
+            @DispararSecundario.canceled += instance.OnDispararSecundario;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1101,6 +1127,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DispararPrincipal.started -= instance.OnDispararPrincipal;
             @DispararPrincipal.performed -= instance.OnDispararPrincipal;
             @DispararPrincipal.canceled -= instance.OnDispararPrincipal;
+            @DispararSecundario.started -= instance.OnDispararSecundario;
+            @DispararSecundario.performed -= instance.OnDispararSecundario;
+            @DispararSecundario.canceled -= instance.OnDispararSecundario;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1158,5 +1187,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnSaltar(InputAction.CallbackContext context);
         void OnDispararPrincipal(InputAction.CallbackContext context);
+        void OnDispararSecundario(InputAction.CallbackContext context);
     }
 }
