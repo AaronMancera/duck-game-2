@@ -6,6 +6,7 @@ public class Bomba : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] private float fuerzaDeEmpuje;
     [SerializeField] private float tiempoParaExplotar;
+    [SerializeField] private float fuerzaDeRotacion = -1000;
     [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class Bomba : MonoBehaviour
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.AddForce(Vector2.one * fuerzaDeEmpuje, ForceMode2D.Impulse);
+        rigidbody2D.AddTorque(fuerzaDeRotacion);
     }
 
     /// <summary>
