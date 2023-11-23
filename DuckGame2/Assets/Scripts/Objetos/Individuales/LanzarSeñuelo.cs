@@ -37,8 +37,7 @@ public class LanzarSeñuelo : Objeto
     {
         // Inicializar el Rigidbody del jugador
         jugadorRb = player.GetComponent<Rigidbody2D>();
-        //Iniciar desactivado.
-        gameObject.SetActive(false);
+       
         // Inicializar el contador de usos
         usosRestantes = numUsos;
     }
@@ -94,15 +93,13 @@ public class LanzarSeñuelo : Objeto
         float direccionFuerza = -direccionDash;
         jugadorRb.AddForce(new Vector2(direccionFuerza * fuerzaDesplazamiento, 0));
 
-        // Habilitar el flag para detener el desplazamiento
-        detenerDesplazamiento = true;
-
         // Reducir el contador de usos
         usosRestantes--;
 
-        // Desactivar el objeto.
-        gameObject.SetActive(false);
+        // Desactivar el objeto señuelo después de un tiempo
+        StartCoroutine(EliminarSeñuelo());
 
+        //DESACTIVAR EL LANZARSEÑUELO
         Debug.Log("Se lanzó el señuelo");
     }
 
@@ -120,8 +117,11 @@ public class LanzarSeñuelo : Objeto
                 detenerDesplazamiento = false;
                 Debug.Log("Jugador detenido en la distancia máxima");
 
-                // Iniciar la corutina para eliminar el señuelo después de un tiempo
-                StartCoroutine(EliminarSeñuelo());
+                if (señueloActual != null) // Añadir esta condición
+                {
+                    // Iniciar la corutina para eliminar el señuelo después de un tiempo
+                    StartCoroutine(EliminarSeñuelo());
+                }
             }
         }
     }
@@ -139,6 +139,9 @@ public class LanzarSeñuelo : Objeto
         {
             usosRestantes = numUsos;
         }
+
+        // Reactivar el objeto principal
+        gameObject.SetActive(true);
     }
 
     #endregion
