@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b81de8a3bd8d74aa6d760479f89c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerzaDeEmpuje: 10
-  tiempoParaExplotar: 5
+  fuerzaDeEmpuje: 1
+  tiempoParaExplotar: 1
+  fuerzaDeRotacion: 10
   animator: {fileID: 0}
+  particulasBomba: {fileID: 3625910404143519456, guid: 348b926961d3e1d4d8254aceeee23b9f, type: 3}
 --- !u!50 &618368641585401974
 Rigidbody2D:
   serializedVersion: 4
@@ -158,7 +160,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.008859307, y: 0.007904142}

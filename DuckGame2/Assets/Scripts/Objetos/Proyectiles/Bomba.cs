@@ -8,6 +8,7 @@ public class Bomba : MonoBehaviour
     [SerializeField] private float tiempoParaExplotar;
     [SerializeField] private float fuerzaDeRotacion = -1000;
     [SerializeField] private Animator animator;
+    [SerializeField] ParticleSystem particulasBomba;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class Bomba : MonoBehaviour
     /// </summary>
     private void Explotar()
     {
+        Instantiate(particulasBomba, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
