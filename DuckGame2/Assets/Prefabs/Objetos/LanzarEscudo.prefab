@@ -94,11 +94,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5921736279431767288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2c4f2bb9a19ae49888629672f9779f, type: 3}
+  m_Script: {fileID: 11500000, guid: c23f1ce2a842b824092fd0b4d196634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: LanzarEscudo
+  numUsosMaximo: 0
   numUsos: 0
-  interactuable: 0
-  bala: {fileID: 0}
+  nombre: 
+  animator: {fileID: 0}
+  PrefabEscudo: {fileID: 0}
+  colisionJugador: {fileID: 0}
+  secondsCounter: 0

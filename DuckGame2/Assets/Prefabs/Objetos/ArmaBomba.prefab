@@ -94,11 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7260469618542834095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2c4f2bb9a19ae49888629672f9779f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ac981b93a3f232449363371e518626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: ArmaBomba
+  numUsosMaximo: 0
   numUsos: 0
-  interactuable: 0
-  bala: {fileID: 0}
+  nombre: 
+  animator: {fileID: 0}
+  controlDelJugador: {fileID: 0}
+  bomba: {fileID: 1844551447614061118, guid: 23d7bf4acd802514ea1d75afce159560, type: 3}

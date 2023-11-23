@@ -99,6 +99,9 @@ public class ArmaPistola : Objeto
         numUsos = numUsos - 1;
         puedeDispara = false;
         Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+
+        //Animator
+        animator.SetTrigger("Disparar");
     }
 
     public void SinMunicion()

@@ -94,11 +94,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2646804664267661910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2c4f2bb9a19ae49888629672f9779f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d01e7614729ee74bb47cb7d9b135cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: ArmaEspada
+  numUsosMaximo: 0
   numUsos: 0
-  interactuable: 0
-  bala: {fileID: 0}
+  nombre: 
+  animator: {fileID: 0}
+  Aspecto: {fileID: 0}
+  cadenciaGolpe: 0.5
+  durabilidad: 3
+  detectorColision: {fileID: 0}
+  EnRango: 0
+  animEspada: {fileID: 0}
+  puedeAtacar: 0
