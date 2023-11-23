@@ -151,6 +151,19 @@ public class ControlJugador : MonoBehaviour
         inventario.Add("Objeto", null);
 
 
+        if (idPlayer == 1)
+        {
+            animator.SetLayerWeight(0,1);
+            animator.SetLayerWeight(1,0);
+
+
+        }
+        else if (idPlayer == 2)
+        {
+            animator.SetLayerWeight(0, 0);
+            animator.SetLayerWeight(1, 1);
+        }
+
     }
 
     private void Update()
