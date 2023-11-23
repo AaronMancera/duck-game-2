@@ -5,11 +5,14 @@ using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 
 public class ControlJugador : MonoBehaviour
 {
+    public static PlayerControls playerControls;
+
+
     [Header("ID")]
     public int idPlayer;
 
@@ -50,6 +53,8 @@ public class ControlJugador : MonoBehaviour
     [SerializeField] int extraJumps = 1;
     public int extraJumpsValue;
     [SerializeField] float airLinearDrag = 2.5f;
+
+    bool estaCayendo;
     #endregion
 
     [Header("Inventario")]
@@ -84,12 +89,12 @@ public class ControlJugador : MonoBehaviour
         //InputManager.playerControls.Player.Saltar.canceled += JumpCut;
         if (idPlayer == 1)
         {
-            InputManager.playerControls.Player.Saltar.performed += GetSaltoInput;
+            playerControls.Player.Saltar.performed += GetSaltoInput;
 
         }
         else if (idPlayer == 2)
         {
-            InputManager.playerControls.PlayerP2.Saltar.performed += GetSaltoInput;
+            playerControls.PlayerP2.Saltar.performed += GetSaltoInput;
         }
     }
 
@@ -99,13 +104,13 @@ public class ControlJugador : MonoBehaviour
         //InputManager.playerControls.Player.Saltar.canceled -= JumpCut;
         if (idPlayer == 1)
         {
-            InputManager.playerControls.Player.Saltar.performed -= GetSaltoInput;
+            playerControls.Player.Saltar.performed -= GetSaltoInput;
 
         }
         else if (idPlayer == 2)
         {
-            Debug.Log(InputManager.playerControls.PlayerP2.Saltar);
-            InputManager.playerControls.PlayerP2.Saltar.performed -= GetSaltoInput;
+            //Debug.Log(InputManager.playerControls.PlayerP2.Saltar);
+            playerControls.PlayerP2.Saltar.performed -= GetSaltoInput;
         }
     }
     #endregion
@@ -129,6 +134,11 @@ public class ControlJugador : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.Enable();
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -173,7 +183,8 @@ public class ControlJugador : MonoBehaviour
 
 
         //Animator
-        animator.SetBool("EstaEnElSuelo", rb.velocity.y < 0 && isGrounded);
+        animator.SetBool("EstaEnElSuelo", isGrounded);
+        animator.SetBool("EstaCayendo", estaCayendo);
     }
 
     public void EfectoNegativo(string queEfecto)
@@ -204,11 +215,11 @@ public class ControlJugador : MonoBehaviour
         //movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
         if (idPlayer == 1)
         {
-            movement = InputManager.playerControls.Player.Movement.ReadValue<Vector2>();
+            movement = playerControls.Player.Movement.ReadValue<Vector2>();
         }
         else if (idPlayer == 2)
         {
-            movement = InputManager.playerControls.PlayerP2.Movement.ReadValue<Vector2>();
+            movement = playerControls.PlayerP2.Movement.ReadValue<Vector2>();
 
         }
         if (movement.x > 0.1f || movement.x < -0.1f)
@@ -264,9 +275,9 @@ public class ControlJugador : MonoBehaviour
         if (rb.velocity.y < 0) // Si estamos cayendo del salto, añadimos multiplicador de gravedad
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
-
+            estaCayendo = true;
         }
-        else if (rb.velocity.y > 0 && InputManager.playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
+        else if (rb.velocity.y > 0 && playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
 
@@ -278,6 +289,7 @@ public class ControlJugador : MonoBehaviour
     {
         if (isGrounded)
         {
+            estaCayendo = false;
             if (rb.velocity.y < 0)
             {
                 extraJumpsValue = extraJumps;
