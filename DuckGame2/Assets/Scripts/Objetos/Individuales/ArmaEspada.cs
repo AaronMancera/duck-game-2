@@ -42,7 +42,7 @@ public class ArmaEspada : Objeto
     void Atacar() 
     {
         //if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
-        if (puedeAtacar && InputManager.playerControls.Player.DispararPrincipal.IsPressed() && durabilidad > 0)
+        if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
             {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)

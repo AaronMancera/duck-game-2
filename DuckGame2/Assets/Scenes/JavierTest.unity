@@ -404,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1718353405
 Transform:
   m_ObjectHideFlags: 0
@@ -432,13 +432,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457b9a2f7e3819446913ba6535420773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numUsosMaximo: 0
+  numUsos: 10
+  nombre: 
+  animator: {fileID: 0}
   "se\xF1ueloPrefab": {fileID: 8073682149890345714, guid: efed209b80e718a43aecd079c2305709, type: 3}
   "tiempoVidaSe\xF1uelo": 3
   player: {fileID: 1028627820}
-  fuerzaDesplazamiento: 1000
-  distanciaMaxima: 1.3
+  fuerzaDesplazamiento: 500
+  distanciaMaxima: 1
   tiempoFrenado: 0.5
-  usosMaximos: 10
+  mirandoALaIzquierda: 0
 --- !u!1 &1935141219
 GameObject:
   m_ObjectHideFlags: 0

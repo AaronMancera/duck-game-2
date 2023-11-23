@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class LanzarSeñuelo : MonoBehaviour
+public class LanzarSeñuelo : Objeto
 {
     #region Variables del Inspector
 
     [Header("Configuración del Señuelo")]
     [SerializeField] private GameObject señueloPrefab;
-    [SerializeField] private float tiempoVidaSeñuelo = 3f;
+    [SerializeField] private float tiempoVidaSeñuelo = 1f;
     [SerializeField] private GameObject player;
 
     [Header("Configuración del Desplazamiento")]
@@ -15,8 +15,8 @@ public class LanzarSeñuelo : MonoBehaviour
     [SerializeField] private float distanciaMaxima = 1.3f;
     [SerializeField] private float tiempoFrenado = 0.5f;
 
-    [Header("Configuración de Usos")]
-    [SerializeField] private int usosMaximos = 1;
+    [Header("Configuración de Dirección")]
+    [SerializeField] private bool mirandoALaIzquierda = false;
 
     #endregion
 
@@ -37,24 +37,76 @@ public class LanzarSeñuelo : MonoBehaviour
     {
         // Inicializar el Rigidbody del jugador
         jugadorRb = player.GetComponent<Rigidbody2D>();
-
+        //Iniciar desactivado.
+        gameObject.SetActive(false);
         // Inicializar el contador de usos
-        usosRestantes = usosMaximos;
+        usosRestantes = numUsos;
     }
 
     void Update()
     {
-        // Lanzar el señuelo cuando se presiona la tecla y hay usos disponibles
-        if (Input.GetKeyDown(KeyCode.Space) && usosRestantes > 0)
-        {
-            // Almacenar la última dirección antes de lanzar el señuelo
-            ultimaDireccion = Mathf.Sign(Input.GetAxis("Horizontal"));
+        UsarSeñuelo();
+    }
 
+    void FixedUpdate()
+    {
+        DeslizamientoPlayer();
+    }
+
+    #endregion
+
+    #region Funciones Personalizadas
+
+    void UsarSeñuelo()
+    {
+        // Obtener la dirección del movimiento horizontal del jugador
+        float direccionHorizontal = Input.GetAxis("Horizontal");
+
+        // Actualizar la dirección del jugador solo si está en movimiento
+        if (direccionHorizontal != 0)
+        {
+            ultimaDireccion = Mathf.Sign(direccionHorizontal);
+            mirandoALaIzquierda = ultimaDireccion < 0;
+        }
+
+        // Lanzar el señuelo cuando se presiona la tecla y hay usos disponibles
+        if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
+        {
             Lanzar();
         }
     }
 
-    void FixedUpdate()
+    void Lanzar()
+    {
+        // Almacenar la posición inicial del jugador
+        posicionInicial = player.transform.position;
+
+        // Calcular la dirección del dash
+        float direccionDash = mirandoALaIzquierda ? -1f : 1f;
+
+        // Calcular la posición de inicio del señuelo en función de la dirección del dash
+        Vector2 posicionInicioSeñuelo = (Vector2)player.transform.position + new Vector2(direccionDash * distanciaMaxima, 0f);
+
+        // Instanciar el señuelo en la nueva posición calculada
+        señueloActual = Instantiate(señueloPrefab, posicionInicioSeñuelo, Quaternion.identity);
+
+        // Aplicar una fuerza en la dirección opuesta al dash para el jugador
+        float direccionFuerza = -direccionDash;
+        jugadorRb.AddForce(new Vector2(direccionFuerza * fuerzaDesplazamiento, 0));
+
+        // Habilitar el flag para detener el desplazamiento
+        detenerDesplazamiento = true;
+
+        // Reducir el contador de usos
+        usosRestantes--;
+
+        // Desactivar el objeto.
+        gameObject.SetActive(false);
+
+        Debug.Log("Se lanzó el señuelo");
+    }
+
+    void DeslizamientoPlayer()
     {
         // Detener el jugador cuando alcanza la distancia máxima
         if (detenerDesplazamiento)
@@ -74,31 +126,6 @@ public class LanzarSeñuelo : MonoBehaviour
         }
     }
 
-    #endregion
-
-    #region Funciones Personalizadas
-
-    void Lanzar()
-    {
-        // Almacenar la posición inicial del jugador
-        posicionInicial = player.transform.position;
-
-        // Instanciar el señuelo en la posición del jugador
-        señueloActual = Instantiate(señueloPrefab, player.transform.position, Quaternion.identity);
-
-        // Aplicar una fuerza en la dirección opuesta a la última dirección de movimiento
-        float direccion = -ultimaDireccion;
-        jugadorRb.AddForce(new Vector2(direccion * fuerzaDesplazamiento, 0));
-
-        // Habilitar el flag para detener el desplazamiento
-        detenerDesplazamiento = true;
-
-        // Reducir el contador de usos
-        usosRestantes--;
-
-        Debug.Log("Se lanzó el señuelo");
-    }
-
     IEnumerator EliminarSeñuelo()
     {
         // Esperar el tiempo de vida del señuelo antes de eliminarlo
@@ -110,9 +137,7 @@ public class LanzarSeñuelo : MonoBehaviour
         // Reiniciar usos si es necesario (opcional)
         if (usosRestantes == 0)
         {
-
-            usosRestantes = usosMaximos;
-            gameObject.SetActive(false);
+            usosRestantes = numUsos;
         }
     }
 
