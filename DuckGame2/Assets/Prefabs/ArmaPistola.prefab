@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3263660837677564880
 Transform:
   m_ObjectHideFlags: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364a19f68758b0841ac4930d9dba13ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsos: 10
-  interactuable: 0
+  numUsosMaximo: 7
+  numUsos: 0
   nombre: 
   animator: {fileID: 0}
+  controlDelJugador: {fileID: 0}
   BalaPrefab: {fileID: 5729311482044328588, guid: 41640a12786cb31449c30f71d0d61375, type: 3}
-  secondsCounter: 0

@@ -149,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3906445363016230691
 Transform:
   m_ObjectHideFlags: 0
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23f1ce2a842b824092fd0b4d196634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numUsosMaximo: 1
   numUsos: 0
-  interactuable: 0
   nombre: 
   animator: {fileID: 0}
   PrefabEscudo: {fileID: 1459788393756394421}

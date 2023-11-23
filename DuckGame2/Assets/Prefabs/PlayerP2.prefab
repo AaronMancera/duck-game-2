@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8021035069599367811}
   - component: {fileID: 575171206133160026}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerP2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.67, y: -3.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6992081818638330275}
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c979181af205a45aac8b4093eb41d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idPlayer: 1
+  idPlayer: 2
   vida: 1
   playerSpeed: 1
   isGrounded: 0
@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmaEspada
       objectReference: {fileID: 0}
+    - target: {fileID: 5435159907408495058, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -572,6 +576,10 @@ PrefabInstance:
     - target: {fileID: 2017655883127774692, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: m_Name
       value: ArmaBomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017655883127774692, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2853246343641535219, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: m_LocalPosition.x

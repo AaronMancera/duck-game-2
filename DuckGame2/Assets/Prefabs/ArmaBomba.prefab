@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2853246343641535219
 Transform:
   m_ObjectHideFlags: 0
@@ -44,4 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac981b93a3f232449363371e518626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numUsosMaximo: 1
+  numUsos: 0
+  nombre: 
+  animator: {fileID: 0}
+  controlDelJugador: {fileID: 0}
   bomba: {fileID: 1844551447614061118, guid: 23d7bf4acd802514ea1d75afce159560, type: 3}

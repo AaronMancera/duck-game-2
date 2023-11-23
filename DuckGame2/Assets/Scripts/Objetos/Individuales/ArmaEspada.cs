@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class ArmaEspada : Objeto
 {
@@ -15,11 +15,12 @@ public class ArmaEspada : Objeto
     [Header("Ajustes detector de colisiones")]
     [SerializeField] GameObject detectorColision;//Encargado de detectar los objetos atacables.
     [SerializeField] bool EnRango;//Comprueba que exista un objeto atacable en rango, al cual se le aplicara el daño del arma. No hacer caso al warning de momento.
-   
+
     [Header("Animaciones")]//Parametro;  HeAtacado para cambiar la animacion de AtaqueEspada a IdleEspada y controlar la variable cadenciaGolpe.
     [SerializeField] Animator animEspada;
     [SerializeField] bool puedeAtacar; // Variable para controlar si puede atacar
-
+    [Header("Control")]
+    [SerializeField] ControlJugador controlDelJugador;
 
     #region START/UPDATE
     private void Start()
@@ -35,15 +36,48 @@ public class ArmaEspada : Objeto
     private void Update()
     {
         numUsos = durabilidad;
-        Atacar();
-        EspadaManager();
+        //Atacar();
+        //EspadaManager();
     }
     #endregion
-    void Atacar() 
+    #region InputSystem
+    private void OnEnable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed -= GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed -= GetDispararInput;
+        }
+    }
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Atacar();
+        }
+    }
+    #endregion
+    void Atacar()
     {
         //if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
-        if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
-            {
+        if (puedeAtacar && durabilidad > 0)
+        {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)
             {
@@ -60,14 +94,14 @@ public class ArmaEspada : Objeto
         }
     }
 
-    void EspadaManager() //Resetear arma si nos quedamos a 0 de durabilidad y desactivarla.
-    { 
-    if(durabilidad <= 0) 
-        {
-            gameObject.SetActive(false);
-            durabilidad = 3;
-        }
-    }
+    //void EspadaManager() //Resetear arma si nos quedamos a 0 de durabilidad y desactivarla.
+    //{
+    //    if (durabilidad <= 0)
+    //    {
+    //        gameObject.SetActive(false);
+    //        durabilidad = 3;
+    //    }
+    //}
 
     IEnumerator ControlarCadencia()
     {
@@ -77,14 +111,14 @@ public class ArmaEspada : Objeto
         animEspada.SetBool("PuedoAtacar", false);//Esto es para el funcionamiento de la animacion.
         animEspada.SetBool("HeAtacado", true);//Esto es para el funcionamiento de la animacion. Este se puede ver de quitarlo.
         puedeAtacar = true; // Reactivar la capacidad de atacar.
-       
+
     }
     #region TRIGGERS
     //COMPROBAMOS QUE ESTÉ EN RANGO.
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player") 
+        if (collision.tag == "Player")
         {
             EnRango = true;
         }
