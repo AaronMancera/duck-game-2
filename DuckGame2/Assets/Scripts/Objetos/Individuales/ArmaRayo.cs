@@ -9,6 +9,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ArmaRayo : Objeto
 {
+    [SerializeField] ControlJugador controlDelJugador;
+
     [Header("Prefab con line renderer")]
     [SerializeField] private LineRenderer lineaDeDisparo;
     private LineRenderer lineaDeDisparoActual;
@@ -33,9 +35,9 @@ public class ArmaRayo : Objeto
     {
         //NOTE: Refactorizacion para el InputManager
         //pulsarFire1 = Input.GetButtonDown("Fire1");
-        pulsarFire1 = InputManager.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
+        pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
         ////mantenerFire1 = Input.GetButton("Fire1");
-        mantenerFire1 = InputManager.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
+        mantenerFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
     }
     // Update is called in 0.2 seg
     private void FixedUpdate()

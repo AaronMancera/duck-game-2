@@ -12,7 +12,6 @@ public class ArmaBomba : Objeto
     // Start is called before the first frame update
     void Start()
     {
-        controlDelJugador = GetComponentInParent<ControlJugador>();
         nombre = "ArmaBomba";
         Application.targetFrameRate = 60;
     }

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ArmaPistola : Objeto
 {
+    [SerializeField] ControlJugador controlDelJugador;
     [SerializeField] private GameObject BalaPrefab;
     private float secondsCounter = 0;
     private bool puedeDispara;
@@ -20,6 +22,43 @@ public class ArmaPistola : Objeto
     /// La pistola dispara y tiene un retardo de 0.5 segundos para poder disparar de nuevo
     /// </summary>
     // Update is called once per frame
+
+
+    private void OnEnable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.Saltar.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed -= GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.Saltar.performed -= GetDispararInput;
+        }
+    }
+
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && puedeDispara == true && numUsos > 0)
+        {
+            Disparar();
+        }
+    }
+
+
     void Update()
     {
         //contador de segundos para el cooldown
@@ -27,10 +66,10 @@ public class ArmaPistola : Objeto
         //Debug.Log(secondsCounter);
 
         //if (Input.GetKeyDown(KeyCode.Space) && puedeDispara == true && numUsos > 0)
-        if (InputManager.playerControls.Player.DispararPrincipal.enabled && puedeDispara == true && numUsos > 0)
+       /* if (InputManager.playerControls.Player.DispararPrincipal.enabled && puedeDispara == true && numUsos > 0)
         {
             Disparar();
-        }
+        }*/
 
         //retardo de disparo
         if (secondsCounter > 0.5)
