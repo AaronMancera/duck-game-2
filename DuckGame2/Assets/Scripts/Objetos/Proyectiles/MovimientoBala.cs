@@ -6,6 +6,7 @@ public class MovimientoBala : MonoBehaviour
 {
     public float speed = 20;
     public GameObject ArmaPistola;
+
     // Start is called before the first frame update
     void Start(){
         
