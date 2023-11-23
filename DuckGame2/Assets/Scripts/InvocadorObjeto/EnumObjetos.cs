@@ -1,12 +1,12 @@
 
 public enum EnumObjetos
 {
-    ArmaPistola,
+    /*ArmaPistola,
     ArmaEspada,
-    ArmaRayo,
-    ArmaBomba,
+    ArmaRayo,*/
+    ArmaBomba
    /*LanzarCaja,
     LanzarSenuelo,
     LanzarPollo,*/
-    LanzarEscudo
+    /*LanzarEscudo*/
 }

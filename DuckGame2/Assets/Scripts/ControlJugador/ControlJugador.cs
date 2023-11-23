@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 
 public class ControlJugador : MonoBehaviour
 {
-    public static PlayerControls playerControls;
+    public PlayerControls playerControls;
 
 
     [Header("ID")]
@@ -116,6 +116,7 @@ public class ControlJugador : MonoBehaviour
     #endregion
 
     #region GETEO INPUTS
+
     void GetSaltoInput(InputAction.CallbackContext context)
     {
         if (context.performed && extraJumpsValue > 0)

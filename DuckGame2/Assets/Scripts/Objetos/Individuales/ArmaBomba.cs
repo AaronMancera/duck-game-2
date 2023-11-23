@@ -1,25 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ArmaBomba : Objeto
 {
+    [SerializeField] ControlJugador controlDelJugador;
     [Header("Atributos")]
     [SerializeField] private GameObject bomba;
     // Start is called before the first frame update
     void Start()
     {
+        controlDelJugador = GetComponentInParent<ControlJugador>();
         nombre = "ArmaBomba";
         Application.targetFrameRate = 60;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        if(InputManager.playerControls.Player.DispararPrincipal.IsPressed() && numUsos > 0)
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.Saltar.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed -= GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.Saltar.performed -= GetDispararInput;
+        }
+    }
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && numUsos > 0)
         {
             Disparar();
         }
+    }
+
+    void Update()
+    {
         gameObject.SetActive(Municion());
     }
 
@@ -30,7 +62,7 @@ public class ArmaBomba : Objeto
     {
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
-        Instantiate(componenteBomba, bomba.gameObject.transform.position, bomba.gameObject.transform.rotation);
+        Instantiate(componenteBomba, gameObject.transform.position, bomba.gameObject.transform.rotation);
 
         numUsos--;
     }
