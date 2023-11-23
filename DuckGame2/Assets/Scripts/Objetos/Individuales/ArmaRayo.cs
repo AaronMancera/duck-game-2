@@ -18,8 +18,13 @@ public class ArmaRayo : Objeto
     [SerializeField] private float velocidadDeLimpiezaAsignada;
     private List<Vector3> puntosDelTrail = new List<Vector3>();
     private bool pulsarFire1;
-    private bool mantenerFire1;
+    //private bool mantenerFire1;
+    [Header("Tiempo de carga")]
+    [SerializeField] private float tiempoDeCargaMaximo;
+    [SerializeField] private int distanciaPuntosRayo;
 
+
+    #region StartUpdate
     // Start is called before the first frame update
     void Start()
     {
@@ -37,28 +42,36 @@ public class ArmaRayo : Objeto
         //pulsarFire1 = Input.GetButtonDown("Fire1");
         pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
         ////mantenerFire1 = Input.GetButton("Fire1");
-        mantenerFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
+        //mantenerFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
+        if (pulsarFire1 && numUsos==1)
+        {
+            //Animacion to guapa
+            StartCoroutine(DispararRayoInstantaneo(distanciaPuntosRayo));
+            numUsos = 0;
+        }
+        gameObject.SetActive(!SinMunicion());
+        UpdatePuntosTrail();
+        LimpiarPuntosTrail();
     }
     // Update is called in 0.2 seg
     private void FixedUpdate()
     {
-
-        Disparar();
-
+        //Disparar();
     }
+    #endregion
+    #region MetodosDeGestionDeTiro
     /// <summary>
     /// Metodo que nos indicara si estamos sin municion y tenemos en cuenta si existe aun una linea de rayo
     /// </summary>
     /// <returns></returns>
     private bool SinMunicion()
     {
-        if (numUsos <= 0)
+        if (numUsos < 0)
         {
             if (puntosDelTrail.Count <= 0)
             {
-                gameObject.SetActive(false);
+                return true;
             }
-            return true;
         }
         return false;
     }
@@ -66,39 +79,53 @@ public class ArmaRayo : Objeto
     /// Este metodo realizara la accion de disparar, siempre y cuando tengamos numero de usos restantes.
     /// Cuando se nos agote3 el numero de usuos, no se deshabilitara el arma hasta que se acabe la linea actual, y no podremos incrementarla
     /// </summary>
-    private void Disparar()
-    {
-        if (!SinMunicion())
-        {
-            if (pulsarFire1)
-            {
-                DestroyTrailActual();
-                CrearTrailActual();
-                AddPunto();
+    //private void Disparar()
+    //{
+    //    if (!SinMunicion())
+    //    {
+    //        if (pulsarFire1)
+    //        {
+    //            DestroyTrailActual();
+    //            CrearTrailActual();
+    //            AddPunto();
 
-            }
-            if (mantenerFire1)
-            {
-                AddPunto();
-            }
-            else
-            {
-                LimpiarPuntosTrail();
-            }
-        }
-        else
+    //        }
+    //        if (mantenerFire1)
+    //        {
+    //            AddPunto();
+    //        }
+    //        else
+    //        {
+    //            LimpiarPuntosTrail();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        LimpiarPuntosTrail();
+    //    }
+    //    UpdatePuntosTrail();
+    //}
+    private IEnumerator DispararRayoInstantaneo(int distancia)
+    {
+        yield return new WaitForSeconds(tiempoDeCargaMaximo);
+        CrearTrailActual();
+        for (int i = 0; i < distancia; i++)
         {
-            LimpiarPuntosTrail();
+            AddPunto();
+            Debug.Log(puntosDelTrail.Count);
         }
-        UpdatePuntosTrail();
+        numUsos--;
     }
+    #endregion
+    #region Generador y limpieza de puntos del rayo
     /// <summary>
     /// Se llamara para crear una nueva linea de disparo
     /// </summary>
     private void CrearTrailActual()
     {
         lineaDeDisparoActual = Instantiate(lineaDeDisparo);
-        lineaDeDisparoActual.transform.SetParent(transform, true);
+        lineaDeDisparoActual.transform.localScale = GameObject.FindGameObjectWithTag("Player").gameObject.transform.localScale;
+        //lineaDeDisparoActual.transform.SetParent(transform, true);
     }
     /// <summary>
     /// Se llamara para crear un nuevo punto para la linea de disparo
@@ -107,7 +134,7 @@ public class ArmaRayo : Objeto
     {
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
         int aux;
-        if (transform.eulerAngles.z != 180)
+        if (transform.parent.transform.localScale.x == 1)
         {
             aux = 1;
         }
@@ -117,8 +144,6 @@ public class ArmaRayo : Objeto
         }
         //Debug.Log(punto.ToString());
         puntosDelTrail.Add(new Vector3(punto.x + aux, punto.y, 0));
-        numUsos--;
-
     }
     /// <summary>
     /// Se llamara para ir uniendo los puntos hasta llegar al final hasta que se no haya sufiencentes puntos o no exista el el rastro actual
@@ -157,9 +182,9 @@ public class ArmaRayo : Objeto
         velLimpieza *= puntosDelTrail.Count / 2;
         float distanciaLimpieza = velLimpieza;
 
-
         while (puntosDelTrail.Count > 1 && distanciaLimpieza > 0)
         {
+            Debug.Log("Holaaaaa2");
             float distancia = (puntosDelTrail[1] - puntosDelTrail[0]).magnitude;
             if (distanciaLimpieza > distancia)
             {
@@ -172,4 +197,6 @@ public class ArmaRayo : Objeto
             distanciaLimpieza -= distancia;
         }
     }
+    #endregion
+
 }

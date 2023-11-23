@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerP2
       objectReference: {fileID: 0}
+    - target: {fileID: 333865150358924716, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.77
@@ -815,6 +819,30 @@ PrefabInstance:
     - target: {fileID: 2000952070545877290, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952126497802667942, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: numUsos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952126497802667942, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: numUsosMaximo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952126497802667942, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: distanciaPuntosRayo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952126497802667942, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: tiempoDeCargaMaximo
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952126497802667942, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: velocidadDeLimpiezaAsignada
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119003856251958206, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201249243233497827, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
       propertyPath: m_IsActive
