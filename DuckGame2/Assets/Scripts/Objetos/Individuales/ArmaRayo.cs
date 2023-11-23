@@ -134,7 +134,8 @@ public class ArmaRayo : Objeto
     {
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
         int aux;
-        if (transform.parent.transform.localScale.x == 1)
+        #region Para rotar la direccion
+        if (transform.parent.transform.localScale.x == 1) 
         {
             aux = 1;
         }
@@ -142,6 +143,7 @@ public class ArmaRayo : Objeto
         {
             aux = -1;
         }
+        #endregion
         //Debug.Log(punto.ToString());
         puntosDelTrail.Add(new Vector3(punto.x + aux, punto.y, 0));
     }
@@ -197,6 +199,6 @@ public class ArmaRayo : Objeto
             distanciaLimpieza -= distancia;
         }
     }
-    #endregion
+#endregion
 
 }
