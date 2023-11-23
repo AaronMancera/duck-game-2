@@ -7,6 +7,7 @@ public class ArmaPistola : Objeto
 {
     [SerializeField] ControlJugador controlDelJugador;
     [SerializeField] private GameObject BalaPrefab;
+    [SerializeField] private Transform puntoDeDisparar;
     private float secondsCounter = 0;
     private bool puedeDispara;
     // Start is called before the first frame update
@@ -79,7 +80,11 @@ public class ArmaPistola : Objeto
         if (context.performed && puedeDispara == true && numUsos > 0)
         {
             Debug.Log(gameObject.transform.parent.name);
-            Disparar();
+            //Disparar();
+
+
+            //Animator
+            animator.SetTrigger("Disparar");
         }
     }
     #endregion
@@ -95,13 +100,14 @@ public class ArmaPistola : Objeto
 
     public void Disparar()
     {
+
+
         secondsCounter = 0;
         numUsos = numUsos - 1;
         puedeDispara = false;
-        //Animator
-        animator.SetTrigger("Disparar");
 
-        GameObject bala =Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+
+        GameObject bala = Instantiate(BalaPrefab, puntoDeDisparar.transform.position, gameObject.transform.rotation);
         if (gameObject.transform.parent.localScale.x == -1)
         {
             //Izq
