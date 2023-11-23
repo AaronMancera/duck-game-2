@@ -448,6 +448,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7260469618542834095, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: controlDelJugador
       value: 
