@@ -11,6 +11,8 @@ public class MovimientoPollo : MonoBehaviour
 
     public float saltoFuerza;
 
+    public bool mirandoDerecha;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,8 @@ public class MovimientoPollo : MonoBehaviour
         speed = 0.5f;
         rb2d = GetComponent<Rigidbody2D>();
 
+        flip = mirandoDerecha;
+        GetComponent<SpriteRenderer>().flipX = !mirandoDerecha;
 
     }
     // Update is called once per frame
@@ -42,7 +46,7 @@ public class MovimientoPollo : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player"){
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //stunplayer
         }
 
@@ -110,6 +114,7 @@ public class MovimientoPollo : MonoBehaviour
         {
             Flip();
             flipBool = false;
+            GetComponent<SpriteRenderer>().flipX = !flip;
             StartCoroutine(FlipCount(segundosParaActivarFlip));
         }
 
@@ -134,14 +139,18 @@ public class MovimientoPollo : MonoBehaviour
     private void FlipLlamada()
     {
         Vector3 movimiento = transform.position;
-        if (flip)
+        if (!flip)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x - (velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
+            //rb2d.velocity = new Vector2(rb2d.velocity.x - (-velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
+            rb2d.velocity = new Vector2(-velocidad, rb2d.velocity.y);
+
+            
 
         }
         else
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x + (velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
+            rb2d.velocity = new Vector2(velocidad, rb2d.velocity.y);
+
         }
     }
     #endregion

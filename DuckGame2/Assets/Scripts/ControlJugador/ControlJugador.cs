@@ -34,6 +34,8 @@ public class ControlJugador : MonoBehaviour
 
     Vector2 movement;
 
+    public bool mirandoALaDerecha;
+
     [Header("JUMP")]
     public float jumpForce;
     [SerializeField]
@@ -170,7 +172,14 @@ public class ControlJugador : MonoBehaviour
     {
         SoltarArma();
 
-        
+        if (transform.localScale.x == 1)
+        {
+            mirandoALaDerecha = true;
+        }
+        else
+        {
+            mirandoALaDerecha = false;
+        }
 
     }
 

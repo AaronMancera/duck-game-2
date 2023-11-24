@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class LanzarPollo : Objeto
 {
-
-    
-
-
+    [SerializeField] ControlJugador controlJugador;
     public GameObject PolloPrefab;
     // Start is called before the first frame update
     void Start()
@@ -34,9 +31,11 @@ public class LanzarPollo : Objeto
 
     private void GenerarPollo()
     {
-        Instantiate(PolloPrefab, transform.position, gameObject.transform.rotation);
+        GameObject pollo = Instantiate(PolloPrefab, transform.position, Quaternion.identity);
+        pollo.GetComponent<MovimientoPollo>().mirandoDerecha = !controlJugador.mirandoALaDerecha;
         numUsos = numUsos -1; 
     }
+
 
     private void Inicializar()
     {
