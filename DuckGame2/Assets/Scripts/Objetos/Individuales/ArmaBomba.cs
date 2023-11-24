@@ -83,7 +83,8 @@ public class ArmaBomba : Objeto
     private bool Municion()
     {
         if (numUsos <= 0)
-        {            
+        {
+            controlDelJugador.SoltarArma(true); //Pongo true porque es principal
             return false;
         }
         return true;

@@ -70,6 +70,8 @@ public class ArmaRayo : Objeto
         {
             if (puntosDelTrail.Count <= 0)
             {
+                //Llamar al jugador y quitarle el arma principal
+                controlDelJugador.SoltarArma(true); 
                 return true;
             }
         }

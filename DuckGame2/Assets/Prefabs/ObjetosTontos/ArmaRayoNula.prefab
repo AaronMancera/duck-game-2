@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172d81f0f1f330140ad83456bd9832b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsosMaximo: 0
+  numUsosMaximo: 3
   numUsos: 0
   nombre: ArmaRayo
   animator: {fileID: 0}

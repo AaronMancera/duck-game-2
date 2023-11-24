@@ -83,6 +83,9 @@ public class LanzarArmadura : Objeto
     //}
     private void Reiniciar()
     {
+        //Llamar al jugador y quitarle el arma secundaria
+        controlDelJugador.SoltarArma(false);
+
         gameObject.SetActive(false);
     }
 

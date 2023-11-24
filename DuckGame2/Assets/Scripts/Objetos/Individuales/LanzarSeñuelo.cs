@@ -4,6 +4,7 @@ using UnityEngine;
 public class LanzarSeñuelo : Objeto
 {
     #region Variables del Inspector
+    [SerializeField] ControlJugador controlJugador;
 
     [Header("Configuración del Señuelo")]
     [SerializeField] private GameObject señueloPrefab;
@@ -17,6 +18,8 @@ public class LanzarSeñuelo : Objeto
 
     [Header("Configuración de Dirección")]
     [SerializeField] private bool mirandoALaIzquierda = false;
+
+
 
     #endregion
 
@@ -45,6 +48,7 @@ public class LanzarSeñuelo : Objeto
     void Update()
     {
         UsarSeñuelo();
+        gameObject.SetActive(Municion());
     }
 
     void FixedUpdate()
@@ -104,6 +108,8 @@ public class LanzarSeñuelo : Objeto
 
         //DESACTIVAR EL LANZARSEÑUELO
         Debug.Log("Se lanzó el señuelo");
+
+        
     }
 
     void DeslizamientoPlayer()
@@ -145,6 +151,18 @@ public class LanzarSeñuelo : Objeto
 
         // Reactivar el objeto principal
         gameObject.SetActive(true);
+    }
+
+
+    private bool Municion()
+    {
+        if (usosRestantes <= 0)
+        {
+            //Llamar al jugador y quitarle el arma secundaria
+            controlJugador.SoltarArma(false);
+            return false;
+        }
+        return true;
     }
 
     #endregion

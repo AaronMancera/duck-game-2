@@ -170,8 +170,6 @@ public class ControlJugador : MonoBehaviour
 
     private void Update()
     {
-        SoltarArma();
-
         if (transform.localScale.x == 1)
         {
             mirandoALaDerecha = true;
@@ -377,28 +375,23 @@ public class ControlJugador : MonoBehaviour
 
     }
 
-    public void SoltarArma()
+    public void SoltarArma(bool siEsPrincipal)
     {
         //Quitas el arma del diccionario
         //inventario.;
 
 
         //Desactivas arma que toca
-        if (Input.GetKeyDown(KeyCode.O))
+
+        if (siEsPrincipal)
         {
-            if (principalEnMano != null)
-            {
-                principalEnMano.SetActive(false);
-                principalEnMano = null;
-            }
+            principalEnMano.SetActive(false);
+            principalEnMano = null;
         }
-        else if (Input.GetKeyDown(KeyCode.P))
+        else
         {
-            if (secundariaEnMano != null)
-            {
-                secundariaEnMano.SetActive(false);
-                secundariaEnMano = null;
-            }
+            secundariaEnMano.SetActive(false);
+            secundariaEnMano = null;
         }
 
     }

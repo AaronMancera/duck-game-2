@@ -52,7 +52,6 @@ public class MovimientoPollo : MonoBehaviour
 
         if (other.gameObject.tag == "Suelo")
         {
-            Debug.Log("Salta");
             Saltar();
         }
     }

@@ -79,7 +79,7 @@ public class ArmaPistola : Objeto
     {
         if (context.performed && puedeDispara == true && numUsos > 0)
         {
-            Debug.Log(gameObject.transform.parent.name);
+            //Debug.Log(gameObject.transform.parent.name);
             //Disparar();
 
 
@@ -124,5 +124,8 @@ public class ArmaPistola : Objeto
     public void SinMunicion()
     {
         gameObject.SetActive(false);
+
+        //Desactiva arma al player
+        controlDelJugador.SoltarArma(true); //Pongo true porque es principal
     }
 }

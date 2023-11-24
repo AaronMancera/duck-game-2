@@ -41,7 +41,7 @@ public class InvocadorDeObjeto : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && tengoArma)
         {
-            Debug.Log($"Cogiendo objeto, dando a {collision.gameObject.name}");
+            //Debug.Log($"Cogiendo objeto, dando a {collision.gameObject.name}");
             OtorgarArma(collision.gameObject.GetComponent<ControlJugador>());   //DAR ARMA A JUGADOR
 
         }
@@ -59,7 +59,7 @@ public class InvocadorDeObjeto : MonoBehaviour
         int objetoAleatorio = UnityEngine.Random.Range(0, rangoObjetos);    //GENERAR OBJETO ALEATORIO
         string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
 
-        Debug.Log($"El objeto generado es:  {nombreObjeto}");
+        //Debug.Log($"El objeto generado es:  {nombreObjeto}");
 
         objetoInvocado = Instantiate(objetos[objetoAleatorio], objetoInvocado.transform.position, Quaternion.identity, parent);
 

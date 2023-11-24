@@ -45,6 +45,9 @@ public class LanzarPollo : Objeto
 
     public void Reiniciar()
     {
+        //Llamar al jugador y quitarle el arma secundaria
+        controlJugador.SoltarArma(false);
+
         gameObject.SetActive(false);
     }
 

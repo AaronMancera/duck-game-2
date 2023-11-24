@@ -71,6 +71,8 @@ public class LanzarCaja : Objeto
     {
         if (numUsos <= 0)
         {
+            //Llamar al jugador y quitarle el arma secundaria
+            controlDelJugador.SoltarArma(false);
             return false;
         }
         return true;
