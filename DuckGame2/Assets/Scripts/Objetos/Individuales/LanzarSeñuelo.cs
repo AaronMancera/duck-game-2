@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LanzarSeñuelo : Objeto
 {
@@ -58,6 +59,43 @@ public class LanzarSeñuelo : Objeto
 
     #endregion
 
+    #region InputSystem
+
+    private void OnEnable()
+    {
+        if (controlJugador.idPlayer == 1)
+        {
+            controlJugador.playerControls.Player.DispararSecundario.performed += GetDispararInput;
+
+        }
+        else if (controlJugador.idPlayer == 2)
+        {
+            controlJugador.playerControls.PlayerP2.DispararSecundario.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlJugador.idPlayer == 1)
+        {
+            controlJugador.playerControls.Player.DispararSecundario.performed -= GetDispararInput;
+
+        }
+        else if (controlJugador.idPlayer == 2)
+        {
+            controlJugador.playerControls.PlayerP2.DispararSecundario.performed -= GetDispararInput;
+        }
+    }
+
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && usosRestantes > 0)
+        {
+            Lanzar();
+        }
+    }
+    #endregion
+
     #region Funciones Personalizadas
 
     void UsarSeñuelo()
@@ -73,10 +111,10 @@ public class LanzarSeñuelo : Objeto
         }
 
         // Lanzar el señuelo cuando se presiona la tecla y hay usos disponibles
-        if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
+        /*if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
         {
             Lanzar();
-        }
+        }*/
     }
 
     void Lanzar()
