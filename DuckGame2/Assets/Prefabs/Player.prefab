@@ -66,7 +66,7 @@ MonoBehaviour:
   horizontalDampingWhenInAir: 0.352
   horizontalDampingBasic: 0.685
   mirandoALaDerecha: 0
-  jumpForce: 5
+  jumpForce: 6.47
   jumpCut: 0.314
   jumpFallMultiplier: 1
   jumpBufferLength: 2
@@ -444,6 +444,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
       propertyPath: puntoDeLanzar
       value: 
       objectReference: {fileID: 5087049639822187777}
@@ -566,6 +570,10 @@ PrefabInstance:
       value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
       propertyPath: controlDelJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
@@ -618,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 5729311482044328588, guid: 41640a12786cb31449c30f71d0d61375, type: 3}
     - target: {fileID: 503900634970039155, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: numUsosMaximo
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 503900634970039155, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: puntoDeDisparar
@@ -847,6 +855,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548474089167431985, guid: 9e59344dff7583d44a53a4e1a9eab659, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548474089167431985, guid: 9e59344dff7583d44a53a4e1a9eab659, type: 3}
       propertyPath: colisionJugador
       value: 
       objectReference: {fileID: 5333046919056106345}
@@ -993,6 +1005,18 @@ PrefabInstance:
       propertyPath: Aspecto
       value: 
       objectReference: {fileID: 407533474, guid: 441da686871912e46b6c1a85432bf9eb, type: 3}
+    - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: detectorColision
+      value: 
+      objectReference: {fileID: 2169022542951059595}
+    - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: controlDelJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     - target: {fileID: 7608791344997995256, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.09
@@ -1016,13 +1040,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2646804664267661910, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3205901226835723334}
   m_SourcePrefab: {fileID: 100100000, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
 --- !u!1 &2169022542951059595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2646804664267661910, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
   m_PrefabInstance: {fileID: 4225146466671063773}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &3205901226835723334
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169022542951059595}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03175212, y: 0.030000001}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.53125, y: 0.5625}
+    newSize: {x: 0.53125, y: 0.5625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21930996, y: 0.5087651}
+  m_EdgeRadius: 0
 --- !u!4 &5995811973781053477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7608791344997995256, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
@@ -1107,6 +1179,10 @@ PrefabInstance:
     - target: {fileID: 8364532973427852727, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: numUsos
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: puntoDeLanzar
@@ -1212,15 +1288,23 @@ PrefabInstance:
       objectReference: {fileID: 333865150358924716}
     - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: numUsos
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: controlJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: distanciaMaxima
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: "tiempoVidaSe\xF1uelo"
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: fuerzaDesplazamiento
@@ -1309,6 +1393,10 @@ PrefabInstance:
       propertyPath: PolloPrefab
       value: 
       objectReference: {fileID: 8262465849835698438, guid: 84b7a314dbb58924f872267c9cb3690e, type: 3}
+    - target: {fileID: 8364532973427852727, guid: a1158ace95f775a469ca6aaf7416bcf5, type: 3}
+      propertyPath: numUsosMaximo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: a1158ace95f775a469ca6aaf7416bcf5, type: 3}
       propertyPath: controlJugador
       value: 
