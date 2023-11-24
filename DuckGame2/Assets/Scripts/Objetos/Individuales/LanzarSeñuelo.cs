@@ -89,6 +89,9 @@ public class LanzarSeñuelo : Objeto
         // Instanciar el señuelo en la nueva posición calculada
         señueloActual = Instantiate(señueloPrefab, posicionInicioSeñuelo, Quaternion.identity);
 
+        //Parte de Bobby, reseteo la velocidad en x al jugador antes del dash
+        jugadorRb.velocity = new Vector2(0, jugadorRb.velocity.y);
+        
         // Aplicar una fuerza en la dirección opuesta al dash para el jugador
         float direccionFuerza = -direccionDash;
         jugadorRb.AddForce(new Vector2(direccionFuerza * fuerzaDesplazamiento, 0));
