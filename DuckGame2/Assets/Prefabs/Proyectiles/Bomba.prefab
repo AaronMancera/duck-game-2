@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2416375558124263206}
   - component: {fileID: 618368641585401974}
   - component: {fileID: 3678679776124243728}
+  - component: {fileID: -1359347002190628671}
   m_Layer: 0
   m_Name: Bomba
   m_TagString: Untagged
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b81de8a3bd8d74aa6d760479f89c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerzaDeEmpuje: 1
-  tiempoParaExplotar: 1
+  fuerzaDeEmpuje: 5
+  tiempoParaExplotar: 2.57
   fuerzaDeRotacion: 10
   animator: {fileID: 0}
   particulasBomba: {fileID: 3625910404143519456, guid: 348b926961d3e1d4d8254aceeee23b9f, type: 3}
@@ -166,3 +167,16 @@ CircleCollider2D:
   m_Offset: {x: 0.008859307, y: 0.007904142}
   serializedVersion: 2
   m_Radius: 0.20839506
+--- !u!114 &-1359347002190628671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844551447614061118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3112a871529fb1d4095cf795e1422f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugador: {fileID: 1844551447614061118}

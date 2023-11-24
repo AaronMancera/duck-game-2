@@ -65,6 +65,7 @@ MonoBehaviour:
   horizontalDampingWhenTurning: 0.491
   horizontalDampingWhenInAir: 0.352
   horizontalDampingBasic: 0.685
+  mirandoALaDerecha: 0
   jumpForce: 5
   jumpCut: 0.314
   jumpFallMultiplier: 1
@@ -324,6 +325,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8859457105621601948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6734196277749527594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5087049639822187777}
+  m_Layer: 0
+  m_Name: PuntoParaLanzar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5087049639822187777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734196277749527594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.72, y: 0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3505332053249692971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8538251912325850178
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,9 +443,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
+      propertyPath: puntoDeLanzar
+      value: 
+      objectReference: {fileID: 5087049639822187777}
+    - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
+      propertyPath: controlDelJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4351326598585841100, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5087049639822187777}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
 --- !u!4 &3505332053249692971 stripped
@@ -1105,7 +1148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351326598585841100, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.174
+      value: -0.408
       objectReference: {fileID: 0}
     - target: {fileID: 4351326598585841100, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1139,6 +1182,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4912224642630968554, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912224642630968554, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912224642630968554, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1155882547, guid: ed37722c496de3440a689dd5bc403ef9, type: 3}
+    - target: {fileID: 4912224642630968554, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7260469618542834095, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: m_Name
       value: LanzarSenuelo
@@ -1146,6 +1205,26 @@ PrefabInstance:
     - target: {fileID: 7260469618542834095, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 333865150358924716}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: numUsos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: distanciaMaxima
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: "tiempoVidaSe\xF1uelo"
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: fuerzaDesplazamiento
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1230,6 +1309,10 @@ PrefabInstance:
       propertyPath: PolloPrefab
       value: 
       objectReference: {fileID: 8262465849835698438, guid: 84b7a314dbb58924f872267c9cb3690e, type: 3}
+    - target: {fileID: 8364532973427852727, guid: a1158ace95f775a469ca6aaf7416bcf5, type: 3}
+      propertyPath: controlJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

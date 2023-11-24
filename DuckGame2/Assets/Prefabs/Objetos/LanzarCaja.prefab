@@ -101,3 +101,6 @@ MonoBehaviour:
   numUsos: 0
   nombre: 
   animator: {fileID: 0}
+  controlDelJugador: {fileID: 0}
+  caja: {fileID: 7260469618542834095, guid: 7fd51eeeecea62b4eba22a33df36a1a8, type: 3}
+  puntoDeLanzar: {fileID: 0}
