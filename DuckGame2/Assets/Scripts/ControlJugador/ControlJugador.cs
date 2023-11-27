@@ -179,9 +179,14 @@ public class ControlJugador : MonoBehaviour
             mirandoALaDerecha = false;
         }
 
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            RecibirDanyo();
+        }
     }
 
-
+    
 
 
     private void FixedUpdate()
@@ -220,9 +225,13 @@ public class ControlJugador : MonoBehaviour
 
         }
     }
-    public void Morir()
+    public void RecibirDanyo()
     {
         vida--;
+
+        //Animator
+        animator.SetTrigger("Danyo");
+
         if (vida <= 0)
         {
             //Te mueres
