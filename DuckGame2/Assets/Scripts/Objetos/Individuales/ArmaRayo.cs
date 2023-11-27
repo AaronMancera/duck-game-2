@@ -43,14 +43,20 @@ public class ArmaRayo : Objeto
         //NOTE: Refactorizacion para el InputManager
         //pulsarFire1 = Input.GetButtonDown("Fire1");
         //pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
+        Debug.Log(controlDelJugador.idPlayer);
         switch (controlDelJugador.idPlayer)
         {
+            case 1:
+                pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
+                Debug.Log(controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame());
+                break;
             case 2:
                 pulsarFire1 = controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame();
+                Debug.Log(controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame());
+
                 break;
-            default:
-                controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
-                break;
+           
+               
 
         }
         ////mantenerFire1 = Input.GetButton("Fire1");

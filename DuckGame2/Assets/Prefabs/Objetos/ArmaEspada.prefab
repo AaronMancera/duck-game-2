@@ -108,7 +108,7 @@ MonoBehaviour:
   durabilidad: 3
   detectorColision: {fileID: 2646804664267661910}
   EnRango: 0
-  animEspada: {fileID: 0}
+  animEspada: {fileID: 8870991728154204579}
   puedeAtacar: 0
   controlDelJugador: {fileID: 0}
 --- !u!61 &1360271449304375164
