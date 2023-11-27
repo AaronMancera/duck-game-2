@@ -444,6 +444,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2000952070545877290}
     m_Modifications:
+    - target: {fileID: 503900634970039155, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: controlDelJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     - target: {fileID: 4351326598585841100, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.171
@@ -550,6 +554,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2000952070545877290}
     m_Modifications:
+    - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: controlDelJugador
+      value: 
+      objectReference: {fileID: 5101643208924720626}
     - target: {fileID: 7608791344997995256, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.396

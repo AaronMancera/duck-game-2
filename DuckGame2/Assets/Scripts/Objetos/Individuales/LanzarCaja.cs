@@ -73,7 +73,8 @@ public class LanzarCaja : Objeto
     void Lanzar()
     {
         numUsos--;
-        Vector2 lugarDeInstanciamiento = transform.position; 
+        Vector2 lugarDeInstanciamiento = transform.position;
+        lugarDeInstanciamiento.y += 1;
         if (mirandoALaIzquierda)
         {
             lugarDeInstanciamiento.x -= 2;
