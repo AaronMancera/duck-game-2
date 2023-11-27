@@ -27,7 +27,7 @@ public class MovimientoPollo : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckCollisions(); 
+        CheckCollisions();
         FlipLlamada();
 
 
@@ -45,19 +45,9 @@ public class MovimientoPollo : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-       
         if (other.gameObject.tag == "Suelo")
         {
             Saltar();
-        }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-            collision.gameObject.GetComponent<ControlJugador>().EfectoNegativo("Ralentizar");
         }
     }
 
@@ -111,7 +101,7 @@ public class MovimientoPollo : MonoBehaviour
     private void CheckCollisions()
     {
         //Wall Collisions
-        if ((Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, groundLayer) || 
+        if ((Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, groundLayer) ||
             Physics2D.Raycast(transform.position, Vector2.left, wallRaycastLength, groundLayer))
             && flipBool)
 
@@ -138,6 +128,7 @@ public class MovimientoPollo : MonoBehaviour
     void Flip()
     {
         flip = !flip;
+        transform.localScale = new Vector3(transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
     }
 
     private void FlipLlamada()
@@ -148,7 +139,7 @@ public class MovimientoPollo : MonoBehaviour
             //rb2d.velocity = new Vector2(rb2d.velocity.x - (-velocidad * Time.fixedDeltaTime), rb2d.velocity.y);
             rb2d.velocity = new Vector2(-velocidad, rb2d.velocity.y);
 
-            
+
 
         }
         else
@@ -158,5 +149,15 @@ public class MovimientoPollo : MonoBehaviour
         }
     }
     #endregion
-
+    #region Colision
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<ControlJugador>().EfectoNegativo("Ralentizar");
+            //Destroy(gameObject);
+            Flip();
+        }
+    }
+    #endregion
 }

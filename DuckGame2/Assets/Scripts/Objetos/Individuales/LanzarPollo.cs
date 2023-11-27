@@ -69,7 +69,18 @@ public class LanzarPollo : Objeto
 
     private void GenerarPollo()
     {
-        GameObject pollo = Instantiate(PolloPrefab, transform.position, Quaternion.identity);
+        Vector2 lugarDeInstanciamiento = transform.position;
+        lugarDeInstanciamiento.y += 1;
+        if (transform.parent.transform.localScale.x==-1)
+        {
+            lugarDeInstanciamiento.x += 1;
+        }
+        else
+        {
+            lugarDeInstanciamiento.x -= 1;
+
+        }
+        GameObject pollo = Instantiate(PolloPrefab, lugarDeInstanciamiento, Quaternion.identity);
         pollo.GetComponent<MovimientoPollo>().mirandoDerecha = !controlJugador.mirandoALaDerecha;
         numUsos = numUsos -1; 
     }
