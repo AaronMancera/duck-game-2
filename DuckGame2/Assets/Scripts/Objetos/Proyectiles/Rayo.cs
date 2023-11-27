@@ -44,5 +44,10 @@ public class Rayo : MonoBehaviour
         //{
         //    jugador.Morir();
         //}
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<ControlJugador>().RecibirDanyo();
+            //killplayer
+        }
     }
 }

@@ -11,15 +11,26 @@ public class Caja : MonoBehaviour
         {
             collision.gameObject.GetComponent<ControlJugador>().EfectoNegativo("SoltarArmas");
             //Animacion caja y eliminar caja.
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            StartCoroutine(Destruir());
 
         }
 
         // Destruir la caja solo si no es una colisión con el jugador
         if (!collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);//Animacion caja se rompe
+            //Destroy(gameObject);//Animacion caja se rompe
+            StartCoroutine(Destruir());
         }
+    }
+    private IEnumerator Destruir()
+    {
+        gameObject.GetComponent<Collider2D>().enabled=false;
+        gameObject.GetComponent<Rigidbody2D>().Sleep();
+        //Animacion to guapa
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);   
+
     }
 
 }
