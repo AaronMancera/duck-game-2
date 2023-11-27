@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03b557358de0042809369b72d799fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsosMaximo: 0
+  numUsosMaximo: 1
   numUsos: 0
   nombre: 
   animator: {fileID: 0}
   controlDelJugador: {fileID: 0}
-  caja: {fileID: 7260469618542834095, guid: 7fd51eeeecea62b4eba22a33df36a1a8, type: 3}
-  puntoDeLanzar: {fileID: 0}
+  cajaPrefab: {fileID: 7260469618542834095, guid: 7fd51eeeecea62b4eba22a33df36a1a8, type: 3}
+  fuerzaLanzamiento: 5
+  anguloInclinacion: 30

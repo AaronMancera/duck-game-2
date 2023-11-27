@@ -566,29 +566,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
-      propertyPath: numUsos
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
-      propertyPath: numUsosMaximo
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
       propertyPath: controlDelJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
-    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
-      propertyPath: distanciaPuntosRayo
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
-      propertyPath: tiempoDeCargaMaximo
-      value: 1.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
-      propertyPath: velocidadDeLimpiezaAsignada
-      value: 1.68
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

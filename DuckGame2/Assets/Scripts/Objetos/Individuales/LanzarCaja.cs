@@ -6,9 +6,15 @@ using UnityEngine.InputSystem;
 public class LanzarCaja : Objeto
 {
     [SerializeField] ControlJugador controlDelJugador;
-    [Header("Atributos")]
-    [SerializeField] private GameObject caja;
-    [SerializeField] private Transform puntoDeLanzar;
+    //[Header("Atributos")]
+    //[SerializeField] private GameObject caja;
+    //[SerializeField] private Transform puntoDeLanzar;
+    [Header("Configuración de Caja")]
+    [SerializeField] private GameObject cajaPrefab;
+    [SerializeField] private float fuerzaLanzamiento;
+    [SerializeField] private float anguloInclinacion = 30f;
+    private bool mirandoALaIzquierda;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +22,21 @@ public class LanzarCaja : Objeto
         nombre = "LanzarCaja";
         Application.targetFrameRate = 60;
     }
-
+    void Update()
+    {
+        ActualizarDireccion();
+        Municion();
+    }
     private void OnEnable()
     {
         if (controlDelJugador.idPlayer == 1)
         {
-            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
+            controlDelJugador.playerControls.Player.DispararSecundario.performed += GetDispararInput;
 
         }
         else if (controlDelJugador.idPlayer == 2)
         {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed += GetDispararInput;
+            controlDelJugador.playerControls.PlayerP2.DispararSecundario.performed += GetDispararInput;
         }
     }
 
@@ -39,42 +49,63 @@ public class LanzarCaja : Objeto
         }
         else if (controlDelJugador.idPlayer == 2)
         {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed -= GetDispararInput;
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed -= GetDispararInput;
         }
     }
     private void GetDispararInput(InputAction.CallbackContext context)
     {
         if (context.performed && numUsos > 0)
         {
-            Disparar();
+            Lanzar();
+        }
+    }
+    void ActualizarDireccion()
+    {
+        //float direccionHorizontal = Input.GetAxis("Horizontal");
+        float direccionHorizontal = transform.parent.transform.localScale.x;
+
+        if (direccionHorizontal != 0)
+        {
+            mirandoALaIzquierda = direccionHorizontal < 0;
         }
     }
 
-    void Update()
+    void Lanzar()
     {
-        gameObject.SetActive(Municion());
-    }
-
-
-    // Dispara la bomba
-
-    private void Disparar()
-    {
-        CajaPrefabScript componenteBomba = caja.gameObject.GetComponent<CajaPrefabScript>();
-
-        Instantiate(componenteBomba, puntoDeLanzar.transform.position, caja.gameObject.transform.rotation);
-
         numUsos--;
-    }
+        Vector2 lugarDeInstanciamiento = transform.position; 
+        if (mirandoALaIzquierda)
+        {
+            lugarDeInstanciamiento.x -= 2;
+        }
+        else
+        {
+            lugarDeInstanciamiento.x += 2;
 
-    private bool Municion()
+        }
+        GameObject nuevaCaja = Instantiate(cajaPrefab, lugarDeInstanciamiento, Quaternion.identity);
+        Rigidbody2D rbCaja = nuevaCaja.GetComponent<Rigidbody2D>();
+
+        // Obtener la dirección de lanzamiento basada en la última dirección registrada
+        float direccionLanzamiento = mirandoALaIzquierda ? -1f : 1f;
+
+        // Calcular el ángulo de inclinación en radianes
+        float anguloRad = Mathf.Deg2Rad * anguloInclinacion;
+
+        // Calcular los componentes X e Y de la fuerza inicial con el ángulo de inclinación
+        float fuerzaX = fuerzaLanzamiento * direccionLanzamiento * Mathf.Cos(anguloRad);
+        float fuerzaY = fuerzaLanzamiento * Mathf.Sin(anguloRad);
+
+        // Aplicar fuerza inicial al lanzar la caja
+        Vector2 fuerzaInicial = new Vector2(fuerzaX, fuerzaY);
+        rbCaja.AddForce(fuerzaInicial, ForceMode2D.Impulse);
+    }
+    private void Municion()
     {
         if (numUsos <= 0)
         {
             //Llamar al jugador y quitarle el arma secundaria
             controlDelJugador.SoltarArma(false);
-            return false;
         }
-        return true;
     }
 }

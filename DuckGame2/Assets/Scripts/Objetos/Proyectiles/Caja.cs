@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caja2 : MonoBehaviour
+public class Caja : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,8 +21,5 @@ public class Caja2 : MonoBehaviour
             Destroy(gameObject);//Animacion caja se rompe
         }
     }
-
-   
-
 
 }
