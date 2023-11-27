@@ -10,7 +10,7 @@ public class ArmaEspada : Objeto
 
     [Header("Variables de golpeo")]
     [SerializeField] float cadenciaGolpe = 0.5f;//Cuantos golpes x segundos podemos dar.
-    [SerializeField] int durabilidad = 3;//Cantidad de golpes que podemos dar hasta que se rompa.
+    
 
     [Header("Ajustes detector de colisiones")]
     [SerializeField] GameObject detectorColision;//Encargado de detectar los objetos atacables.
@@ -35,7 +35,6 @@ public class ArmaEspada : Objeto
     }
     private void Update()
     {
-        numUsos = durabilidad;
         Municion();
         //Atacar();
         //EspadaManager();
@@ -77,7 +76,7 @@ public class ArmaEspada : Objeto
     void Atacar()
     {
         //if (puedeAtacar && Input.GetKeyDown("Fire1") && durabilidad > 0)
-        if (puedeAtacar && durabilidad > 0)
+        if (puedeAtacar && numUsos > 0)
         {
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)
@@ -108,17 +107,18 @@ public class ArmaEspada : Objeto
     {
         puedeAtacar = false; // Desactivar la capacidad de atacar.
         yield return new WaitForSeconds(cadenciaGolpe); // Esperar el tiempo de cadencia.
-        durabilidad--;//Le quitamos un punto de durabilidad.
         animEspada.SetBool("PuedoAtacar", false);//Esto es para el funcionamiento de la animacion.
         animEspada.SetBool("HeAtacado", true);//Esto es para el funcionamiento de la animacion. Este se puede ver de quitarlo.
         puedeAtacar = true; // Reactivar la capacidad de atacar.
+        numUsos--;//Le quitamos un punto de durabilidad.
+
+
 
     }
     private void Municion()
     {
         if (numUsos <= 0)
         {
-            //Llamar al jugador y quitarle el arma secundaria
             controlDelJugador.SoltarArma(true);
         }
     }

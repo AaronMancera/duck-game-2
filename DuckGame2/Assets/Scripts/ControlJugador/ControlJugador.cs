@@ -80,6 +80,7 @@ public class ControlJugador : MonoBehaviour
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
 
     private bool isRalentizando = false;
+    private bool armadura;
 
 
     #region EVENTS SUBS
@@ -143,6 +144,7 @@ public class ControlJugador : MonoBehaviour
         playerControls.Enable();
         principalEnMano = null;
         secundariaEnMano = null;
+        armadura = false;
     }
     private void Start()
     {
@@ -234,17 +236,28 @@ public class ControlJugador : MonoBehaviour
 
         }
     }
+    public void setAmadura(bool armadura)
+    {
+        this.armadura = armadura;
+    }
+    public bool getAmadura()
+    {
+        return armadura;
+    }
     public void RecibirDanyo()
     {
-        vida--;
-
-        //Animator
-        animator.SetTrigger("Danyo");
-
-        if (vida <= 0)
+        if (!armadura)
         {
-            //Te mueres
+            vida--;
 
+            //Animator
+            animator.SetTrigger("Danyo");
+
+            if (vida <= 0)
+            {
+                //Te mueres
+
+            }
         }
     }
 
