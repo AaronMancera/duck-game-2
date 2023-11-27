@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c979181af205a45aac8b4093eb41d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idPlayer: 2
+  idPlayer: 1
   vida: 1
   playerSpeed: 1
   isGrounded: 0
