@@ -17,9 +17,18 @@ public class MovimientoBala : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other){
-        Destroy(gameObject);
-        if(other.gameObject.tag == "player"){
+        //Destroy(gameObject);
+        if(other.gameObject.tag == "Player"){
+            other.gameObject.GetComponent<ControlJugador>().RecibirDanyo();
             //killplayer
+        }
+        else if (other.gameObject.tag == "Invocador")
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

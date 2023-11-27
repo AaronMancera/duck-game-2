@@ -30,12 +30,13 @@ public class ArmaEspada : Objeto
         animator = animEspada;
         puedeAtacar = true;
         Application.targetFrameRate = 60;
-        gameObject.SetActive(false);//Activar en otro script al cogerlo ya que este estará desactivado de inicio.
+        //gameObject.SetActive(false);//Activar en otro script al cogerlo ya que este estará desactivado de inicio.
 
     }
     private void Update()
     {
         numUsos = durabilidad;
+        Municion();
         //Atacar();
         //EspadaManager();
     }
@@ -112,6 +113,14 @@ public class ArmaEspada : Objeto
         animEspada.SetBool("HeAtacado", true);//Esto es para el funcionamiento de la animacion. Este se puede ver de quitarlo.
         puedeAtacar = true; // Reactivar la capacidad de atacar.
 
+    }
+    private void Municion()
+    {
+        if (numUsos <= 0)
+        {
+            //Llamar al jugador y quitarle el arma secundaria
+            controlDelJugador.SoltarArma(false);
+        }
     }
     #region TRIGGERS
     //COMPROBAMOS QUE ESTÉ EN RANGO.
