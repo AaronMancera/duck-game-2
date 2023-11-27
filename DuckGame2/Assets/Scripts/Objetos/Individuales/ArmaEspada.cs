@@ -10,7 +10,7 @@ public class ArmaEspada : Objeto
 
     [Header("Variables de golpeo")]
     [SerializeField] float cadenciaGolpe = 0.5f;//Cuantos golpes x segundos podemos dar.
-    
+
 
     [Header("Ajustes detector de colisiones")]
     [SerializeField] GameObject detectorColision;//Encargado de detectar los objetos atacables.
@@ -84,9 +84,12 @@ public class ArmaEspada : Objeto
                 Debug.Log(collider.gameObject.tag);
                 if (collider.CompareTag("Player") && EnRango)
                 {
+                    if (collider.GetComponent<ControlJugador>().idPlayer != controlDelJugador.idPlayer)
+                    {
+                        Debug.Log("¡Ataque realizado!");
+                    }
                     // Manejar la lógica de ataque y posible destrucción aquí
                     // collider.GetComponent<Player>().RecibirGolpe();
-                    Debug.Log("¡Ataque realizado!");
                 }
             }
             animEspada.SetBool("PuedoAtacar", true);//Esto es para el funcionamiento de la animacion.
