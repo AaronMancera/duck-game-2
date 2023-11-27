@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ControlDeJuego : MonoBehaviour
 {
-    public List<GameObject> jugadores;
+    //public List<GameObject> jugadores;
     public bool finDeRonda;
     public int numRonda;
     private int[] arrayEscenas = { 1, 2, 3 };
     private int escenaActual;
     private static ControlDeJuego instancia;
+    public MovimientoTelon telon;
+    public bool finDePartida;
 
     void Awake()
     {
@@ -36,6 +38,7 @@ public class ControlDeJuego : MonoBehaviour
         escenaActual = 1;
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
+        finDePartida = false;
     }
     void Update()
     {
@@ -51,6 +54,7 @@ public class ControlDeJuego : MonoBehaviour
 
             StartCoroutine(ReinicioNivel());
         }
+
     }
     int ObtenerEscenaAleatoria()
     {
@@ -86,30 +90,34 @@ public class ControlDeJuego : MonoBehaviour
         //    tiempoInicial += Time.unscaledDeltaTime; // Tiempo no afectado por Time.timeScale
         //    yield return null;
         //}
-        
+        while (telon.telonAbierto)
+        {
+        //    Debug.Log("while");
+            //GameObject jugadorganador = jugadores[0]; //Seleccionas el ganador
+            //Aqui se podría agregar el codigo para que haga la celebracion
+            telon.CerrarTelon();
+            yield return null;
+        }
 
-        Debug.Log("antes");
-        // Esperar 5 segundos
-        yield return new WaitForSecondsRealtime(3f);
-        Debug.Log("despues");
-        Debug.Log(numRonda);
 
+        //Debug.Log("antes");
+        // Esperar 3 segundos
+
+        //Debug.Log("despues");
+        //Debug.Log(numRonda);
         // Verificar si es la quinta ronda
         if (numRonda == 6)
         {
             Debug.Log("¡Vuelta al menú!");
+            finDePartida = true;
             // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
         }
         else
-        {            
-            // Restaurar la escala de tiempo para reanudar el juego si ponemos camara lenta
-            Time.timeScale = 1f;
+        {                        
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
-            //SceneManager.LoadScene(escenaActual);
+            SceneManager.LoadScene(0);
             Debug.Log("esc"+escenaActual);        
-
         }
-
 
     }
 }
