@@ -158,10 +158,12 @@ public class ArmaRayo : Objeto
         if (transform.parent.transform.localScale.x == 1)
         {
             aux = 1;
+            punto.x += 1;
         }
         else
         {
             aux = -1;
+            punto.x += -2;
         }
         #endregion
         //Debug.Log(punto.ToString());
