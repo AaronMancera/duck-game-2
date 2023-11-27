@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8021035069599367811}
   - component: {fileID: 5990624904670081408}
   - component: {fileID: 575171206133160026}
-  - component: {fileID: 6213253797802309423}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idPlayer: 2
-  vida: 1
+  vida: 3
   playerSpeed: 1
   isGrounded: 0
   horizontalDampingWhenStopping: 0.195
@@ -189,18 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c426c5c6ea74cd4fac9b7c77ed9723d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6213253797802309423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333865150358924716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f9c939764a58a4f89e5e632e5453d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4188980962791947987
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +199,7 @@ GameObject:
   - component: {fileID: 4650092734299638651}
   - component: {fileID: 5474139918457967114}
   - component: {fileID: 3019602128783199159}
+  - component: {fileID: 3583848876937095063}
   m_Layer: 0
   m_Name: ObjetoAAnimar
   m_TagString: Untagged
@@ -307,6 +295,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3583848876937095063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188980962791947987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f9c939764a58a4f89e5e632e5453d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &920551346939617511
 PrefabInstance:
   m_ObjectHideFlags: 0
