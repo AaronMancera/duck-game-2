@@ -19,7 +19,7 @@ public class ControlJugador : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    [SerializeField] private int vida = 1;
+    public int vida = 3;
 
     #region Movimiento
     [Header("Movimiento")]
@@ -293,7 +293,7 @@ public class ControlJugador : MonoBehaviour
 
         if (Mathf.Abs(horizontalInput) < 0.01f && isGrounded) // si paramos
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
-        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de dirección
+        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de direcciï¿½n
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
         else if (!isGrounded) // si estoy en el aire
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenInAir, Time.fixedDeltaTime * 10f);
@@ -324,12 +324,12 @@ public class ControlJugador : MonoBehaviour
     void Fall() // mejoras en la caida
     {
 
-        if (rb.velocity.y < 0) // Si estamos cayendo del salto, añadimos multiplicador de gravedad
+        if (rb.velocity.y < 0) // Si estamos cayendo del salto, aï¿½adimos multiplicador de gravedad
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
             estaCayendo = true;
         }
-        else if (rb.velocity.y > 0 && playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
+        else if (rb.velocity.y > 0 && playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aï¿½n en subida del salto y ya hemos dejado de pulsar el botï¿½n, aï¿½adimos multiplicador pequeï¿½o
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
 
@@ -362,7 +362,7 @@ public class ControlJugador : MonoBehaviour
     #region INVENTARIO
     public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
-        //Añades el arma al diccionario
+        //Aï¿½ades el arma al diccionario
         //inventario.Add(queArma, );
 
         //Activas el arma que toca
