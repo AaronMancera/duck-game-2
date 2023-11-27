@@ -119,7 +119,7 @@ public class ArmaEspada : Objeto
         if (numUsos <= 0)
         {
             //Llamar al jugador y quitarle el arma secundaria
-            controlDelJugador.SoltarArma(false);
+            controlDelJugador.SoltarArma(true);
         }
     }
     #region TRIGGERS
