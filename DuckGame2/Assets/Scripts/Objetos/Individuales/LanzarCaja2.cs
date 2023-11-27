@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LanzarCaja : Objeto
+public class LanzarCaja2 : Objeto
 {
     [Header("Configuración de Caja")]
     [SerializeField] GameObject cajaPrefab;

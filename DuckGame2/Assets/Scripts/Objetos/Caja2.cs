@@ -10,7 +10,9 @@ public class Caja : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<ControlJugador>().EfectoNegativo("SoltarArmas");
-            
+            //Animacion caja y eliminar caja.
+            Destroy(gameObject);
+
         }
 
         // Destruir la caja solo si no es una colisión con el jugador
