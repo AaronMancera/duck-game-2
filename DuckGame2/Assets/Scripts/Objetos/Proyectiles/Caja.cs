@@ -22,7 +22,4 @@ public class Caja : MonoBehaviour
         }
     }
 
-   
-
-
 }

@@ -86,7 +86,7 @@ public class LanzarArmadura : Objeto
         //Llamar al jugador y quitarle el arma secundaria
         controlDelJugador.SoltarArma(false);
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     private void PonerseEscudo()
