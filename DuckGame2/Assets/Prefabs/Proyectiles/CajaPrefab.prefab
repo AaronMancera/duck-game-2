@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4351326598585841100}
   - component: {fileID: 4912224642630968554}
   - component: {fileID: -2561162400934046667}
-  - component: {fileID: -1183000462672364256}
   - component: {fileID: 4621531802648704017}
   - component: {fileID: -8988459567151689913}
+  - component: {fileID: 6885059363221247758}
   m_Layer: 0
   m_Name: CajaPrefab
   m_TagString: Untagged
@@ -101,20 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 7260469618542834095}
---- !u!114 &-1183000462672364256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7260469618542834095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690de74060b36fc4786aa1da1529f3dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuerzaDeEmpuje: 7
-  animator: {fileID: 0}
 --- !u!50 &4621531802648704017
 Rigidbody2D:
   serializedVersion: 4
@@ -187,3 +173,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6670395, y: 0.483337}
   m_EdgeRadius: 0
+--- !u!114 &6885059363221247758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260469618542834095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1e52d8740940d4981d25fc551a9b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

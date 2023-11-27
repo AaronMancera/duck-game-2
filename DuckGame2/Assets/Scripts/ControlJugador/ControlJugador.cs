@@ -141,6 +141,8 @@ public class ControlJugador : MonoBehaviour
     {
         playerControls = new PlayerControls();
         playerControls.Enable();
+        principalEnMano = null;
+        secundariaEnMano = null;
     }
     private void Start()
     {
@@ -212,10 +214,16 @@ public class ControlJugador : MonoBehaviour
     {
         switch (queEfecto)
         {
-            default:
-
             case "Ralentizar":
+                // Implementa la lógica para ralentizar aquí
+                // Por ejemplo, puedes agregar un código que afecte la velocidad del juego o la ejecución de ciertas acciones.
+                Console.WriteLine("Efecto de ralentización aplicado");
+                break;
 
+            case "SoltarArmas":
+                // Implementa la lógica para soltar armas aquí
+                SoltarArma(true);
+                Console.WriteLine("Armas soltadas");
                 break;
 
         }
@@ -377,24 +385,35 @@ public class ControlJugador : MonoBehaviour
 
     public void SoltarArma(bool siEsPrincipal)
     {
-        //Quitas el arma del diccionario
-        //inventario.;
-
-
-        //Desactivas arma que toca
-
-        if (siEsPrincipal)
+        // Asegúrate de que haya un arma en la mano antes de intentar soltarla
+        if (siEsPrincipal && principalEnMano != null)
         {
+            // Desactiva el arma principal
             principalEnMano.SetActive(false);
+
+             inventario.Remove(principalEnMano.name);
+
+            // Establece la referencia a null ya que el arma se ha soltado
             principalEnMano = null;
+        }
+        else if (!siEsPrincipal && secundariaEnMano != null)
+        {
+            // Desactiva el arma secundaria
+            secundariaEnMano.SetActive(false);
+         
+             inventario.Remove(secundariaEnMano.name);
+
+            // Establece la referencia a null ya que el arma se ha soltado
+            secundariaEnMano = null;
+
         }
         else
         {
-            secundariaEnMano.SetActive(false);
-            secundariaEnMano = null;
+            Debug.LogWarning("No hay un arma en la mano para soltar.");
+            // Si el jugador enemigo no tiene armas y se intenta soltar, puedes manejarlo de manera diferente
         }
-
     }
+
     #endregion
 
     #region COLLISIONS
