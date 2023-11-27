@@ -7,6 +7,7 @@ public class FadePlataformas : MonoBehaviour
 {
     [SerializeField] private float segundosDesactivar, segundosActivar;
     Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
