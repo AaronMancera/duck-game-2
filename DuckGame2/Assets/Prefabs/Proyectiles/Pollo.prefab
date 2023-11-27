@@ -221,6 +221,7 @@ MonoBehaviour:
   speed: 1
   vidaSecondsCounter: 0
   saltoFuerza: 5
+  mirandoDerecha: 0
   velocidad: 2
   flip: 0
   flipBool: 1

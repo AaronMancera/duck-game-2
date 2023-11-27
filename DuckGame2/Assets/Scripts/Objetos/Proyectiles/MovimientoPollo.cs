@@ -45,14 +45,19 @@ public class MovimientoPollo : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "player"){
-            //Destroy(gameObject);
-            //stunplayer
-        }
-
+       
         if (other.gameObject.tag == "Suelo")
         {
             Saltar();
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<ControlJugador>().EfectoNegativo("Ralentizar");
         }
     }
 

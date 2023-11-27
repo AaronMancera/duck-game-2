@@ -78,8 +78,8 @@ public class ControlJugador : MonoBehaviour
     [Header("INVENTARIO")]
     public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
-    
 
+    private bool isRalentizando = false;
 
 
     #region EVENTS SUBS
@@ -141,6 +141,8 @@ public class ControlJugador : MonoBehaviour
     {
         playerControls = new PlayerControls();
         playerControls.Enable();
+        principalEnMano = null;
+        secundariaEnMano = null;
     }
     private void Start()
     {
@@ -184,6 +186,8 @@ public class ControlJugador : MonoBehaviour
         {
             RecibirDanyo();
         }
+
+       
     }
 
     
@@ -217,10 +221,15 @@ public class ControlJugador : MonoBehaviour
     {
         switch (queEfecto)
         {
-            default:
-
             case "Ralentizar":
+                Ralentizar(3);
+                Console.WriteLine("Efecto de ralentización aplicado");
+                break;
 
+            case "SoltarArmas":
+                // Implementa la lógica para soltar armas aquí
+                FuncionCaja();
+                Console.WriteLine("Armas soltadas");
                 break;
 
         }
@@ -404,6 +413,7 @@ public class ControlJugador : MonoBehaviour
         }
 
     }
+
     #endregion
 
     #region COLLISIONS
@@ -457,4 +467,48 @@ public class ControlJugador : MonoBehaviour
     }
     #endregion
 
+    public void FuncionCaja()
+    {
+        // Desactiva el arma principal y establece la referencia a null
+        if (principalEnMano != null)
+        {
+            principalEnMano.SetActive(false);
+            inventario.Remove(principalEnMano.name);
+            principalEnMano = null;
+        }
+
+        // Desactiva el arma secundaria y establece la referencia a null
+        if (secundariaEnMano != null)
+        {
+            secundariaEnMano.SetActive(false);
+            inventario.Remove(secundariaEnMano.name);
+            secundariaEnMano = null;
+        }
+    }
+
+    public void Ralentizar(float duracionRalentizacion)
+    {
+        if (!isRalentizando)
+        {
+            StartCoroutine(RalentizarCoroutine(duracionRalentizacion));
+        }
+    }
+    private IEnumerator RalentizarCoroutine(float duracionRalentizacion)
+    {
+        isRalentizando = true;
+
+        // Guarda el valor original de playerSpeed
+        float velocidadOriginal = playerSpeed;
+
+        // Establece la velocidad del jugador a la mitad
+        playerSpeed /= 2;
+
+        // Espera durante la duración de la ralentización
+        yield return new WaitForSeconds(duracionRalentizacion);
+
+        // Restaura la velocidad original
+        playerSpeed = velocidadOriginal;
+
+        isRalentizando = false;
+    }
 }
