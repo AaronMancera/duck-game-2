@@ -27,8 +27,27 @@ public class Bomba : MonoBehaviour
     /// </summary>
     private void Explotar()
     {
+        float radio = 4f;
+
         Instantiate(particulasBomba, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radio);
+        foreach (Collider2D collider in colliders)
+        {
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            float fuerza = 4f;
+
+            if (rb != null)
+            {
+                ControlJugador cj = collider.GetComponent<ControlJugador>();
+                rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
+                if (cj != null)
+                {
+                    cj.RecibirDanyo();
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -47,6 +66,7 @@ public class Bomba : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
     }
 
     /// <summary>
