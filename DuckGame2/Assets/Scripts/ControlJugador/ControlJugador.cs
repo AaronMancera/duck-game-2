@@ -227,7 +227,7 @@ public class ControlJugador : MonoBehaviour
 
             case "SoltarArmas":
                 // Implementa la lógica para soltar armas aquí
-                SoltarArma(true);
+                SoltarArma(principalEnMano);
                 Console.WriteLine("Armas soltadas");
                 break;
 
@@ -394,6 +394,7 @@ public class ControlJugador : MonoBehaviour
 
     public void SoltarArma(bool siEsPrincipal)
     {
+       
         // Asegúrate de que haya un arma en la mano antes de intentar soltarla
         if (siEsPrincipal && principalEnMano != null)
         {
@@ -405,7 +406,7 @@ public class ControlJugador : MonoBehaviour
             // Establece la referencia a null ya que el arma se ha soltado
             principalEnMano = null;
         }
-        else if (!siEsPrincipal && secundariaEnMano != null)
+        else if (!siEsPrincipal && secundariaEnMano)
         {
             // Desactiva el arma secundaria
             secundariaEnMano.SetActive(false);
@@ -415,6 +416,25 @@ public class ControlJugador : MonoBehaviour
             // Establece la referencia a null ya que el arma se ha soltado
             secundariaEnMano = null;
 
+        }
+
+        else if (siEsPrincipal && principalEnMano && secundariaEnMano)
+        {
+            // Desactiva el arma principal
+            principalEnMano.SetActive(false);
+
+
+            inventario.Remove(principalEnMano.name);
+
+            // Establece la referencia a null ya que el arma se ha soltado
+            principalEnMano = null;
+
+            secundariaEnMano.SetActive(false);
+
+            inventario.Remove(secundariaEnMano.name);
+
+            // Establece la referencia a null ya que el arma se ha soltado
+            secundariaEnMano = null;
         }
         else
         {
