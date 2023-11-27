@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LanzarSeñuelo : Objeto
 {
     #region Variables del Inspector
+    [SerializeField] ControlJugador controlJugador;
 
     [Header("Configuración del Señuelo")]
     [SerializeField] private GameObject señueloPrefab;
@@ -17,6 +19,8 @@ public class LanzarSeñuelo : Objeto
 
     [Header("Configuración de Dirección")]
     [SerializeField] private bool mirandoALaIzquierda = false;
+
+
 
     #endregion
 
@@ -45,6 +49,7 @@ public class LanzarSeñuelo : Objeto
     void Update()
     {
         UsarSeñuelo();
+        gameObject.SetActive(Municion());
     }
 
     void FixedUpdate()
@@ -52,6 +57,43 @@ public class LanzarSeñuelo : Objeto
         DeslizamientoPlayer();
     }
 
+    #endregion
+
+    #region InputSystem
+
+    private void OnEnable()
+    {
+        if (controlJugador.idPlayer == 1)
+        {
+            controlJugador.playerControls.Player.DispararSecundario.performed += GetDispararInput;
+
+        }
+        else if (controlJugador.idPlayer == 2)
+        {
+            controlJugador.playerControls.PlayerP2.DispararSecundario.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlJugador.idPlayer == 1)
+        {
+            controlJugador.playerControls.Player.DispararSecundario.performed -= GetDispararInput;
+
+        }
+        else if (controlJugador.idPlayer == 2)
+        {
+            controlJugador.playerControls.PlayerP2.DispararSecundario.performed -= GetDispararInput;
+        }
+    }
+
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && usosRestantes > 0)
+        {
+            Lanzar();
+        }
+    }
     #endregion
 
     #region Funciones Personalizadas
@@ -69,10 +111,10 @@ public class LanzarSeñuelo : Objeto
         }
 
         // Lanzar el señuelo cuando se presiona la tecla y hay usos disponibles
-        if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
+        /*if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
         {
             Lanzar();
-        }
+        }*/
     }
 
     void Lanzar()
@@ -89,6 +131,9 @@ public class LanzarSeñuelo : Objeto
         // Instanciar el señuelo en la nueva posición calculada
         señueloActual = Instantiate(señueloPrefab, posicionInicioSeñuelo, Quaternion.identity);
 
+        //Parte de Bobby, reseteo la velocidad en x al jugador antes del dash
+        jugadorRb.velocity = new Vector2(0, jugadorRb.velocity.y);
+        
         // Aplicar una fuerza en la dirección opuesta al dash para el jugador
         float direccionFuerza = -direccionDash;
         jugadorRb.AddForce(new Vector2(direccionFuerza * fuerzaDesplazamiento, 0));
@@ -101,6 +146,8 @@ public class LanzarSeñuelo : Objeto
 
         //DESACTIVAR EL LANZARSEÑUELO
         Debug.Log("Se lanzó el señuelo");
+
+        
     }
 
     void DeslizamientoPlayer()
@@ -142,6 +189,18 @@ public class LanzarSeñuelo : Objeto
 
         // Reactivar el objeto principal
         gameObject.SetActive(true);
+    }
+
+
+    private bool Municion()
+    {
+        if (usosRestantes <= 0)
+        {
+            //Llamar al jugador y quitarle el arma secundaria
+            controlJugador.SoltarArma(false);
+            return false;
+        }
+        return true;
     }
 
     #endregion

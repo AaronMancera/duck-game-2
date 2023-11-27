@@ -7,6 +7,7 @@ public class ArmaPistola : Objeto
 {
     [SerializeField] ControlJugador controlDelJugador;
     [SerializeField] private GameObject BalaPrefab;
+    [SerializeField] private Transform puntoDeDisparar;
     private float secondsCounter = 0;
     private bool puedeDispara;
     // Start is called before the first frame update
@@ -22,43 +23,6 @@ public class ArmaPistola : Objeto
     /// La pistola dispara y tiene un retardo de 0.5 segundos para poder disparar de nuevo
     /// </summary>
     // Update is called once per frame
-
-
-    private void OnEnable()
-    {
-        if (controlDelJugador.idPlayer == 1)
-        {
-            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
-
-        }
-        else if (controlDelJugador.idPlayer == 2)
-        {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed += GetDispararInput;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (controlDelJugador.idPlayer == 1)
-        {
-            controlDelJugador.playerControls.Player.DispararPrincipal.performed -= GetDispararInput;
-
-        }
-        else if (controlDelJugador.idPlayer == 2)
-        {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed -= GetDispararInput;
-        }
-    }
-
-    private void GetDispararInput(InputAction.CallbackContext context)
-    {
-        if (context.performed && puedeDispara == true && numUsos > 0)
-        {
-            Disparar();
-        }
-    }
-
-
     void Update()
     {
         //contador de segundos para el cooldown
@@ -83,6 +47,47 @@ public class ArmaPistola : Objeto
         }
 
     }
+    #region InputSystem
+
+    private void OnEnable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed += GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed += GetDispararInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (controlDelJugador.idPlayer == 1)
+        {
+            controlDelJugador.playerControls.Player.DispararPrincipal.performed -= GetDispararInput;
+
+        }
+        else if (controlDelJugador.idPlayer == 2)
+        {
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed -= GetDispararInput;
+        }
+    }
+
+    private void GetDispararInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && puedeDispara == true && numUsos > 0)
+        {
+            //Debug.Log(gameObject.transform.parent.name);
+            //Disparar();
+
+
+            //Animator
+            animator.SetTrigger("Disparar");
+        }
+    }
+    #endregion
     /// <summary>
     /// Método que reinicia el arma cuando un jugador la obtenga
     /// </summary>
@@ -95,14 +100,32 @@ public class ArmaPistola : Objeto
 
     public void Disparar()
     {
+
+
         secondsCounter = 0;
         numUsos = numUsos - 1;
         puedeDispara = false;
-        Instantiate(BalaPrefab, transform.position, gameObject.transform.rotation);
+
+
+        GameObject bala = Instantiate(BalaPrefab, puntoDeDisparar.transform.position, gameObject.transform.rotation);
+        if (gameObject.transform.parent.localScale.x == -1)
+        {
+            //Izq
+            bala.transform.rotation= Quaternion.Euler(0,180, 0);
+        }
+        else
+        {
+            //Der
+            bala.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        //bala.transform.localScale=gameObject.transform.parent.localScale;
     }
 
     public void SinMunicion()
     {
         gameObject.SetActive(false);
+
+        //Desactiva arma al player
+        controlDelJugador.SoltarArma(true); //Pongo true porque es principal
     }
 }

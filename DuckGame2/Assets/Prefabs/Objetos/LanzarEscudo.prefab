@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.87, y: 0.42, z: 0}
-  m_LocalScale: {x: 0.29289, y: 0.29289, z: 0.29289}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.16615212, g: 0.9811321, b: 0.032395888, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6c6cf409a45a8834e832f911ddb7ee3d, type: 3}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,11 +94,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5921736279431767288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2c4f2bb9a19ae49888629672f9779f, type: 3}
+  m_Script: {fileID: 11500000, guid: c23f1ce2a842b824092fd0b4d196634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: LanzarEscudo
+  numUsosMaximo: 0
   numUsos: 0
-  interactuable: 0
-  bala: {fileID: 0}
+  nombre: 
+  animator: {fileID: 0}
+  PrefabEscudo: {fileID: 0}
+  colisionJugador: {fileID: 0}
+  secondsCounter: 0

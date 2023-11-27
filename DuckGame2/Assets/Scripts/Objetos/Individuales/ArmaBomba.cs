@@ -9,6 +9,8 @@ public class ArmaBomba : Objeto
     [SerializeField] ControlJugador controlDelJugador;
     [Header("Atributos")]
     [SerializeField] private GameObject bomba;
+    [SerializeField] private Transform puntoDeLanzar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,7 @@ public class ArmaBomba : Objeto
     {
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
-        Instantiate(componenteBomba, gameObject.transform.position, bomba.gameObject.transform.rotation);
+        Instantiate(componenteBomba, puntoDeLanzar.transform.position, bomba.gameObject.transform.rotation);
 
         numUsos--;
     }
@@ -81,7 +83,8 @@ public class ArmaBomba : Objeto
     private bool Municion()
     {
         if (numUsos <= 0)
-        {            
+        {
+            controlDelJugador.SoltarArma(true); //Pongo true porque es principal
             return false;
         }
         return true;

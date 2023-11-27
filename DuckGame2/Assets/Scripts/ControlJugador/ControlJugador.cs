@@ -34,6 +34,8 @@ public class ControlJugador : MonoBehaviour
 
     Vector2 movement;
 
+    public bool mirandoALaDerecha;
+
     [Header("JUMP")]
     public float jumpForce;
     [SerializeField]
@@ -151,13 +153,31 @@ public class ControlJugador : MonoBehaviour
         inventario.Add("Objeto", null);
 
 
+        if (idPlayer == 1)
+        {
+            animator.SetLayerWeight(0,1);
+            animator.SetLayerWeight(1,0);
+
+
+        }
+        else if (idPlayer == 2)
+        {
+            animator.SetLayerWeight(0, 0);
+            animator.SetLayerWeight(1, 1);
+        }
+
     }
 
     private void Update()
     {
-        SoltarArma();
-
-        
+        if (transform.localScale.x == 1)
+        {
+            mirandoALaDerecha = true;
+        }
+        else
+        {
+            mirandoALaDerecha = false;
+        }
 
     }
 
@@ -355,28 +375,23 @@ public class ControlJugador : MonoBehaviour
 
     }
 
-    public void SoltarArma()
+    public void SoltarArma(bool siEsPrincipal)
     {
         //Quitas el arma del diccionario
         //inventario.;
 
 
         //Desactivas arma que toca
-        if (Input.GetKeyDown(KeyCode.O))
+
+        if (siEsPrincipal)
         {
-            if (principalEnMano != null)
-            {
-                principalEnMano.SetActive(false);
-                principalEnMano = null;
-            }
+            principalEnMano.SetActive(false);
+            principalEnMano = null;
         }
-        else if (Input.GetKeyDown(KeyCode.P))
+        else
         {
-            if (secundariaEnMano != null)
-            {
-                secundariaEnMano.SetActive(false);
-                secundariaEnMano = null;
-            }
+            secundariaEnMano.SetActive(false);
+            secundariaEnMano = null;
         }
 
     }

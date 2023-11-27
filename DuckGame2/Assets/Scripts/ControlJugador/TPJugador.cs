@@ -8,8 +8,8 @@ public class TPJugador : MonoBehaviour
     [SerializeField] GameObject jugador;
 
     #region LIMITES PANTALLA
-    private float limiteEjeX = 12;
-    private float limiteEjeY = 8;
+    private float limiteEjeX = 9.45f;
+    private float limiteEjeYInferior = -7.85f, limiteEjeYSuperior = 3.20f;
     #endregion
 
     // Start is called before the first frame update
@@ -34,15 +34,15 @@ public class TPJugador : MonoBehaviour
 
         }
         
-        if(posicionY > limiteEjeY) // Pasa por arriba del todo
+        if(posicionY > limiteEjeYSuperior) // Pasa por arriba del todo
         {
-            jugador.transform.position = new Vector2(posicionX, -limiteEjeY);
+            jugador.transform.position = new Vector2(posicionX, limiteEjeYInferior);
 
         }
         
-        if(posicionY < -limiteEjeY) // Cae por abajo del todo
+        if(posicionY < limiteEjeYInferior) // Cae por abajo del todo
         {
-            jugador.transform.position = new Vector2(posicionX, limiteEjeY);
+            jugador.transform.position = new Vector2(posicionX, limiteEjeYSuperior);
         }
     }
 }

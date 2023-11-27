@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4351326598585841100}
   - component: {fileID: 4912224642630968554}
-  - component: {fileID: 8364532973427852727}
+  - component: {fileID: 503900634970039155}
   m_Layer: 0
   m_Name: ArmaPistola
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.92, y: 0.06, z: 0}
-  m_LocalScale: {x: 0.29289, y: 0.29289, z: 0.29289}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b497adc31c873f940886d5273811c3cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8364532973427852727
+--- !u!114 &503900634970039155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,11 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7260469618542834095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2c4f2bb9a19ae49888629672f9779f, type: 3}
+  m_Script: {fileID: 11500000, guid: 364a19f68758b0841ac4930d9dba13ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  nombre: ArmaPistola
+  numUsosMaximo: 7
   numUsos: 0
-  interactuable: 0
-  bala: {fileID: 0}
+  nombre: 
+  animator: {fileID: 0}
+  controlDelJugador: {fileID: 0}
+  BalaPrefab: {fileID: 0}

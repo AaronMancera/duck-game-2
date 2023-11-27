@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4066422975668940063}
   - component: {fileID: 2416375558124263206}
   - component: {fileID: 618368641585401974}
-  - component: {fileID: 4587149340900919791}
+  - component: {fileID: 3678679776124243728}
+  - component: {fileID: -1359347002190628671}
   m_Layer: 0
   m_Name: Bomba
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc61b68607831ed4999ddd529a6225da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b81de8a3bd8d74aa6d760479f89c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerzaDeEmpuje: 10
-  tiempoParaExplotar: 5
+  fuerzaDeEmpuje: 5
+  tiempoParaExplotar: 2.57
+  fuerzaDeRotacion: 10
   animator: {fileID: 0}
+  particulasBomba: {fileID: 3625910404143519456, guid: 348b926961d3e1d4d8254aceeee23b9f, type: 3}
 --- !u!50 &618368641585401974
 Rigidbody2D:
   serializedVersion: 4
@@ -129,8 +132,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &4587149340900919791
-BoxCollider2D:
+--- !u!58 &3678679776124243728
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,7 +141,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1844551447614061118}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9937c6d44313f164486e00d57b6390c5, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -161,16 +164,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.008859307, y: 0.007904142}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.20839506
+--- !u!114 &-1359347002190628671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844551447614061118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3112a871529fb1d4095cf795e1422f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugador: {fileID: 1844551447614061118}
