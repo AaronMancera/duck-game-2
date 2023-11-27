@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 300752108}
   - component: {fileID: 300752107}
   - component: {fileID: 300752109}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlataformaLarga_03
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 300752106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.8835807, y: -2.6314447, z: -0.027991693}
+  m_LocalPosition: {x: 7.8835807, y: -2.6314447, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -264,7 +264,8 @@ GameObject:
   - component: {fileID: 470064905}
   - component: {fileID: 470064904}
   - component: {fileID: 470064906}
-  m_Layer: 0
+  - component: {fileID: 470064907}
+  m_Layer: 3
   m_Name: PlataformaMediana_02
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -332,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 470064903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.323081, y: -0.06144452, z: -0.027991693}
+  m_LocalPosition: {x: 7.323081, y: -0.06144452, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,7 +369,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -383,6 +384,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5, y: 0.625}
   m_EdgeRadius: 0
+--- !u!251 &470064907
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470064903}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &475382991
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +414,8 @@ GameObject:
   - component: {fileID: 475382993}
   - component: {fileID: 475382992}
   - component: {fileID: 475382994}
-  m_Layer: 0
+  - component: {fileID: 475382995}
+  m_Layer: 3
   m_Name: PlataformaMediana_01
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -462,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 475382991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.426919, y: -0.06144452, z: -0.027991693}
+  m_LocalPosition: {x: -2.426919, y: -0.06144452, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 11}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -498,7 +519,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -513,6 +534,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5, y: 0.625}
   m_EdgeRadius: 0
+--- !u!251 &475382995
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475382991}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &488813125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,11 +567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.074792
+      value: -4.57
       objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2005343
+      value: -3.65
       objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
       propertyPath: m_LocalPosition.z
@@ -564,6 +604,10 @@ PrefabInstance:
     - target: {fileID: 2000952070545877290, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101643208924720626, guid: a5a1b943fc9bc594a858df4b68b51573, type: 3}
+      propertyPath: jumpForce
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -651,7 +695,8 @@ GameObject:
   - component: {fileID: 1248122776}
   - component: {fileID: 1248122777}
   - component: {fileID: 1248122775}
-  m_Layer: 0
+  - component: {fileID: 1248122778}
+  m_Layer: 3
   m_Name: PlataformaCorta_02
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -719,7 +764,7 @@ Transform:
   m_GameObject: {fileID: 1248122772}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.143581, y: 2.4385555, z: -0.027991693}
+  m_LocalPosition: {x: 9.143581, y: 2.4385555, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -790,7 +835,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -805,6 +850,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.625}
   m_EdgeRadius: 0
+--- !u!251 &1248122778
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248122772}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1337093957
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,8 +881,9 @@ GameObject:
   - component: {fileID: 1337093958}
   - component: {fileID: 1337093960}
   - component: {fileID: 1337093961}
+  - component: {fileID: 1337093963}
   - component: {fileID: 1337093962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlataformaCorta_01
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -886,7 +951,7 @@ Transform:
   m_GameObject: {fileID: 1337093957}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.106419, y: 2.4385557, z: 0}
+  m_LocalPosition: {x: -4.106419, y: 2.4385557, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -943,7 +1008,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -970,8 +1035,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ac98a62db74c4d9e3d89214027863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segundosDesactivar: 5
-  segundosActivar: 15
+  segundosDesactivar: 20
+  segundosActivar: 5
+--- !u!251 &1337093963
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337093957}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1408531601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1159,7 @@ GameObject:
   - component: {fileID: 1716430741}
   - component: {fileID: 1716430740}
   - component: {fileID: 1716430742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlataformaLarga_02
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -1143,7 +1227,7 @@ Transform:
   m_GameObject: {fileID: 1716430739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9664192, y: -2.6314447, z: -0.027991693}
+  m_LocalPosition: {x: -2.9664192, y: -2.6314447, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1204,7 +1288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1872017793}
   - component: {fileID: 1872017792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlataformaController
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -1383,7 +1467,8 @@ GameObject:
   - component: {fileID: 2004233493}
   - component: {fileID: 2004233492}
   - component: {fileID: 2004233494}
-  m_Layer: 0
+  - component: {fileID: 2004233495}
+  m_Layer: 3
   m_Name: PlataformaLarga_01
   m_TagString: Suelo
   m_Icon: {fileID: 0}
@@ -1451,7 +1536,7 @@ Transform:
   m_GameObject: {fileID: 2004233491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5335808, y: 4.8685555, z: -0.027991693}
+  m_LocalPosition: {x: 2.5335808, y: 4.8685555, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1487,7 +1572,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1502,6 +1587,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.5, y: 0.625}
   m_EdgeRadius: 0
+--- !u!251 &2004233495
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004233491}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
