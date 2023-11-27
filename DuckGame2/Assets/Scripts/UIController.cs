@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
 
     public Image[] balasJ1, balasJ2;
 
-    private Image[] VidasJ1, VidasJ2;
+    public Image[] VidasJ1, VidasJ2;
     private int VidaJugador1;
     private int VidaJugador2;
 

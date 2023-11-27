@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 2512313873837612135}
   - component: {fileID: 8763134634639628380}
   - component: {fileID: 2759652893333365349}
+  - component: {fileID: 978518437406631827}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -290,6 +291,42 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &978518437406631827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348817737553394053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b4f0140e2348142ab89abc06f91be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  numeroDeBalasJ1: 0
+  numeroDeBalasJ2: 0
+  balasJ1:
+  - {fileID: 3924490441564801428}
+  - {fileID: 4672338716866349317}
+  - {fileID: 5744262754331000431}
+  - {fileID: 8033142839012242091}
+  - {fileID: 2426991758508893525}
+  balasJ2:
+  - {fileID: 2754509671186735208}
+  - {fileID: 8898363935493872721}
+  - {fileID: 6036301328174662234}
+  - {fileID: 8202549526348055007}
+  - {fileID: 8115944734358372672}
+  VidasJ1:
+  - {fileID: 4399089258530065933}
+  - {fileID: 5760063728149990146}
+  - {fileID: 2163014632655580788}
+  VidasJ2:
+  - {fileID: 7283590295655633807}
+  - {fileID: 4710205775697558039}
+  - {fileID: 7159883936740605081}
 --- !u!1 &1494576471619658449
 GameObject:
   m_ObjectHideFlags: 0
