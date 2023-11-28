@@ -44,3 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Juego
+    uniqueID: 1950834155
+    locked: 0
+  - name: TelonFijo
+    uniqueID: 3239148747
+    locked: 0
+  - name: TelonMov
+    uniqueID: 2564442299
+    locked: 0

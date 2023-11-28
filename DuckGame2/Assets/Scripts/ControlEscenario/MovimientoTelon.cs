@@ -8,8 +8,8 @@ public class MovimientoTelon : MonoBehaviour
     public Transform telonIzq;
     public Transform telonDcha;
     private float velocidad = 2f;
-    private float limiteDcha = 14f;
-    private float limiteIzq = -14f;
+    private float limiteDcha = 10.5f;
+    private float limiteIzq = -10.5f;
     public ControlDeJuego controlDeJuego;
     public bool telonAbierto;
     private Vector3 PosicionInicialTelonIzq;
@@ -35,8 +35,10 @@ public class MovimientoTelon : MonoBehaviour
 
     public IEnumerator AbrirTelon()
     {
-       yield return new WaitForSecondsRealtime(1f); // me gustaria que las plataformas no se movieran mientras se abre el telon pero el unsacled usado en cerrar telon aqui va mal la velocidad se pone progresiva
-       while (!telonAbierto)
+        Debug.Log("abriur");
+        Time.timeScale = 1.0f;
+        yield return new WaitForSecondsRealtime(1f); // me gustaria que las plataformas no se movieran mientras se abre el telon pero el unsacled usado en cerrar telon aqui va mal la velocidad se pone progresiva
+        while (!telonAbierto)
         {
             //Debug.Log("abrir telon");
             telonIzq.Translate(Vector3.left * velocidad * Time.deltaTime);
@@ -52,7 +54,7 @@ public class MovimientoTelon : MonoBehaviour
             {
                 telonDcha.position = new Vector3(limiteDcha, telonDcha.position.y, telonDcha.position.z);
                 telonAbierto = true;
-            } 
+            }
             yield return null;
         }
 
@@ -63,7 +65,7 @@ public class MovimientoTelon : MonoBehaviour
         telonIzq.Translate(Vector3.right * velocidad * Time.unscaledDeltaTime);
         telonDcha.Translate(Vector3.left * velocidad * Time.unscaledDeltaTime);
         // Mover hacia la izquierda hasta el límite izquierdo
-        if (telonIzq.position.x > PosicionInicialTelonIzq.x )
+        if (telonIzq.position.x > PosicionInicialTelonIzq.x)
         {
             telonIzq.position = PosicionInicialTelonIzq;
             telonAbierto = false;
