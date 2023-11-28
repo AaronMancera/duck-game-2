@@ -183,13 +183,21 @@ public class ControlJugador : MonoBehaviour
             mirandoALaDerecha = false;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.M))
+        if (vida <= 0)
         {
-            RecibirDanyo();
-        }
+            //Te mueres
+            animator.SetTrigger("Muerte");
+            //TODO: (Aarón) El hitstop falla y para el juego completamente cuando desactiv el rigibody del jugador para que no caiga hacia el infinito. No se com va el hitStop, primer aviso
+            //rb.Sleep(); 
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-       
+        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    RecibirDanyo();
+        //}
+
+
     }
 
     
@@ -197,26 +205,29 @@ public class ControlJugador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetMoveInput();
-
-        CheckCollisions();
-        MoveCharacter();
-
-        SueloControl();
-
-        /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
+        if (vida > 0)
         {
-            canJump = true;
+            GetMoveInput();
+
+            CheckCollisions();
+            MoveCharacter();
+
+            SueloControl();
+
+            /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
+            {
+                canJump = true;
+            }
+            else
+            {
+                canJump = false;
+            }*/
+
+
+            //Animator
+            animator.SetBool("EstaEnElSuelo", isGrounded);
+            animator.SetBool("EstaCayendo", estaCayendo);
         }
-        else
-        {
-            canJump = false;
-        }*/
-
-
-        //Animator
-        animator.SetBool("EstaEnElSuelo", isGrounded);
-        animator.SetBool("EstaCayendo", estaCayendo);
     }
 
     public void EfectoNegativo(string queEfecto)
@@ -253,11 +264,7 @@ public class ControlJugador : MonoBehaviour
             //Animator
             animator.SetTrigger("Danyo");
 
-            if (vida <= 0)
-            {
-                //Te mueres
-
-            }
+            
         }
     }
 

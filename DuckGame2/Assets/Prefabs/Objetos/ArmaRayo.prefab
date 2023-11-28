@@ -103,6 +103,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   controlDelJugador: {fileID: 0}
   lineaDeDisparo: {fileID: -8885072505946424846, guid: d8bccfff6170c21408535358026a55a5, type: 3}
-  velocidadDeLimpiezaAsignada: 0.05
+  velocidadDeLimpiezaAsignada: 0.1
   tiempoDeCargaMaximo: 1.5
-  distanciaPuntosRayo: 10
+  distanciaPuntosRayo: 5

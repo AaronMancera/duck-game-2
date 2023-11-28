@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlDeJuego : MonoBehaviour
 {
-    //public List<GameObject> jugadores;
+    public List<GameObject> jugadores;
     public bool finDeRonda;
     public int numRonda;
     private int[] arrayEscenas = { 1, 2, 3 };
