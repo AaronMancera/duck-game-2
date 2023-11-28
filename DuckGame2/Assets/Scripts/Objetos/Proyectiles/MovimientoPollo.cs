@@ -108,7 +108,7 @@ public class MovimientoPollo : MonoBehaviour
         {
             Flip();
             flipBool = false;
-            GetComponent<SpriteRenderer>().flipX = !flip;
+            //GetComponent<SpriteRenderer>().flipX = !flip;
             StartCoroutine(FlipCount(segundosParaActivarFlip));
         }
 
@@ -128,7 +128,9 @@ public class MovimientoPollo : MonoBehaviour
     void Flip()
     {
         flip = !flip;
-        transform.localScale = new Vector3(transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
+        //transform.localScale = new Vector3(transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
+        GetComponent<SpriteRenderer>().flipX = !flip;
+
     }
 
     private void FlipLlamada()
