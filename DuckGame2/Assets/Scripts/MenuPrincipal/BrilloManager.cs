@@ -28,7 +28,7 @@ public class BrilloManager : MonoBehaviour
         }
         else
         {
-            exposure.keyValue.value = .05f;
+            exposure.keyValue.value = .03f;
         }
     }
 
