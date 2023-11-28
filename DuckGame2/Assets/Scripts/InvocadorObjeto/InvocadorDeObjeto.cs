@@ -27,7 +27,9 @@ public class InvocadorDeObjeto : MonoBehaviour
     void Update()
     {
         //PARA QUE GIRE SOBRE SU PROPIO EJE
-        if (objetoInvocado != null && !regenrando)
+        //if (objetoInvocado != null && !regenrando)
+        if (tengoArma && !regenrando)
+            
         {
             float segundosGiro = 100f;
             objetoInvocado.transform.Rotate(new Vector3(0, segundosGiro, 0) * Time.deltaTime);
@@ -63,12 +65,12 @@ public class InvocadorDeObjeto : MonoBehaviour
         {
             int rangoObjetos = Enum.GetNames(typeof(EnumObjetos)).Length;   //NUMERO DE OBJETOS DISPONIBLES
             int objetoAleatorio = UnityEngine.Random.Range(0, rangoObjetos);    //GENERAR OBJETO ALEATORIO
-            string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
+            //string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
 
             //Debug.Log($"El objeto generado es:  {nombreObjeto}");
             Vector3 posicionDeInicio = transform.position+ new Vector3(-0.20f, 0.3f, 0);
             objetoInvocado = Instantiate(objetos[objetoAleatorio], /*objetoInvocado.transform.position*/posicionDeInicio, Quaternion.identity, parent);
-
+            
             tengoArma = true;
         }
     }
@@ -81,14 +83,17 @@ public class InvocadorDeObjeto : MonoBehaviour
         if (objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().principalEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 0);
+            tengoArma = false;
+            Destroy(objetoInvocado);
         }
         else if (!objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().secundariaEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 1);
+            tengoArma = false;
+            Destroy(objetoInvocado);
         }
 
-        tengoArma = false;
-        Destroy(objetoInvocado);
+        
         
         //objetoInvocado.SetActive(false);
     }
