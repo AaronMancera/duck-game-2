@@ -12,6 +12,7 @@ public class InvocadorDeObjeto : MonoBehaviour
     private bool tengoArma;
     private bool animGiroObjeto;
     [SerializeField] private float segundosEspera;
+    private bool regenrando;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +20,14 @@ public class InvocadorDeObjeto : MonoBehaviour
         tengoArma = false;
         parent = this.gameObject.GetComponent<Transform>();
         InvocarObjeto();
+        regenrando = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         //PARA QUE GIRE SOBRE SU PROPIO EJE
-        if (objetoInvocado != null)
+        if (objetoInvocado != null && !regenrando)
         {
             float segundosGiro = 100f;
             objetoInvocado.transform.Rotate(new Vector3(0, segundosGiro, 0) * Time.deltaTime);
@@ -95,8 +97,10 @@ public class InvocadorDeObjeto : MonoBehaviour
     #region RUTINA
     private IEnumerator RutinaGenerarObjetos()
     {
+        regenrando = true;
        yield return new WaitForSeconds(segundosEspera);
         InvocarObjeto();
+        regenrando = false;
     }
     #endregion
 
