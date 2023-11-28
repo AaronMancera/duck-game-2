@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class ControlDeJuego : MonoBehaviour
     private int escenaActual;
     private static ControlDeJuego instancia;
     private bool reiniciando;
-
+    [SerializeField] private TMP_Text rondas;
     void Awake()
     {
         // Verificar si ya existe una instancia del script
@@ -38,6 +39,7 @@ public class ControlDeJuego : MonoBehaviour
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
         reiniciando = false;
+        rondas.text = numRonda+"";
     }
     void Update()
     {

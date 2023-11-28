@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private estructuraDicSpritesArmas[] dicSpritesArmas;
 
     [Serializable]
-    private struct estructuraDicSpritesObjetos
+    public struct estructuraDicSpritesObjetos
     {
         public string nombre;
         public Sprite sprite;

@@ -27,7 +27,7 @@ public class ArmaBomba : Objeto
         }
         else if (controlDelJugador.idPlayer == 2)
         {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed += GetDispararInput;
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed += GetDispararInput;
         }
     }
 
@@ -40,7 +40,7 @@ public class ArmaBomba : Objeto
         }
         else if (controlDelJugador.idPlayer == 2)
         {
-            controlDelJugador.playerControls.PlayerP2.Saltar.performed -= GetDispararInput;
+            controlDelJugador.playerControls.PlayerP2.DispararPrincipal.performed -= GetDispararInput;
         }
     }
     private void GetDispararInput(InputAction.CallbackContext context)
@@ -64,6 +64,16 @@ public class ArmaBomba : Objeto
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
         Instantiate(componenteBomba, puntoDeLanzar.transform.position, bomba.gameObject.transform.rotation);
+        if (gameObject.transform.parent.localScale.x == -1)
+        {
+            //Izq
+            componenteBomba.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            //Der
+            componenteBomba.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
 
         numUsos--;
     }

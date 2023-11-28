@@ -922,6 +922,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6498652477279076218, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: m_Name
+      value: Rondas
+      objectReference: {fileID: 0}
     - target: {fileID: 8825285436297698310, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1284,6 +1288,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+--- !u!114 &1178480067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3344913960136950211, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+  m_PrefabInstance: {fileID: 768902962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1542234397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,7 +1332,8 @@ MonoBehaviour:
   - {fileID: 648040473}
   - {fileID: 1771226774}
   finDeRonda: 0
-  numRonda: 0
+  numRonda: 1
+  rondas: {fileID: 1178480067}
 --- !u!4 &1542234399
 Transform:
   m_ObjectHideFlags: 0

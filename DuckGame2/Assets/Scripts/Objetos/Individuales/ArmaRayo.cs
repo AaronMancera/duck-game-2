@@ -43,7 +43,7 @@ public class ArmaRayo : Objeto
         //NOTE: Refactorizacion para el InputManager
         //pulsarFire1 = Input.GetButtonDown("Fire1");
         //pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
-        Debug.Log(controlDelJugador.idPlayer);
+        //Debug.Log(controlDelJugador.idPlayer);
         switch (controlDelJugador.idPlayer)
         {
             case 1:
@@ -158,12 +158,12 @@ public class ArmaRayo : Objeto
         if (transform.parent.transform.localScale.x == 1)
         {
             aux = 1;
-            punto.x += 2;
+            punto.x += 1.5f;
         }
         else
         {
             aux = -1;
-            punto.x += -3;
+            punto.x += -2f;
         }
         #endregion
         //Debug.Log(punto.ToString());
