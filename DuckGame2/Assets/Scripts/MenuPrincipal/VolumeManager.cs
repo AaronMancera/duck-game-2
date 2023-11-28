@@ -10,16 +10,16 @@ public class VolumeManager : MonoBehaviour
 
     public PostProcessProfile volume;
     public PostProcessLayer layer;
-    AutoExposure exposure;
+    AutoExposure exposureVol;
     // Start is called before the first frame update
     void Start()
     {
-        volume.TryGetSettings(out exposure);
+        volume.TryGetSettings(out exposureVol);
         if (PlayerPrefs.GetFloat("volume") != 0)
         {
 
             VolumeSlider.value = PlayerPrefs.GetFloat("volume");
-            exposure.keyValue.value = PlayerPrefs.GetFloat("volume");
+            exposureVol.keyValue.value = PlayerPrefs.GetFloat("volume");
 
         }
         AjustarVolumen(VolumeSlider.value);
@@ -34,7 +34,7 @@ public class VolumeManager : MonoBehaviour
     public void AjustarVolumen(float value)
     {
 
-        exposure.keyValue.value = value;
+        exposureVol.keyValue.value = value;
         PlayerPrefs.SetFloat("volume", value);
 
         //Debug.Log(value);
