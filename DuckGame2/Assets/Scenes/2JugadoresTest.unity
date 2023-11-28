@@ -909,6 +909,42 @@ PrefabInstance:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 108341568}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[0].nombre
+      value: ArmaRayo
+      objectReference: {fileID: 0}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -222291248, guid: 324f51d4d202ddc49848b64927a6f28f, type: 3}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[1].nombre
+      value: ArmaBomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc61b68607831ed4999ddd529a6225da, type: 3}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[2].nombre
+      value: ArmaEspada
+      objectReference: {fileID: 0}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 407533474, guid: 441da686871912e46b6c1a85432bf9eb, type: 3}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[3].nombre
+      value: ArmaPistola
+      objectReference: {fileID: 0}
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: dicSpritesArmas.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 1724439165, guid: b43c4547cae17b246b9746ea081319b1, type: 3}
     - target: {fileID: 1348817737553394053, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Name
       value: UI
@@ -917,10 +953,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2512313873837612135, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8825285436297698310, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Pivot.x
       value: 0

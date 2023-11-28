@@ -245,7 +245,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -327,6 +327,15 @@ MonoBehaviour:
   - {fileID: 7283590295655633807}
   - {fileID: 4710205775697558039}
   - {fileID: 7159883936740605081}
+  dicSpritesArmas:
+  - nombre: ArmaRayo
+    sprite: {fileID: -222291248, guid: 324f51d4d202ddc49848b64927a6f28f, type: 3}
+  - nombre: ArmaBomba
+    sprite: {fileID: 21300000, guid: bc61b68607831ed4999ddd529a6225da, type: 3}
+  - nombre: ArmaEspada
+    sprite: {fileID: 407533474, guid: 441da686871912e46b6c1a85432bf9eb, type: 3}
+  - nombre: ArmaPistola
+    sprite: {fileID: 1724439165, guid: b43c4547cae17b246b9746ea081319b1, type: 3}
 --- !u!1 &1494576471619658449
 GameObject:
   m_ObjectHideFlags: 0

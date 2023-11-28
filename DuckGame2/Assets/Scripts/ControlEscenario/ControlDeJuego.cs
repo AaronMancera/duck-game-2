@@ -12,6 +12,7 @@ public class ControlDeJuego : MonoBehaviour
     private int[] arrayEscenas = { 1, 2, 3 };
     private int escenaActual;
     private static ControlDeJuego instancia;
+    private bool reiniciando;
 
     void Awake()
     {
@@ -36,16 +37,23 @@ public class ControlDeJuego : MonoBehaviour
         escenaActual = 1;
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
+        reiniciando = false;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
+        //if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
+        foreach (GameObject gO in jugadores)
         {
-            finDeRonda = true;
+            if (gO.GetComponent<ControlJugador>().vida <= 0 && reiniciando!=true) //esto es solo para probar que vaya el reinicio de escena 
+            {
+                finDeRonda = true; break;
+            }
         }
+
         // Verificar si ha terminado la ronda
         if (finDeRonda)
         {
+            reiniciando = true;
             // Obtener una escena aleatoria diferente a la predeterminada
             escenaActual = ObtenerEscenaAleatoria();
 
@@ -66,13 +74,12 @@ public class ControlDeJuego : MonoBehaviour
 
 
     IEnumerator ReinicioNivel()
-    {        
+    {
         // Resetear la ronda
         finDeRonda = false;
 
         // Parar o camara lenta al juego puede estar guay si agregamos un zoom al ganador y una animacion de celebracion
-        Time.timeScale = 0f;
-
+        //Time.timeScale = 0.2f;
         // Aumentar el número de rondas
         numRonda++;
 
@@ -86,12 +93,12 @@ public class ControlDeJuego : MonoBehaviour
         //    tiempoInicial += Time.unscaledDeltaTime; // Tiempo no afectado por Time.timeScale
         //    yield return null;
         //}
-        
 
-        Debug.Log("antes");
+
+        //Debug.Log("antes");
         // Esperar 5 segundos
-        yield return new WaitForSecondsRealtime(3f);
-        Debug.Log("despues");
+        yield return new WaitForSeconds(5f);
+        //Debug.Log("despues");
         Debug.Log(numRonda);
 
         // Verificar si es la quinta ronda
@@ -101,12 +108,13 @@ public class ControlDeJuego : MonoBehaviour
             // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
         }
         else
-        {            
+        {
             // Restaurar la escala de tiempo para reanudar el juego si ponemos camara lenta
             Time.timeScale = 1f;
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
             //SceneManager.LoadScene(escenaActual);
-            Debug.Log("esc"+escenaActual);        
+            Debug.Log("esc" + escenaActual);
+
 
         }
 

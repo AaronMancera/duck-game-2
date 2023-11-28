@@ -48,11 +48,11 @@ public class ArmaRayo : Objeto
         {
             case 1:
                 pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
-                Debug.Log(controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame());
+                //Debug.Log(controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame());
                 break;
             case 2:
                 pulsarFire1 = controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame();
-                Debug.Log(controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame());
+                //Debug.Log(controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame());
 
                 break;
            
@@ -132,7 +132,7 @@ public class ArmaRayo : Objeto
         for (int i = 0; i < distancia; i++)
         {
             AddPunto();
-            Debug.Log(puntosDelTrail.Count);
+            //Debug.Log(puntosDelTrail.Count);
         }
         numUsos--;
     }
@@ -208,7 +208,7 @@ public class ArmaRayo : Objeto
 
         while (puntosDelTrail.Count > 1 && distanciaLimpieza > 0)
         {
-            Debug.Log("Holaaaaa2");
+            
             float distancia = (puntosDelTrail[1] - puntosDelTrail[0]).magnitude;
             if (distanciaLimpieza > distancia)
             {

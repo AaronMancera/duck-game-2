@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,16 +16,37 @@ public class UIController : MonoBehaviour
     //private int VidaJugador2;
 
 
-    private Image Player1Vida1, Player1Vida2, Player1Vida3;
+    //private Image Player1Vida1, Player1Vida2, Player1Vida3;
 
-    private Image Player1Bala1, Player1Bala2, Player1Bala3, Player1Bala4, Player1Bala5;
+    //private Image Player1Bala1, Player1Bala2, Player1Bala3, Player1Bala4, Player1Bala5;
 
 
 
-    private Image Player2Vida1,Player2Vida2, Player2Vida3;
+    //private Image Player2Vida1,Player2Vida2, Player2Vida3;
 
-    private Image Player2Bala1, Player2Bala2, Player2Bala3, Player2Bala4, Player2Bala5;
+    //private Image Player2Bala1, Player2Bala2, Player2Bala3, Player2Bala4, Player2Bala5;
 
+    private Image SpriteVida, SpriteBala;
+    //[SerializeField] private Dictionary<string, Sprite> dicSpritesArmas;
+    [Serializable]
+    private struct estructuraDicSpritesArmas
+    {
+        public string nombre;
+        public Sprite sprite;
+    }
+    [Header("DiccionarioParaSpritesArmasPrincipales")]
+
+    [SerializeField] private estructuraDicSpritesArmas[] dicSpritesArmas;
+
+    [Serializable]
+    private struct estructuraDicSpritesObjetos
+    {
+        public string nombre;
+        public Sprite sprite;
+    }
+    [Header("DiccionarioParaSpritesArmasPrincipales")]
+
+    [SerializeField] private estructuraDicSpritesArmas[] dicSpritesObjetos;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,10 +91,21 @@ public class UIController : MonoBehaviour
     {
         if(queJugadorEs == 1)
         {
-            for(int i = 0; i < balasJ1.Length; i++)
+            
+            for (int i = 0; i < balasJ1.Length; i++)
             {
                 if (i < numeroDeBalasJ1)
                 {
+                    //balasJ1[i].sprite=dicSpritesArmas[Player1.GetComponent<ControlJugador>().principalEnMano.name];
+                    
+                    foreach(estructuraDicSpritesArmas j in dicSpritesArmas)
+                    {
+                        if(j.nombre== Player1.GetComponent<ControlJugador>().principalEnMano.name)
+                        {
+                            balasJ1[i].sprite=j.sprite; break;
+                        }
+                    }
+
                     balasJ1[i].enabled = true;
                 }
                 else
@@ -87,6 +120,14 @@ public class UIController : MonoBehaviour
             {
                 if (i < numeroDeBalasJ2)
                 {
+                    //balasJ2[i].sprite = dicSpritesArmas[Player2.GetComponent<ControlJugador>().principalEnMano.name];
+                    foreach (estructuraDicSpritesArmas j in dicSpritesArmas)
+                    {
+                        if (j.nombre == Player2.GetComponent<ControlJugador>().principalEnMano.name)
+                        {
+                            balasJ2[i].sprite = j.sprite; break;
+                        }
+                    }
                     balasJ2[i].enabled = true;
                 }
                 else
