@@ -63,17 +63,8 @@ public class ArmaBomba : Objeto
     {
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
-        Instantiate(componenteBomba, puntoDeLanzar.transform.position, bomba.gameObject.transform.rotation);
-        if (gameObject.transform.parent.localScale.x == -1)
-        {
-            //Izq
-            componenteBomba.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else
-        {
-            //Der
-            componenteBomba.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        Instantiate(componenteBomba, puntoDeLanzar.transform.position, /*bomba.gameObject.transform.rotation*/ Quaternion.identity);
+        componenteBomba.transform.localScale = transform.parent.localScale;
 
         numUsos--;
     }

@@ -56,8 +56,14 @@ public class Bomba : MonoBehaviour
     private void Lanzada()
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        rigidbody2D.AddForce(Vector2.one * fuerzaDeEmpuje, ForceMode2D.Impulse);
-        rigidbody2D.AddTorque(fuerzaDeRotacion);
+        //Debug.Log(gameObject.transform.localScale);
+        if (transform.localScale.x < 0)
+        {
+            fuerzaDeEmpuje *= -1;
+        }
+        rigidbody2D.AddForce(Vector2.right * fuerzaDeEmpuje, ForceMode2D.Impulse);
+
+        //rigidbody2D.AddTorque(fuerzaDeRotacion);
     }
 
     /// <summary>
