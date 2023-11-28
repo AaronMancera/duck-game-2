@@ -922,10 +922,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 6498652477279076218, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: m_Name
-      value: Rondas
-      objectReference: {fileID: 0}
     - target: {fileID: 8825285436297698310, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Pivot.x
       value: 0
