@@ -329,7 +329,7 @@ MonoBehaviour:
   - {fileID: 7159883936740605081}
   dicSpritesArmas:
   - nombre: ArmaRayo
-    sprite: {fileID: -222291248, guid: 324f51d4d202ddc49848b64927a6f28f, type: 3}
+    sprite: {fileID: 21300000, guid: 2f0f475f4e87cb74bb3837369b6f5f99, type: 3}
   - nombre: ArmaBomba
     sprite: {fileID: 21300000, guid: bc61b68607831ed4999ddd529a6225da, type: 3}
   - nombre: ArmaEspada

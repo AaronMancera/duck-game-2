@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 324f51d4d202ddc49848b64927a6f28f
+guid: c82215050cd56954fbf6cf741dabd7db
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VaritaRayo2_0
+      name: Pollo_Andar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 18
-        height: 20
+        x: 8
+        y: 8
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,8 +163,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e853d03fd6b2b7499ce4ad8e001aa03
-      internalID: -222291248
+      spriteID: 325d0e81ba16bb940add06ffc653b718
+      internalID: 763472320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pollo_Andar_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 8
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515278cb540b4194c995aac9f7cf0abc
+      internalID: 910559239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pollo_Andar_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 8
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2af5bdaf9bd6e419b2e902771e5939
+      internalID: -904887763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pollo_Andar_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 8
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ade64cc1f2d504469e01485df4ab1f2
+      internalID: -107584397
       vertices: []
       indices: 
       edges: []
@@ -167,7 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      VaritaRayo2_0: -222291248
+      Pollo_Andar_0: 763472320
+      Pollo_Andar_1: 910559239
+      Pollo_Andar_2: -904887763
+      Pollo_Andar_3: -107584397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
