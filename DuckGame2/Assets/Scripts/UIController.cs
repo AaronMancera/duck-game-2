@@ -11,8 +11,8 @@ public class UIController : MonoBehaviour
     public Image[] balasJ1, balasJ2;
 
     public Image[] VidasJ1, VidasJ2;
-    private int VidaJugador1;
-    private int VidaJugador2;
+    //private int VidaJugador1;
+    //private int VidaJugador2;
 
 
     private Image Player1Vida1, Player1Vida2, Player1Vida3;
@@ -28,8 +28,8 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VidaJugador1 = Player1.vida;
-        VidaJugador2 = Player2.vida;
+        //VidaJugador1 = Player1.vida;
+        //VidaJugador2 = Player2.vida;
     }
 
     // Update is called once per frame
@@ -55,14 +55,14 @@ public class UIController : MonoBehaviour
 
 
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ActualizarNumeroBalas(1);
-            ActualizarNumeroBalas(2);
+        //if(Input.GetKeyDown(KeyCode.P))
+        //{
+        ActualizarNumeroBalas(1);
+        ActualizarNumeroBalas(2);
 
-            ActualizarNumeroVidas(1);
-            ActualizarNumeroVidas(2);
-        }
+        ActualizarNumeroVidas(1);
+        ActualizarNumeroVidas(2);
+        //}
     }
 
     public void ActualizarNumeroBalas(int queJugadorEs)
@@ -104,7 +104,7 @@ public class UIController : MonoBehaviour
         {
             for(int i = 0; i < VidasJ1.Length; i++)
             {
-                if (i < VidaJugador1)
+                if (i < Player1.vida)
                 {
                     VidasJ1[i].enabled = true;
                 }
@@ -118,7 +118,7 @@ public class UIController : MonoBehaviour
         {
             for(int i = 0; i < VidasJ2.Length; i++)
             {
-                if (i < VidaJugador2)
+                if (i < Player2.vida)
                 {
                     VidasJ2[i].enabled = true;
                 }

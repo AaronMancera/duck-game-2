@@ -86,7 +86,9 @@ public class ArmaEspada : Objeto
                 {
                     if (collider.GetComponent<ControlJugador>().idPlayer != controlDelJugador.idPlayer)
                     {
-                        Debug.Log("¡Ataque realizado!");
+                        //Debug.Log("¡Ataque realizado!");
+                        collider.GetComponent<ControlJugador>().RecibirDanyo();
+                        collider.GetComponent<Rigidbody2D>().AddTorque(5f, ForceMode2D.Force);
                     }
                     // Manejar la lógica de ataque y posible destrucción aquí
                     // collider.GetComponent<Player>().RecibirGolpe();
