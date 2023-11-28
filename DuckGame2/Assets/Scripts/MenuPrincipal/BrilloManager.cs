@@ -13,23 +13,36 @@ public class BrilloManager : MonoBehaviour
     public PostProcessLayer layer;
 
     AutoExposure exposure;
-
     void Start()
     {
+
+
         brightness.TryGetSettings(out exposure);
-        AdjustBrightness(brightnessSlider.value);
+        if (PlayerPrefs.GetFloat("Brillo") != 0)
+        {
+            Debug.Log("holaaaa");
+
+            brightnessSlider.value = PlayerPrefs.GetFloat("Brillo");
+            exposure.keyValue.value = PlayerPrefs.GetFloat("Brillo");
+
+        }
+        AdjustaBrillo(brightnessSlider.value);
+
+    }
+    private void Update()
+    {
+
     }
 
-    public void AdjustBrightness(float value)
+    public void AdjustaBrillo(float value)
     {
-        if (value != 0)
-        {
-            exposure.keyValue.value = value;
-        }
-        else
-        {
-            exposure.keyValue.value = .05f;
-        }
+
+        exposure.keyValue.value = value;
+        PlayerPrefs.SetFloat("Brillo", value);
+
+        //Debug.Log(value);
+        Debug.Log(PlayerPrefs.GetFloat("Brillo"));
+
     }
 
 }
