@@ -49,5 +49,9 @@ public class Rayo : MonoBehaviour
             collision.gameObject.GetComponent<ControlJugador>().RecibirDanyo();
             //killplayer
         }
+        if (collision.GetComponent<Señuelo>() != null)
+        {
+            collision.GetComponent<Señuelo>().EstadoDañado();
+        }
     }
 }

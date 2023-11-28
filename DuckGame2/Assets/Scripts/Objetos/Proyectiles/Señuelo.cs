@@ -6,7 +6,7 @@ using UnityEngine;
 public class Señuelo : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    private bool dañado;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +20,6 @@ public class Señuelo : MonoBehaviour
     }
     public void EstadoDañado()
     {
-
+        animator.SetTrigger("Romper");
     }
 }

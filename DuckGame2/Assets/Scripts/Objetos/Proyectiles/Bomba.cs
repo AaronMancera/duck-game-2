@@ -40,11 +40,18 @@ public class Bomba : MonoBehaviour
 
             if (rb != null)
             {
-                ControlJugador cj = collider.GetComponent<ControlJugador>();
-                rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
-                if (cj != null)
+                if (collider.GetComponent<ControlJugador>() != null)
                 {
-                    cj.RecibirDanyo();
+                    ControlJugador cj = collider.GetComponent<ControlJugador>();
+                    rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
+                    if (cj != null)
+                    {
+                        cj.RecibirDanyo();
+                    }
+                }
+                if (collider.GetComponent<Señuelo>() != null)
+                {
+                    collider.GetComponent<Señuelo>().EstadoDañado();
                 }
             }
         }

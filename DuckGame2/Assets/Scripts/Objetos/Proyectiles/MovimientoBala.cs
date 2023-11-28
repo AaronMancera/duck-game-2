@@ -41,6 +41,10 @@ public class MovimientoBala : MonoBehaviour
             }
             //killplayer
         }
+        if (collision.GetComponent<Señuelo>() != null)
+        {
+            collision.GetComponent<Señuelo>().EstadoDañado();
+        }
     }
 }
 
