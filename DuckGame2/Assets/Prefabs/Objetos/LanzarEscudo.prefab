@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -153608584, guid: 6c6cf409a45a8834e832f911ddb7ee3d, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
@@ -102,6 +102,5 @@ MonoBehaviour:
   nombre: 
   animator: {fileID: 0}
   controlDelJugador: {fileID: 0}
-  PrefabEscudo: {fileID: 0}
+  SpriteEscudo: {fileID: 0}
   colisionJugador: {fileID: 0}
-  secondsCounter: 1

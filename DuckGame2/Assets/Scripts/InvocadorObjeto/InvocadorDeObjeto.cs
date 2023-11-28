@@ -11,7 +11,7 @@ public class InvocadorDeObjeto : MonoBehaviour
     [SerializeField] private List<GameObject> objetos;
     private bool tengoArma;
     private bool animGiroObjeto;
-    private float segundosEspera = 5f;
+    [SerializeField] private float segundosEspera;
 
     // Start is called before the first frame update
     void Start()

@@ -9,7 +9,7 @@ public class LanzarSeñuelo : Objeto
 
     [Header("Configuración del Señuelo")]
     [SerializeField] private GameObject señueloPrefab;
-    [SerializeField] private float tiempoVidaSeñuelo = 1f;
+    [SerializeField] private float tiempoVidaSeñuelo = 5f;
     [SerializeField] private GameObject player;
 
     [Header("Configuración del Desplazamiento")]
@@ -49,7 +49,7 @@ public class LanzarSeñuelo : Objeto
     void Update()
     {
         UsarSeñuelo();
-        gameObject.SetActive(Municion());
+        //gameObject.SetActive(Municion());
     }
 
     void FixedUpdate()
@@ -145,7 +145,7 @@ public class LanzarSeñuelo : Objeto
         StartCoroutine(EliminarSeñuelo());
 
         //DESACTIVAR EL LANZARSEÑUELO
-        Debug.Log("Se lanzó el señuelo");
+        //Debug.Log("Se lanzó el señuelo");
 
         
     }
@@ -162,7 +162,7 @@ public class LanzarSeñuelo : Objeto
                 // Detener completamente el jugador
                 jugadorRb.velocity = Vector2.zero;
                 detenerDesplazamiento = false;
-                Debug.Log("Jugador detenido en la distancia máxima");
+                //Debug.Log("Jugador detenido en la distancia máxima");
 
                 if (señueloActual != null) // Añadir esta condición
                 {
@@ -180,28 +180,28 @@ public class LanzarSeñuelo : Objeto
 
         // Destruir el señuelo
         Destroy(señueloActual);
-
+        controlJugador.SoltarArma(false);
         // Reiniciar usos si es necesario (opcional)
-        if (usosRestantes == 0)
-        {
-            usosRestantes = numUsos;
-        }
+        //if (usosRestantes == 0)
+        //{
+        //    usosRestantes = numUsos;
+        //}
 
         // Reactivar el objeto principal
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
     }
 
 
-    private bool Municion()
-    {
-        if (usosRestantes <= 0)
-        {
-            //Llamar al jugador y quitarle el arma secundaria
-            controlJugador.SoltarArma(false);
-            return false;
-        }
-        return true;
-    }
+    //private bool Municion()
+    //{
+    //    if (usosRestantes <= 0)
+    //    {
+    //        //Llamar al jugador y quitarle el arma secundaria
+    //        //controlJugador.SoltarArma(false);
+    //        return false;
+    //    }
+    //    return true;
+    //}
 
     #endregion
 }

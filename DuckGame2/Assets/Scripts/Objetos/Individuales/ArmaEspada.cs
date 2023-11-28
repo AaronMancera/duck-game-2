@@ -81,7 +81,7 @@ public class ArmaEspada : Objeto
             Collider2D[] colliders = Physics2D.OverlapBoxAll(detectorColision.transform.position, detectorColision.GetComponent<BoxCollider2D>().size, 1f);//Compruebo que exista un collider en contacto con tag player.
             foreach (Collider2D collider in colliders)
             {
-                Debug.Log(collider.gameObject.tag);
+                //Debug.Log(collider.gameObject.tag);
                 if (collider.CompareTag("Player") && EnRango)
                 {
                     if (collider.GetComponent<ControlJugador>().idPlayer != controlDelJugador.idPlayer)
