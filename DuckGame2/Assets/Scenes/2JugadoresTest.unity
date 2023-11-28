@@ -185,7 +185,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5101643208924720626, guid: 8d670f2f565ada745a6431a6a90b4cdb, type: 3}
   m_PrefabInstance: {fileID: 108341567}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1771226774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16c979181af205a45aac8b4093eb41d3, type: 3}
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5101643208924720626, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
   m_PrefabInstance: {fileID: 476271895}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 648040473}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16c979181af205a45aac8b4093eb41d3, type: 3}
@@ -893,6 +893,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &648040473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 333865150358924716, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+  m_PrefabInstance: {fileID: 476271895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &768902962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,42 +914,6 @@ PrefabInstance:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 108341568}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[0].nombre
-      value: ArmaRayo
-      objectReference: {fileID: 0}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[0].sprite
-      value: 
-      objectReference: {fileID: -222291248, guid: 324f51d4d202ddc49848b64927a6f28f, type: 3}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[1].nombre
-      value: ArmaBomba
-      objectReference: {fileID: 0}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[1].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bc61b68607831ed4999ddd529a6225da, type: 3}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[2].nombre
-      value: ArmaEspada
-      objectReference: {fileID: 0}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[2].sprite
-      value: 
-      objectReference: {fileID: 407533474, guid: 441da686871912e46b6c1a85432bf9eb, type: 3}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[3].nombre
-      value: ArmaPistola
-      objectReference: {fileID: 0}
-    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
-      propertyPath: dicSpritesArmas.Array.data[3].sprite
-      value: 
-      objectReference: {fileID: 1724439165, guid: b43c4547cae17b246b9746ea081319b1, type: 3}
     - target: {fileID: 1348817737553394053, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1315,6 +1284,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+--- !u!1 &1542234397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542234399}
+  - component: {fileID: 1542234398}
+  m_Layer: 0
+  m_Name: ControlDeJuego
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1542234398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542234397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ada7a3384c7c9e4d80730272a56d788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugadores:
+  - {fileID: 648040473}
+  - {fileID: 1771226774}
+  finDeRonda: 0
+  numRonda: 0
+--- !u!4 &1542234399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542234397}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.247986, y: 1.048114, z: 547.6452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1665160770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1372,6 +1390,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+--- !u!1 &1771226774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 333865150358924716, guid: 8d670f2f565ada745a6431a6a90b4cdb, type: 3}
+  m_PrefabInstance: {fileID: 108341567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1788599562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1563,3 +1586,4 @@ SceneRoots:
   - {fileID: 1788599562}
   - {fileID: 274916452}
   - {fileID: 768902962}
+  - {fileID: 1542234399}
