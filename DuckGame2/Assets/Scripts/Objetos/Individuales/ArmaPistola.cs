@@ -10,6 +10,11 @@ public class ArmaPistola : Objeto
     [SerializeField] private Transform puntoDeDisparar;
     private float secondsCounter = 0;
     private bool puedeDispara;
+
+
+    [SerializeField] AudioClip audioDisparar;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,7 +105,7 @@ public class ArmaPistola : Objeto
 
     public void Disparar()
     {
-
+        AudioManager.instanceAudioManager.PlaySFX(audioDisparar);
 
         secondsCounter = 0;
         numUsos = numUsos - 1;

@@ -92,6 +92,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  recibirDanyo: {fileID: 8300000, guid: 693ccc7bec911f944a26d96ae01f9274, type: 3}
+  soltarArmaPrincipal: {fileID: 8300000, guid: c8325ca15cf0e8b40b83ea9573912a19, type: 3}
+  soltarItemSecundario: {fileID: 8300000, guid: 622ddd59feec03741aeda3b7f2d2b353, type: 3}
+  recogerArmaPrincipal: {fileID: 8300000, guid: 04262aabc1438254aabd64bce5e29b40, type: 3}
+  recogerItemSecundario: {fileID: 8300000, guid: 647d0b6f10f58174c923230c648c57a5, type: 3}
+  muerteSFX: {fileID: 8300000, guid: 14d0fa5fdaf2c2e449852db8abeb9a94, type: 3}
+  saltoSFX: {fileID: 8300000, guid: 06d1fbcd9b5054940a424c6508e5f1f0, type: 3}
 --- !u!61 &5333046919056106345
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361,6 +368,10 @@ PrefabInstance:
       value: LanzarCaja
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
+      propertyPath: lanzarCajaSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1617429a62db81946a4c6b07ce741d92, type: 3}
+    - target: {fileID: 8364532973427852727, guid: ddd6ff9688956b546a6ffd663c841c47, type: 3}
       propertyPath: controlDelJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
@@ -432,6 +443,10 @@ PrefabInstance:
       value: ArmaRayo
       objectReference: {fileID: 0}
     - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
+      propertyPath: dispararRayoSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 76b69c5f6b304454cac4e3bcb52b1106, type: 3}
+    - target: {fileID: 8364532973427852727, guid: 373970fcf090db04282cee044b28940e, type: 3}
       propertyPath: controlDelJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
@@ -458,6 +473,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2000952070545877290}
     m_Modifications:
+    - target: {fileID: 503900634970039155, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
+      propertyPath: audioDisparar
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fac22677dc5b9d4fa092359c6978ce5, type: 3}
     - target: {fileID: 503900634970039155, guid: df6882672e699f646b1eb1f473f0c644, type: 3}
       propertyPath: controlDelJugador
       value: 
@@ -581,6 +600,10 @@ PrefabInstance:
       value: ArmaEspada
       objectReference: {fileID: 0}
     - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
+      propertyPath: ataqueEspada
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d91d2474ead0924da962e45803bc652, type: 3}
+    - target: {fileID: 5864632859514421125, guid: 1cc782a827b24e549a90077ce14b39ae, type: 3}
       propertyPath: controlDelJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
@@ -655,6 +678,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.072
       objectReference: {fileID: 0}
+    - target: {fileID: 8364532973427852727, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
+      propertyPath: lanzarBomba
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c5cec4d2fc7c814eae05532c3f67072, type: 3}
     - target: {fileID: 8364532973427852727, guid: 46bb1551885477f4085ba7c966619f8a, type: 3}
       propertyPath: controlDelJugador
       value: 
@@ -734,6 +761,10 @@ PrefabInstance:
       propertyPath: controlJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
+    - target: {fileID: 8364532973427852727, guid: 94c8d14df5807144e8616ecdedb24db2, type: 3}
+      propertyPath: lanzarSenueloSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d551ddac40d5d3a45a923f9a02ffa552, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -805,6 +836,10 @@ PrefabInstance:
       propertyPath: controlJugador
       value: 
       objectReference: {fileID: 5101643208924720626}
+    - target: {fileID: 8364532973427852727, guid: a1158ace95f775a469ca6aaf7416bcf5, type: 3}
+      propertyPath: lanzarPolloSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1525c5e73c39f8e44ab9672d86e7b721, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690de74060b36fc4786aa1da1529f3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cajaChocarConSuelo: {fileID: 8300000, guid: 875ea7cacfd087e49bc8050bf30ddb0e, type: 3}
+  cajaChocarConJugador: {fileID: 8300000, guid: 137048791a86db34f8bbc7e29e23112b, type: 3}
 --- !u!50 &4621531802648704017
 Rigidbody2D:
   serializedVersion: 4
