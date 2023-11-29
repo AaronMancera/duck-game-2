@@ -22,6 +22,9 @@ public class ArmaEspada : Objeto
     [Header("Control")]
     [SerializeField] ControlJugador controlDelJugador;
 
+
+    [SerializeField] AudioClip ataqueEspada;
+
     #region START/UPDATE
     private void Start()
     {
@@ -95,6 +98,9 @@ public class ArmaEspada : Objeto
                 }
             }
             animEspada.SetBool("PuedoAtacar", true);//Esto es para el funcionamiento de la animacion.
+
+            AudioManager.instanceAudioManager.PlaySFX(ataqueEspada);
+
             StartCoroutine(ControlarCadencia());
         }
     }

@@ -8,6 +8,8 @@ public class LanzarPollo : Objeto
 {
     [SerializeField] ControlJugador controlJugador;
     public GameObject PolloPrefab;
+
+    [SerializeField] AudioClip lanzarPolloSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,10 @@ public class LanzarPollo : Objeto
         }
         GameObject pollo = Instantiate(PolloPrefab, lugarDeInstanciamiento, Quaternion.identity);
         pollo.GetComponent<MovimientoPollo>().mirandoDerecha = !controlJugador.mirandoALaDerecha;
+
+        AudioManager.instanceAudioManager.PlaySFX(lanzarPolloSFX);
+
+
         numUsos = numUsos -1; 
     }
 

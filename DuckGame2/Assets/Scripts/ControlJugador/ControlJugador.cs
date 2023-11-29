@@ -82,7 +82,22 @@ public class ControlJugador : MonoBehaviour
     private bool isRalentizando = false;
     private bool armadura;
 
+
     public bool sePuedeMover = false;
+
+    [Header("Sonidos")]
+    [SerializeField] AudioClip recibirDanyo;
+
+    [SerializeField] AudioClip soltarArmaPrincipal;
+    [SerializeField] AudioClip soltarItemSecundario;
+    
+    [SerializeField] AudioClip recogerArmaPrincipal;
+    [SerializeField] AudioClip recogerItemSecundario;
+
+    [SerializeField] AudioClip muerteSFX;
+
+    [SerializeField] AudioClip saltoSFX;
+
 
 
     #region EVENTS SUBS
@@ -196,11 +211,6 @@ public class ControlJugador : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         }
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //    RecibirDanyo();
-        //}
-
 
     }
 
@@ -268,7 +278,15 @@ public class ControlJugador : MonoBehaviour
             //Animator
             animator.SetTrigger("Danyo");
 
-            
+            AudioManager.instanceAudioManager.PlaySFX(recibirDanyo);
+
+            if (vida <= 0)
+            {
+                //Te mueres
+                animator.SetTrigger("Muerte");
+                AudioManager.instanceAudioManager.PlaySFX(muerteSFX);
+            }
+
         }
     }
 
@@ -330,6 +348,9 @@ public class ControlJugador : MonoBehaviour
         //Animator
         animator.SetTrigger("Saltar");
 
+        //Sonido
+        AudioManager.instanceAudioManager.PlaySFX(saltoSFX);
+
     }
 
     void Fall() // mejoras en la caida
@@ -390,6 +411,8 @@ public class ControlJugador : MonoBehaviour
                     }
                 }
 
+                AudioManager.instanceAudioManager.PlaySFX(recogerArmaPrincipal);
+
                 principalEnMano.SetActive(true);
                 principalEnMano.GetComponent<Objeto>().Activar();
 
@@ -407,6 +430,8 @@ public class ControlJugador : MonoBehaviour
                         secundariaEnMano = item;
                     }
                 }
+
+                AudioManager.instanceAudioManager.PlaySFX(recogerItemSecundario);
 
                 secundariaEnMano.SetActive(true);
                 secundariaEnMano.GetComponent<Objeto>().Activar();
@@ -427,11 +452,15 @@ public class ControlJugador : MonoBehaviour
 
         if (siEsPrincipal)
         {
+            AudioManager.instanceAudioManager.PlaySFX(soltarArmaPrincipal);
+
             principalEnMano.SetActive(false);
             principalEnMano = null;
         }
         else
         {
+            AudioManager.instanceAudioManager.PlaySFX(soltarItemSecundario);
+
             secundariaEnMano.SetActive(false);
             secundariaEnMano = null;
         }
