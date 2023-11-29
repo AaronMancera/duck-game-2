@@ -68,7 +68,7 @@ public class InvocadorDeObjeto : MonoBehaviour
             //string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
 
             //Debug.Log($"El objeto generado es:  {nombreObjeto}");
-            Vector3 posicionDeInicio = transform.position+ new Vector3(-0.20f, 0.3f, 0);
+            Vector3 posicionDeInicio = transform.position+ new Vector3(0, 0.3f, 0);
             objetoInvocado = Instantiate(objetos[objetoAleatorio], /*objetoInvocado.transform.position*/posicionDeInicio, Quaternion.identity, parent);
             
             tengoArma = true;
