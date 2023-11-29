@@ -87,7 +87,7 @@ MonoBehaviour:
   - {fileID: 7495162083149156680}
   principalEnMano: {fileID: 0}
   secundariaEnMano: {fileID: 0}
-  groundRaycastOffset: {x: 0.09, y: 0, z: 0}
+  groundRaycastOffset: {x: 0.26, y: 0, z: 0}
   groundRaycastLength: 0.63
   groundLayer:
     serializedVersion: 2
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.025731325}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.551231, y: 0.94853735}
   m_EdgeRadius: 0
 --- !u!50 &8021035069599367811
 Rigidbody2D:

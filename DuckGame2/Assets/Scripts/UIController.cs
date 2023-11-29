@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class UIController : MonoBehaviour
     public Image[] balasJ1, balasJ2;
 
     public Image[] VidasJ1, VidasJ2;
+
     //private int VidaJugador1;
     //private int VidaJugador2;
 
@@ -48,6 +50,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private estructuraDicSpritesArmas[] dicSpritesObjetos;
     // Start is called before the first frame update
+    private TMP_Text textoRonda;
     void Start()
     {
         //VidaJugador1 = Player1.vida;
@@ -87,6 +90,10 @@ public class UIController : MonoBehaviour
         //}
     }
 
+    public void setNumRondas(int rondas)
+    {
+        textoRonda.text=rondas.ToString();
+    }
     public void ActualizarNumeroBalas(int queJugadorEs)
     {
         if(queJugadorEs == 1)
