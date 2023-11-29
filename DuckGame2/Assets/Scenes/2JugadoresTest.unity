@@ -1330,8 +1330,6 @@ MonoBehaviour:
   finDeRonda: 0
   numRonda: 1
   rondas: {fileID: 1178480067}
-  telon: {fileID: 0}
-  finDePartida: 0
 --- !u!4 &1542234399
 Transform:
   m_ObjectHideFlags: 0

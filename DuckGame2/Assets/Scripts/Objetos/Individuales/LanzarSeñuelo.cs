@@ -30,7 +30,7 @@ public class LanzarSeñuelo : Objeto
     private Vector2 posicionInicial;
     private bool detenerDesplazamiento = false;
     private GameObject señueloActual;
-    private int usosRestantes;
+    //private int usosRestantes;
     private float ultimaDireccion = 1f;
 
     #endregion
@@ -43,12 +43,12 @@ public class LanzarSeñuelo : Objeto
         jugadorRb = player.GetComponent<Rigidbody2D>();
        
         // Inicializar el contador de usos
-        usosRestantes = numUsos;
+        //usosRestantes = numUsos;
     }
 
     void Update()
     {
-        UsarSeñuelo();
+        OrientacionSeñuelo();
         //gameObject.SetActive(Municion());
     }
 
@@ -89,7 +89,7 @@ public class LanzarSeñuelo : Objeto
 
     private void GetDispararInput(InputAction.CallbackContext context)
     {
-        if (context.performed && usosRestantes > 0)
+        if (context.performed && numUsos > 0)
         {
             Lanzar();
         }
@@ -98,17 +98,20 @@ public class LanzarSeñuelo : Objeto
 
     #region Funciones Personalizadas
 
-    void UsarSeñuelo()
+    void OrientacionSeñuelo()
     {
         // Obtener la dirección del movimiento horizontal del jugador
-        float direccionHorizontal = Input.GetAxis("Horizontal");
+        //float direccionHorizontal = Input.GetAxis("Horizontal");
+        float direccionHorizontal=gameObject.transform.parent.localScale.x;
 
         // Actualizar la dirección del jugador solo si está en movimiento
-        if (direccionHorizontal != 0)
-        {
-            ultimaDireccion = Mathf.Sign(direccionHorizontal);
-            mirandoALaIzquierda = ultimaDireccion < 0;
-        }
+        //if (direccionHorizontal != 0)
+        //{
+        //    ultimaDireccion = Mathf.Sign(direccionHorizontal);
+        //    mirandoALaIzquierda = ultimaDireccion < 0;
+        //}
+        ultimaDireccion = Mathf.Sign(direccionHorizontal);
+        mirandoALaIzquierda = ultimaDireccion < 0;
 
         // Lanzar el señuelo cuando se presiona la tecla y hay usos disponibles
         /*if (Input.GetKeyDown(KeyCode.Backspace) && usosRestantes > 0)
@@ -139,7 +142,7 @@ public class LanzarSeñuelo : Objeto
         jugadorRb.AddForce(new Vector2(direccionFuerza * fuerzaDesplazamiento, 0));
 
         // Reducir el contador de usos
-        usosRestantes--;
+        numUsos--;
 
         // Desactivar el objeto señuelo después de un tiempo
         StartCoroutine(EliminarSeñuelo());

@@ -1,25 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ControlDeJuego : MonoBehaviour
 {
-    public List<GameObject> jugadores;
+    //public List<GameObject> jugadores;
     public bool finDeRonda;
     public int numRonda;
     private int[] arrayEscenas = { 1, 2, 3 };
     private int escenaActual;
     private static ControlDeJuego instancia;
-
-    private bool reiniciando;
-    [SerializeField] private TMP_Text rondas;
-
     public MovimientoTelon telon;
     public bool finDePartida;
-
 
     void Awake()
     {
@@ -44,25 +38,17 @@ public class ControlDeJuego : MonoBehaviour
         escenaActual = 1;
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
-
-        reiniciando = false;
-        rondas.text = numRonda+"";
+        finDePartida = false;
     }
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
-        foreach (GameObject gO in jugadores)
+        if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
         {
-            if (gO.GetComponent<ControlJugador>().vida <= 0 && reiniciando!=true) //esto es solo para probar que vaya el reinicio de escena 
-            {
-                finDeRonda = true; break;
-            }
+            finDeRonda = true;
         }
-
         // Verificar si ha terminado la ronda
         if (finDeRonda)
         {
-            reiniciando = true;
             // Obtener una escena aleatoria diferente a la predeterminada
             escenaActual = ObtenerEscenaAleatoria();
 
@@ -89,7 +75,8 @@ public class ControlDeJuego : MonoBehaviour
         finDeRonda = false;
 
         // Parar o camara lenta al juego puede estar guay si agregamos un zoom al ganador y una animacion de celebracion
-        //Time.timeScale = 0.2f;
+        Time.timeScale = 0f;
+
         // Aumentar el número de rondas
         numRonda++;
 
@@ -103,24 +90,14 @@ public class ControlDeJuego : MonoBehaviour
         //    tiempoInicial += Time.unscaledDeltaTime; // Tiempo no afectado por Time.timeScale
         //    yield return null;
         //}
-
-
-
-        //Debug.Log("antes");
-        // Esperar 5 segundos
-        yield return new WaitForSeconds(5f); //Aaron: Esto lo he modificado y por mi parte, la tuya es el while de abajo del telon
-        //Debug.Log("despues");
-        Debug.Log(numRonda);
-
         while (telon.telonAbierto)
         {
-        //    Debug.Log("while");
+            //    Debug.Log("while");
             //GameObject jugadorganador = jugadores[0]; //Seleccionas el ganador
             //Aqui se podría agregar el codigo para que haga la celebracion
             telon.CerrarTelon();
             yield return null;
         }
-
 
 
         //Debug.Log("antes");
@@ -136,12 +113,9 @@ public class ControlDeJuego : MonoBehaviour
             // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
         }
         else
-
         {
-            // Restaurar la escala de tiempo para reanudar el juego si ponemos camara lenta
-            Time.timeScale = 1f;
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
-            //SceneManager.LoadScene(escenaActual);
+            SceneManager.LoadScene(0);
             Debug.Log("esc" + escenaActual);
         }
 
