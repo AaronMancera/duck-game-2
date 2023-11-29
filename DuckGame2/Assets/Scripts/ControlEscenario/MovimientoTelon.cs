@@ -8,8 +8,8 @@ public class MovimientoTelon : MonoBehaviour
     public Transform telonIzq;
     public Transform telonDcha;
     private float velocidad = 2f;
-    private float limiteDcha = 10.5f;
-    private float limiteIzq = -10.5f;
+    [SerializeField] private float limiteDcha = 14f;
+    [SerializeField] private float limiteIzq = -14f;
     public ControlDeJuego controlDeJuego;
     public bool telonAbierto;
     private Vector3 PosicionInicialTelonIzq;
