@@ -8,9 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 978518437406631827, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: textoRonda
+      value: 
+      objectReference: {fileID: 3905940506962678021}
     - target: {fileID: 1348817737553394053, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Name
       value: UI Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512313873837612135, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8825285436297698310, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
       propertyPath: m_Pivot.x
@@ -97,3 +105,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+--- !u!114 &3905940506962678021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3344913960136950211, guid: f78a3e4910d840746a779d42c01d8a10, type: 3}
+  m_PrefabInstance: {fileID: 1756181426931536070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
