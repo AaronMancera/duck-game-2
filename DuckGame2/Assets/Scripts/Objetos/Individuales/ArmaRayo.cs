@@ -130,6 +130,7 @@ public class ArmaRayo : Objeto
     //}
     private IEnumerator DispararRayoInstantaneo(int distancia)
     {
+        float orientacion = transform.parent.localScale.x;
         yield return new WaitForSeconds(tiempoDeCargaMaximo);
 
         AudioManager.instanceAudioManager.PlaySFX(dispararRayoSFX);
@@ -137,7 +138,7 @@ public class ArmaRayo : Objeto
         CrearTrailActual();
         for (int i = 0; i < distancia; i++)
         {
-            AddPunto();
+            AddPunto(orientacion);
             //Debug.Log(puntosDelTrail.Count);
         }
         numUsos--;
@@ -156,24 +157,30 @@ public class ArmaRayo : Objeto
     /// <summary>
     /// Se llamara para crear un nuevo punto para la linea de disparo
     /// </summary>
-    private void AddPunto()
+    private void AddPunto(float orientacion)
     {
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
         int aux;
         #region Para rotar la direccion
         if (transform.parent.transform.localScale.x != 1)
         {
+            //Der
             aux = 1;
             punto.x += 3f;
+            puntosDelTrail.Add(new Vector3(punto.x + aux, punto.y, 0));
+
         }
         else
         {
+            //Izq
             aux = -1;
             punto.x += -4f;
+            puntosDelTrail.Add(new Vector3(punto.x - aux, punto.y, 0));
+
         }
         #endregion
         //Debug.Log(punto.ToString());
-        puntosDelTrail.Add(new Vector3(punto.x * aux, punto.y, 0));
+        //puntosDelTrail.Add(new Vector3(punto.x * aux, punto.y, 0));
     }
     /// <summary>
     /// Se llamara para ir uniendo los puntos hasta llegar al final hasta que se no haya sufiencentes puntos o no exista el el rastro actual
