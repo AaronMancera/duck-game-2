@@ -183,21 +183,13 @@ public class ControlJugador : MonoBehaviour
             mirandoALaDerecha = false;
         }
 
-        if (vida <= 0)
+
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            //Te mueres
-            animator.SetTrigger("Muerte");
-            //TODO: (Aarón) El hitstop falla y para el juego completamente cuando desactiv el rigibody del jugador para que no caiga hacia el infinito. No se com va el hitStop, primer aviso
-            //rb.Sleep(); 
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
+            RecibirDanyo();
         }
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //    RecibirDanyo();
-        //}
 
-
+       
     }
 
     
@@ -205,29 +197,26 @@ public class ControlJugador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (vida > 0)
+        GetMoveInput();
+
+        CheckCollisions();
+        MoveCharacter();
+
+        SueloControl();
+
+        /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
         {
-            GetMoveInput();
-
-            CheckCollisions();
-            MoveCharacter();
-
-            SueloControl();
-
-            /*if (jumpBufferCounter > 0f && (coyoteTimeCounter > 0f || extraJumpsValue > 0))
-            {
-                canJump = true;
-            }
-            else
-            {
-                canJump = false;
-            }*/
-
-
-            //Animator
-            animator.SetBool("EstaEnElSuelo", isGrounded);
-            animator.SetBool("EstaCayendo", estaCayendo);
+            canJump = true;
         }
+        else
+        {
+            canJump = false;
+        }*/
+
+
+        //Animator
+        animator.SetBool("EstaEnElSuelo", isGrounded);
+        animator.SetBool("EstaCayendo", estaCayendo);
     }
 
     public void EfectoNegativo(string queEfecto)
@@ -264,7 +253,11 @@ public class ControlJugador : MonoBehaviour
             //Animator
             animator.SetTrigger("Danyo");
 
-            
+            if (vida <= 0)
+            {
+                //Te mueres
+
+            }
         }
     }
 

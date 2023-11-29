@@ -5,17 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuBobby.unity
-    guid: 81a4af8da2ca9f54bbf18f7dd31e2b64
-  - enabled: 1
+    guid: 9e1941730e64d9c41bef0b5f029d2ff4
+  - enabled: 0
     path: Assets/Scenes/2JugadoresTest.unity
     guid: fb41672f2b587e44f90819d17b1f15da
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ESCENAS JUEGO/Nivel_01.unity
     guid: 487aa89942e867b4fa6c26c8385db1aa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pollo.unity
     guid: 5a047c1db3166e543b3a7f6e50599a37
+  - enabled: 1
+    path: Assets/Scenes/Mathias.unity
+    guid: b717c202725bbb549963226f732a4bab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 59235ffef9090e34aa083f1bbc304183, type: 2}
