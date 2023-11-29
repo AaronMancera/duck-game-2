@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &748336359562264430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5814388923385287064}
+  m_Layer: 0
+  m_Name: PuntoDeDisparar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5814388923385287064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748336359562264430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.418, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4351326598585841100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7260469618542834095
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,13 +42,14 @@ GameObject:
   - component: {fileID: 4351326598585841100}
   - component: {fileID: 4912224642630968554}
   - component: {fileID: 503900634970039155}
+  - component: {fileID: 5830085074982771825}
   m_Layer: 0
   m_Name: ArmaPistola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4351326598585841100
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +62,8 @@ Transform:
   m_LocalPosition: {x: 0.92, y: 0.06, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5814388923385287064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4912224642630968554
@@ -73,13 +106,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b497adc31c873f940886d5273811c3cf, type: 3}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: -1980436390, guid: b497adc31c873f940886d5273811c3cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.625, y: 0.40625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -97,9 +130,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364a19f68758b0841ac4930d9dba13ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsosMaximo: 7
+  numUsosMaximo: 5
   numUsos: 0
   nombre: 
-  animator: {fileID: 0}
+  animator: {fileID: 5830085074982771825}
   controlDelJugador: {fileID: 0}
-  BalaPrefab: {fileID: 0}
+  BalaPrefab: {fileID: 5729311482044328588, guid: 41640a12786cb31449c30f71d0d61375, type: 3}
+  puntoDeDisparar: {fileID: 5814388923385287064}
+--- !u!95 &5830085074982771825
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260469618542834095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 100a2d97c7799944d8ef7bd5fe531f05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

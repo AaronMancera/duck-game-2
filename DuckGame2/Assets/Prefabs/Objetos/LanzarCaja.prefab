@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4351326598585841100
 Transform:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c4a5e5c39b2957d47984073581d65ed6, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03b557358de0042809369b72d799fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numUsosMaximo: 0
+  numUsosMaximo: 1
   numUsos: 0
   nombre: 
   animator: {fileID: 0}
   controlDelJugador: {fileID: 0}
-  caja: {fileID: 7260469618542834095, guid: 7fd51eeeecea62b4eba22a33df36a1a8, type: 3}
-  puntoDeLanzar: {fileID: 0}
+  cajaPrefab: {fileID: 7260469618542834095, guid: 7fd51eeeecea62b4eba22a33df36a1a8, type: 3}
+  fuerzaLanzamiento: 5
+  anguloInclinacion: 30

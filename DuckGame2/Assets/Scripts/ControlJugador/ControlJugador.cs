@@ -19,7 +19,7 @@ public class ControlJugador : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    [SerializeField] private int vida = 1;
+    public int vida = 3;
 
     #region Movimiento
     [Header("Movimiento")]
@@ -78,8 +78,9 @@ public class ControlJugador : MonoBehaviour
     [Header("INVENTARIO")]
     public Dictionary<String, GameObject> inventario = new Dictionary<String, GameObject>();
     //public Dictionary<String, String> inventario = new Dictionary<string, string>();
-    
 
+    private bool isRalentizando = false;
+    private bool armadura;
 
 
     #region EVENTS SUBS
@@ -141,6 +142,9 @@ public class ControlJugador : MonoBehaviour
     {
         playerControls = new PlayerControls();
         playerControls.Enable();
+        principalEnMano = null;
+        secundariaEnMano = null;
+        armadura = false;
     }
     private void Start()
     {
@@ -179,9 +183,16 @@ public class ControlJugador : MonoBehaviour
             mirandoALaDerecha = false;
         }
 
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            RecibirDanyo();
+        }
+
+       
     }
 
-
+    
 
 
     private void FixedUpdate()
@@ -212,21 +223,41 @@ public class ControlJugador : MonoBehaviour
     {
         switch (queEfecto)
         {
-            default:
-
             case "Ralentizar":
+                Ralentizar(3);
+                Console.WriteLine("Efecto de ralentización aplicado");
+                break;
 
+            case "SoltarArmas":
+                // Implementa la lógica para soltar armas aquí
+                FuncionCaja();
+                Console.WriteLine("Armas soltadas");
                 break;
 
         }
     }
-    public void Morir()
+    public void setAmadura(bool armadura)
     {
-        vida--;
-        if (vida <= 0)
+        this.armadura = armadura;
+    }
+    public bool getAmadura()
+    {
+        return armadura;
+    }
+    public void RecibirDanyo()
+    {
+        if (!armadura)
         {
-            //Te mueres
+            vida--;
 
+            //Animator
+            animator.SetTrigger("Danyo");
+
+            if (vida <= 0)
+            {
+                //Te mueres
+
+            }
         }
     }
 
@@ -262,7 +293,7 @@ public class ControlJugador : MonoBehaviour
 
         if (Mathf.Abs(horizontalInput) < 0.01f && isGrounded) // si paramos
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.fixedDeltaTime * 10f);
-        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de dirección
+        else if (Mathf.Sign(horizontalInput) != Mathf.Sign(velocidadHorizontal) && isGrounded) // si cambiamos de direcciï¿½n
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.fixedDeltaTime * 10f);
         else if (!isGrounded) // si estoy en el aire
             velocidadHorizontal *= Mathf.Pow(1f - horizontalDampingWhenInAir, Time.fixedDeltaTime * 10f);
@@ -293,12 +324,12 @@ public class ControlJugador : MonoBehaviour
     void Fall() // mejoras en la caida
     {
 
-        if (rb.velocity.y < 0) // Si estamos cayendo del salto, añadimos multiplicador de gravedad
+        if (rb.velocity.y < 0) // Si estamos cayendo del salto, aï¿½adimos multiplicador de gravedad
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier) * Time.fixedDeltaTime;
             estaCayendo = true;
         }
-        else if (rb.velocity.y > 0 && playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aún en subida del salto y ya hemos dejado de pulsar el botón, añadimos multiplicador pequeño
+        else if (rb.velocity.y > 0 && playerControls.Player.Saltar.phase == InputActionPhase.Canceled) // si estamos aï¿½n en subida del salto y ya hemos dejado de pulsar el botï¿½n, aï¿½adimos multiplicador pequeï¿½o
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpFallMultiplier / 2) * Time.fixedDeltaTime;
 
@@ -331,7 +362,7 @@ public class ControlJugador : MonoBehaviour
     #region INVENTARIO
     public void RecogerArma(string queArma, int quePuesto) //si quePuesto es 0 es la principal, si es 1 es la secundaria
     {
-        //Añades el arma al diccionario
+        //Aï¿½ades el arma al diccionario
         //inventario.Add(queArma, );
 
         //Activas el arma que toca
@@ -395,6 +426,7 @@ public class ControlJugador : MonoBehaviour
         }
 
     }
+
     #endregion
 
     #region COLLISIONS
@@ -448,4 +480,48 @@ public class ControlJugador : MonoBehaviour
     }
     #endregion
 
+    public void FuncionCaja()
+    {
+        // Desactiva el arma principal y establece la referencia a null
+        if (principalEnMano != null)
+        {
+            principalEnMano.SetActive(false);
+            inventario.Remove(principalEnMano.name);
+            principalEnMano = null;
+        }
+
+        // Desactiva el arma secundaria y establece la referencia a null
+        if (secundariaEnMano != null)
+        {
+            secundariaEnMano.SetActive(false);
+            inventario.Remove(secundariaEnMano.name);
+            secundariaEnMano = null;
+        }
+    }
+
+    public void Ralentizar(float duracionRalentizacion)
+    {
+        if (!isRalentizando)
+        {
+            StartCoroutine(RalentizarCoroutine(duracionRalentizacion));
+        }
+    }
+    private IEnumerator RalentizarCoroutine(float duracionRalentizacion)
+    {
+        isRalentizando = true;
+
+        // Guarda el valor original de playerSpeed
+        float velocidadOriginal = playerSpeed;
+
+        // Establece la velocidad del jugador a la mitad
+        playerSpeed /= 2;
+
+        // Espera durante la duración de la ralentización
+        yield return new WaitForSeconds(duracionRalentizacion);
+
+        // Restaura la velocidad original
+        playerSpeed = velocidadOriginal;
+
+        isRalentizando = false;
+    }
 }

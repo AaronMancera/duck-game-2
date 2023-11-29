@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1266323263515074519}
   m_Layer: 0
   m_Name: InvocadorDeObjeto
-  m_TagString: Untagged
+  m_TagString: Invocador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 7260469618542834095, guid: 6a79694d10169af46a5d7ff7c2c37bd0, type: 3}
   - {fileID: 7260469618542834095, guid: f551617069e65954ab1c01c03255cd80, type: 3}
   - {fileID: 5921736279431767288, guid: d5e59d7dca3cee8448780535ffc1dd2e, type: 3}
+  segundosEspera: 15
 --- !u!61 &1266323263515074519
 BoxCollider2D:
   m_ObjectHideFlags: 0

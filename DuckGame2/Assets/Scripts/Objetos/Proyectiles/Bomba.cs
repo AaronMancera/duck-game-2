@@ -27,8 +27,34 @@ public class Bomba : MonoBehaviour
     /// </summary>
     private void Explotar()
     {
+        float radio = 4f;
+
         Instantiate(particulasBomba, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radio);
+        foreach (Collider2D collider in colliders)
+        {
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            float fuerza = 4f;
+
+            if (rb != null)
+            {
+                if (collider.GetComponent<ControlJugador>() != null)
+                {
+                    ControlJugador cj = collider.GetComponent<ControlJugador>();
+                    rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
+                    if (cj != null)
+                    {
+                        cj.RecibirDanyo();
+                    }
+                }
+                if (collider.GetComponent<Señuelo>() != null)
+                {
+                    collider.GetComponent<Señuelo>().EstadoDañado();
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -37,8 +63,14 @@ public class Bomba : MonoBehaviour
     private void Lanzada()
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        rigidbody2D.AddForce(Vector2.one * fuerzaDeEmpuje, ForceMode2D.Impulse);
-        rigidbody2D.AddTorque(fuerzaDeRotacion);
+        //Debug.Log(gameObject.transform.localScale);
+        if (transform.localScale.x < 0)
+        {
+            fuerzaDeEmpuje *= -1;
+        }
+        rigidbody2D.AddForce(Vector2.right * fuerzaDeEmpuje, ForceMode2D.Impulse);
+
+        //rigidbody2D.AddTorque(fuerzaDeRotacion);
     }
 
     /// <summary>
@@ -47,6 +79,7 @@ public class Bomba : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
     }
 
     /// <summary>

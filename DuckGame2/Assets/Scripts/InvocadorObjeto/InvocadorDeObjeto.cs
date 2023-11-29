@@ -11,7 +11,8 @@ public class InvocadorDeObjeto : MonoBehaviour
     [SerializeField] private List<GameObject> objetos;
     private bool tengoArma;
     private bool animGiroObjeto;
-
+    [SerializeField] private float segundosEspera;
+    private bool regenrando;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +20,23 @@ public class InvocadorDeObjeto : MonoBehaviour
         tengoArma = false;
         parent = this.gameObject.GetComponent<Transform>();
         InvocarObjeto();
-
+        regenrando = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         //PARA QUE GIRE SOBRE SU PROPIO EJE
-        if (objetoInvocado != null)
+        //if (objetoInvocado != null && !regenrando)
+        if (tengoArma && !regenrando)
+            
         {
             float segundosGiro = 100f;
             objetoInvocado.transform.Rotate(new Vector3(0, segundosGiro, 0) * Time.deltaTime);
+        }
+        else
+        {
+            StartCoroutine(RutinaGenerarObjetos());
         }
 
     }
@@ -54,18 +61,18 @@ public class InvocadorDeObjeto : MonoBehaviour
 
     private void InvocarObjeto()
     {
+        if (!tengoArma)
+        {
+            int rangoObjetos = Enum.GetNames(typeof(EnumObjetos)).Length;   //NUMERO DE OBJETOS DISPONIBLES
+            int objetoAleatorio = UnityEngine.Random.Range(0, rangoObjetos);    //GENERAR OBJETO ALEATORIO
+            //string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
 
-        int rangoObjetos = Enum.GetNames(typeof(EnumObjetos)).Length;   //NUMERO DE OBJETOS DISPONIBLES
-        int objetoAleatorio = UnityEngine.Random.Range(0, rangoObjetos);    //GENERAR OBJETO ALEATORIO
-        string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
-
-        //Debug.Log($"El objeto generado es:  {nombreObjeto}");
-
-        objetoInvocado = Instantiate(objetos[objetoAleatorio], objetoInvocado.transform.position, Quaternion.identity, parent);
-
-        tengoArma = true;
-
-
+            //Debug.Log($"El objeto generado es:  {nombreObjeto}");
+            Vector3 posicionDeInicio = transform.position+ new Vector3(-0.20f, 0.3f, 0);
+            objetoInvocado = Instantiate(objetos[objetoAleatorio], /*objetoInvocado.transform.position*/posicionDeInicio, Quaternion.identity, parent);
+            
+            tengoArma = true;
+        }
     }
 
     private void OtorgarArma(ControlJugador jugador)
@@ -76,21 +83,30 @@ public class InvocadorDeObjeto : MonoBehaviour
         if (objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().principalEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 0);
-
             tengoArma = false;
-
             Destroy(objetoInvocado);
         }
         else if (!objetoInvocado.GetComponent<Objeto>().getNombre().Contains("Arma") && jugador.gameObject.GetComponent<ControlJugador>().secundariaEnMano == null)
         {
             jugador.RecogerArma(objetoInvocado.GetComponent<Objeto>().getNombre(), 1);
-
             tengoArma = false;
-
             Destroy(objetoInvocado);
         }
+
+        
+        
+        //objetoInvocado.SetActive(false);
     }
 
+    #endregion
+    #region RUTINA
+    private IEnumerator RutinaGenerarObjetos()
+    {
+        regenrando = true;
+       yield return new WaitForSeconds(segundosEspera);
+        InvocarObjeto();
+        regenrando = false;
+    }
     #endregion
 
 }

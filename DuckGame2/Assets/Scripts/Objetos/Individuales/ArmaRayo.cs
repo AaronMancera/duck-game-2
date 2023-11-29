@@ -9,6 +9,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ArmaRayo : Objeto
 {
+    [Header("Control")]
     [SerializeField] ControlJugador controlDelJugador;
 
     [Header("Prefab con line renderer")]
@@ -22,6 +23,7 @@ public class ArmaRayo : Objeto
     [Header("Tiempo de carga")]
     [SerializeField] private float tiempoDeCargaMaximo;
     [SerializeField] private int distanciaPuntosRayo;
+
 
 
     #region StartUpdate
@@ -40,10 +42,26 @@ public class ArmaRayo : Objeto
     {
         //NOTE: Refactorizacion para el InputManager
         //pulsarFire1 = Input.GetButtonDown("Fire1");
-        pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
+        //pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame(); //GetButtonDown
+        //Debug.Log(controlDelJugador.idPlayer);
+        switch (controlDelJugador.idPlayer)
+        {
+            case 1:
+                pulsarFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame();
+                //Debug.Log(controlDelJugador.playerControls.Player.DispararPrincipal.WasPressedThisFrame());
+                break;
+            case 2:
+                pulsarFire1 = controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame();
+                //Debug.Log(controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame());
+
+                break;
+           
+               
+
+        }
         ////mantenerFire1 = Input.GetButton("Fire1");
         //mantenerFire1 = controlDelJugador.playerControls.Player.DispararPrincipal.IsPressed(); //GetButton
-        if (pulsarFire1 && numUsos==1)
+        if (pulsarFire1 && numUsos == 1)
         {
             //Animacion to guapa
             StartCoroutine(DispararRayoInstantaneo(distanciaPuntosRayo));
@@ -71,7 +89,7 @@ public class ArmaRayo : Objeto
             if (puntosDelTrail.Count <= 0)
             {
                 //Llamar al jugador y quitarle el arma principal
-                controlDelJugador.SoltarArma(true); 
+                controlDelJugador.SoltarArma(true);
                 return true;
             }
         }
@@ -114,7 +132,7 @@ public class ArmaRayo : Objeto
         for (int i = 0; i < distancia; i++)
         {
             AddPunto();
-            Debug.Log(puntosDelTrail.Count);
+            //Debug.Log(puntosDelTrail.Count);
         }
         numUsos--;
     }
@@ -137,13 +155,15 @@ public class ArmaRayo : Objeto
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
         int aux;
         #region Para rotar la direccion
-        if (transform.parent.transform.localScale.x == 1) 
+        if (transform.parent.transform.localScale.x == 1)
         {
             aux = 1;
+            punto.x += 1.5f;
         }
         else
         {
             aux = -1;
+            punto.x += -2f;
         }
         #endregion
         //Debug.Log(punto.ToString());
@@ -188,7 +208,7 @@ public class ArmaRayo : Objeto
 
         while (puntosDelTrail.Count > 1 && distanciaLimpieza > 0)
         {
-            Debug.Log("Holaaaaa2");
+            
             float distancia = (puntosDelTrail[1] - puntosDelTrail[0]).magnitude;
             if (distanciaLimpieza > distancia)
             {
@@ -201,6 +221,6 @@ public class ArmaRayo : Objeto
             distanciaLimpieza -= distancia;
         }
     }
-#endregion
+    #endregion
 
 }

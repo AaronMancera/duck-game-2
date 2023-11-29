@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class LanzarArmadura : Objeto
 {
     [SerializeField] ControlJugador controlDelJugador;
-    public GameObject PrefabEscudo;
+    public GameObject SpriteEscudo;
     [SerializeField] private Collider2D colisionJugador;
-    public float secondsCounter = 0;
+    //public float secondsCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class LanzarArmadura : Objeto
     void Update()
     {
         //contador de segundos activos
-        secondsCounter += Time.deltaTime;
+        //secondsCounter += Time.deltaTime;
 
         //if (Input.GetKeyDown(KeyCode.Space) && secondsCounter==0){
         //    PonerseEscudo();
@@ -70,9 +70,10 @@ public class LanzarArmadura : Objeto
 
     private void GetDispararInput(InputAction.CallbackContext context)
     {
-        if (context.performed && secondsCounter == 0)
+        if (context.performed /*&& secondsCounter == 0*/)
         {
-            PonerseEscudo();
+            //PonerseEscudo();
+            StartCoroutine(Escudo(3));
         }
     }
     #endregion
@@ -84,23 +85,29 @@ public class LanzarArmadura : Objeto
     private void Reiniciar()
     {
         //Llamar al jugador y quitarle el arma secundaria
+        SpriteEscudo.SetActive(false);
+        controlDelJugador.setAmadura(false);
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         controlDelJugador.SoltarArma(false);
 
-        gameObject.SetActive(false);
+
+        //gameObject.SetActive(false);
     }
 
     private void PonerseEscudo()
     {
-        PrefabEscudo.SetActive(true);
-        Debug.Log(gameObject.transform.parent.name);
-        colisionJugador.enabled = false;
-        secondsCounter = 0;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        SpriteEscudo.SetActive(true);
+        //Debug.Log(gameObject.transform.parent.name);
+        //colisionJugador.enabled = false;
+        controlDelJugador.setAmadura(true);
+        //secondsCounter = 0;
     }
-
-    private void FinEscudo()
+    IEnumerator Escudo(float tiempo)
     {
-        numUsos = 0;
-        PrefabEscudo.SetActive(false);
-        colisionJugador.enabled = true;
+        PonerseEscudo();
+        yield return new  WaitForSeconds(tiempo);
+        Reiniciar();
+
     }
 }

@@ -17,9 +17,33 @@ public class MovimientoBala : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other){
-        Destroy(gameObject);
-        if(other.gameObject.tag == "player"){
+        //Destroy(gameObject);
+        if(other.gameObject.tag == "Player"){
+            other.gameObject.GetComponent<ControlJugador>().RecibirDanyo();
             //killplayer
+        }
+        else if (other.gameObject.tag == "Invocador")
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (!collision.gameObject.GetComponent<ControlJugador>().getAmadura())
+            {
+                Destroy(gameObject);
+            }
+            //killplayer
+        }
+        if (collision.GetComponent<Señuelo>() != null)
+        {
+            collision.GetComponent<Señuelo>().EstadoDañado();
         }
     }
 }
