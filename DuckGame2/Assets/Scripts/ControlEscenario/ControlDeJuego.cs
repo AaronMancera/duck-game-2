@@ -50,10 +50,13 @@ public class ControlDeJuego : MonoBehaviour
         finDeRonda = false;
         finDePartida = false;
         listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-        
+
+
     }
     void Update()
     {
+        FindFirstObjectByType<UIController>().setNumRondas(numRonda);
+
         //if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
         //{
         //    finDeRonda = true;
@@ -77,6 +80,8 @@ public class ControlDeJuego : MonoBehaviour
         if (listaJugadores.Count<=0 && !aux)
         {
             listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+            FindFirstObjectByType<UIController>().setNumRondas(numRonda);
+
             //Debug.Log("Hiiiiiiiiiiiiiiii");
 
         }
