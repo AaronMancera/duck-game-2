@@ -1074,6 +1074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1498165002348593279, guid: 40b19a3f9542e7544b1a6a9db56384d7, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2482985892107895588, guid: 40b19a3f9542e7544b1a6a9db56384d7, type: 3}
       propertyPath: m_Name
       value: Main CameraLaWena
@@ -1661,7 +1665,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.929
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2789,7 +2793,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.384
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4311,7 +4315,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1.27
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

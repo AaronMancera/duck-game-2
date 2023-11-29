@@ -831,13 +831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3d80f068619b74386866e2d1433d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plataformas:
-  - {fileID: 1492629332}
-  - {fileID: 697725317}
+  plataformasPaArriba: []
+  plataformasPaAbajo: []
+  plataformasPaDcha: []
+  plataformasPaIzq: []
   velocidadMovimiento: 3
-  limitadorMovimiento: 5
-  movimientoX: 0
-  movimientoY: 0
 --- !u!61 &697725319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1342,7 +1340,7 @@ PrefabInstance:
     - target: {fileID: 5138678083632692164, guid: 6102e87c67810e742baa2370136a8671, type: 3}
       propertyPath: musicaFondo
       value: 
-      objectReference: {fileID: 8300000, guid: bd12403bdf3373647b432ae1056d94fe, type: 3}
+      objectReference: {fileID: 8300000, guid: aa61b86c0f6592f4eadbb63333bb8f74, type: 3}
     - target: {fileID: 5138678083632692164, guid: 6102e87c67810e742baa2370136a8671, type: 3}
       propertyPath: VolumeSFXSlider
       value: 
@@ -1567,13 +1565,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3d80f068619b74386866e2d1433d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plataformas:
-  - {fileID: 1492629332}
-  - {fileID: 697725317}
+  plataformasPaArriba: []
+  plataformasPaAbajo: []
+  plataformasPaDcha: []
+  plataformasPaIzq: []
   velocidadMovimiento: 3
-  limitadorMovimiento: 5
-  movimientoX: 0
-  movimientoY: 0
 --- !u!61 &1492629334
 BoxCollider2D:
   m_ObjectHideFlags: 0
