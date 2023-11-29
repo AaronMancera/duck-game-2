@@ -9,9 +9,11 @@ public class MovimientoPlataformas : MonoBehaviour
     private Vector3[] posicionesIniciales;
     private int plataformaActual;
     private bool DetectarVueltaAPosicion;
-    private float limitadorMovimiento = 5f;
+    [SerializeField] private float limitadorMovimiento = 5f;
     private string[] direccionPlataforma = {"izquierda","derecha","arriba","abajo" };
     private string direccionElegida;
+    [SerializeField] private bool movimientoX ;
+    [SerializeField] private bool movimientoY ;
     //private bool plataformaEnMovimiento;
     void Start()
     {
@@ -24,10 +26,21 @@ public class MovimientoPlataformas : MonoBehaviour
         }
         //plataformaEnMovimiento = false;
         DetectarVueltaAPosicion = false;
-        // Cambiar a otra plataforma al azar
+        // Cambiar a otra plataforma al azar 
         plataformaActual = Random.Range(0, plataformas.Length);
-        // Elegir una dirección aleatoria del array
-        direccionElegida = direccionPlataforma[Random.Range(0, direccionPlataforma.Length)];
+        // Elegir una dirección aleatoria del array a no ser que quieras que vaya en una direccion concreta
+        if (movimientoX && !movimientoY)
+        {
+            direccionElegida = direccionPlataforma[Random.Range(0, 1)];
+        }
+        else if (movimientoY && !movimientoX)
+        {
+            direccionElegida = direccionPlataforma[Random.Range(2, direccionPlataforma.Length)];
+        }
+        else
+        {
+            direccionElegida = direccionPlataforma[Random.Range(0, direccionPlataforma.Length)];
+        }
     }
 
     void Update()
@@ -128,8 +141,19 @@ public class MovimientoPlataformas : MonoBehaviour
                 plataformas[plataformaActual].position = posicionesIniciales[plataformaActual];
                 // Cambiar a otra plataforma al azar
                 plataformaActual = Random.Range(0, plataformas.Length);
-                // Elegir una dirección aleatoria del array
-                direccionElegida = direccionPlataforma[Random.Range(0, direccionPlataforma.Length)];
+                // Elegir una dirección aleatoria del array a no ser que quieras que vaya en una direccion concreta
+                if (movimientoX && !movimientoY)
+                {
+                    direccionElegida = direccionPlataforma[Random.Range(0, 1)];
+                }
+                else if (movimientoY && !movimientoX)
+                {
+                    direccionElegida = direccionPlataforma[Random.Range(2, direccionPlataforma.Length)];
+                }
+                else
+                {
+                    direccionElegida = direccionPlataforma[Random.Range(0, direccionPlataforma.Length)];
+                }
                 DetectarVueltaAPosicion = false;
                 //plataformaEnMovimiento = false;
         }
