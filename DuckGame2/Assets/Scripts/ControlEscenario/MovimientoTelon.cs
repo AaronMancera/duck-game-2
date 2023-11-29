@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovimientoTelon : MonoBehaviour
 {
+     
     public Transform telonIzq;
     public Transform telonDcha;
     private float velocidad = 2f;
@@ -19,6 +20,7 @@ public class MovimientoTelon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         PosicionInicialTelonIzq = telonIzq.position;
         PosicionInicialTelonDcha = telonDcha.position;
         StartCoroutine(AbrirTelon());

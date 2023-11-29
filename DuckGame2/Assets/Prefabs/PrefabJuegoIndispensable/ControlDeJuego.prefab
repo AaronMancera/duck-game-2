@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada7a3384c7c9e4d80730272a56d788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugadores:
-  - {fileID: 0}
-  - {fileID: 0}
   finDeRonda: 0
   numRonda: 1
-  rondas: {fileID: 0}
+  telon: {fileID: 0}
+  finDePartida: 0
+  listaJugadores: []

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,19 +12,22 @@ public class ControlDeJuego : MonoBehaviour
     public int numRonda;
     private int[] arrayEscenas = { 1, 2, 3 };
     private int escenaActual;
-    private static ControlDeJuego instancia;
+    public static ControlDeJuego instancia;
     public MovimientoTelon telon;
     public bool finDePartida;
+    public bool aux;
 
     //Contol para habilitar el movimiento de los jugadores
-    [SerializeField] private GameObject[] listaJugadores;
+    [SerializeField] private List<GameObject> listaJugadores;
 
     void Awake()
     {
+        
         // Verificar si ya existe una instancia del script
         if (instancia == null)
         {
             // Si no hay instancia, asignar esta instancia como la instancia única
+            
             instancia = this;
 
             // Evitar que el objeto se destruya al cargar una nueva escena
@@ -34,15 +38,19 @@ public class ControlDeJuego : MonoBehaviour
             // Si ya existe una instancia, destruir este objeto para mantener solo una instancia
             Destroy(gameObject);
         }
+        
     }
     void Start()
     {
+        telon = FindFirstObjectByType<MovimientoTelon>();
+
         numRonda = 1;
         escenaActual = 1;
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
         finDePartida = false;
-        listaJugadores = GameObject.FindGameObjectsWithTag("Player");
+        listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+        
     }
     void Update()
     {
@@ -51,17 +59,58 @@ public class ControlDeJuego : MonoBehaviour
         //    finDeRonda = true;
         //}
         // Verificar si ha terminado la ronda
-        if (finDeRonda)
+
+        if (finDeRonda && telon != null && aux == true)
         {
             // Obtener una escena aleatoria diferente a la predeterminada
             escenaActual = ObtenerEscenaAleatoria();
 
             StartCoroutine(ReinicioNivel());
+            //Debug.Log("Heeeeeeeeeeee");
+            
         }
-        foreach (GameObject gO in listaJugadores)
+        if (telon == null)
         {
-            gO.GetComponent<ControlJugador>().sePuedeMover = telon.telonAbierto;
+            //telon = GameObject.FindObjectOfType<MovimientoTelon>();
+            telon = FindFirstObjectByType<MovimientoTelon>();
         }
+        if (listaJugadores.Count<=0 && !aux)
+        {
+            listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+            //Debug.Log("Hiiiiiiiiiiiiiiii");
+
+        }
+        if (listaJugadores != null&& telon != null &&!finDeRonda)
+        {
+            foreach (GameObject gO in listaJugadores)
+            {
+                if (gO != null)
+                {
+                    gO.GetComponent<ControlJugador>().sePuedeMover = telon.telonAbierto;
+                    if (!finDeRonda)
+                    {
+                        if (gO.GetComponent<ControlJugador>().vida <= 0 && !finDeRonda)
+                        {
+                            finDeRonda = true;
+                            aux = true;
+
+                        }
+
+                        //Debug.Log("SoloConVida");
+                    }
+                    Debug.Log(gO.GetComponent<ControlJugador>().idPlayer);
+                }
+                else
+                {
+                    listaJugadores = new List<GameObject>();
+                    break;
+                }
+
+            }
+        }
+        
+
+
 
     }
     int ObtenerEscenaAleatoria()
@@ -79,11 +128,14 @@ public class ControlDeJuego : MonoBehaviour
 
     IEnumerator ReinicioNivel()
     {
+        aux = false;
+
+        //finDeRonda = false;
+        //listaJugadores.Clear();
         // Resetear la ronda
-        finDeRonda = false;
 
         // Parar o camara lenta al juego puede estar guay si agregamos un zoom al ganador y una animacion de celebracion
-        Time.timeScale = 0f;
+        //Time.timeScale = 0.7f;
 
         // Aumentar el número de rondas
         numRonda++;
@@ -124,6 +176,8 @@ public class ControlDeJuego : MonoBehaviour
         {
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
             SceneManager.LoadScene(0);
+            finDeRonda = false;
+
             Debug.Log("esc" + escenaActual);
         }
 
