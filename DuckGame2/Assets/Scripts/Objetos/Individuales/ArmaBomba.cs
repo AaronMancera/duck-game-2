@@ -11,6 +11,8 @@ public class ArmaBomba : Objeto
     [SerializeField] private GameObject bomba;
     [SerializeField] private Transform puntoDeLanzar;
 
+    [SerializeField] AudioClip lanzarBomba;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,9 @@ public class ArmaBomba : Objeto
 
         Instantiate(componenteBomba, puntoDeLanzar.transform.position, /*bomba.gameObject.transform.rotation*/ Quaternion.identity);
         componenteBomba.transform.localScale = transform.parent.localScale;
+
+        AudioManager.instanceAudioManager.PlaySFX(lanzarBomba);
+
 
         numUsos--;
     }

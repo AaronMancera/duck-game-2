@@ -15,6 +15,8 @@ public class LanzarCaja : Objeto
     [SerializeField] private float anguloInclinacion = 30f;
     private bool mirandoALaIzquierda;
 
+    [SerializeField] AudioClip lanzarCajaSFX;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +74,9 @@ public class LanzarCaja : Objeto
 
     void Lanzar()
     {
+        AudioManager.instanceAudioManager.PlaySFX(lanzarCajaSFX);
+
+
         numUsos--;
         Vector2 lugarDeInstanciamiento = transform.position;
         lugarDeInstanciamiento.y += 1;

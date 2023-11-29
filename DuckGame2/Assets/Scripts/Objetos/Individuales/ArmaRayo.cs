@@ -25,6 +25,9 @@ public class ArmaRayo : Objeto
     [SerializeField] private int distanciaPuntosRayo;
 
 
+    [SerializeField] AudioClip dispararRayoSFX;
+
+
 
     #region StartUpdate
     // Start is called before the first frame update
@@ -128,6 +131,9 @@ public class ArmaRayo : Objeto
     private IEnumerator DispararRayoInstantaneo(int distancia)
     {
         yield return new WaitForSeconds(tiempoDeCargaMaximo);
+
+        AudioManager.instanceAudioManager.PlaySFX(dispararRayoSFX);
+
         CrearTrailActual();
         for (int i = 0; i < distancia; i++)
         {

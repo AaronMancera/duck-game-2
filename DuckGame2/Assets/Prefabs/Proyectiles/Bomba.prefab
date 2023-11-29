@@ -105,6 +105,7 @@ MonoBehaviour:
   fuerzaDeRotacion: 10
   animator: {fileID: 0}
   particulasBomba: {fileID: 3625910404143519456, guid: 348b926961d3e1d4d8254aceeee23b9f, type: 3}
+  explosionBomba: {fileID: 8300000, guid: d8f82cd6eaf50ce4792d1c26ec99d121, type: 3}
 --- !u!50 &618368641585401974
 Rigidbody2D:
   serializedVersion: 4

@@ -10,6 +10,9 @@ public class Bomba : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] ParticleSystem particulasBomba;
 
+
+    [SerializeField] AudioClip explosionBomba;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,9 @@ public class Bomba : MonoBehaviour
         float radio = 4f;
 
         Instantiate(particulasBomba, transform.position, Quaternion.identity);
+
+        AudioManager.instanceAudioManager.PlaySFX(explosionBomba);
+
         Destroy(gameObject);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radio);
