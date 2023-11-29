@@ -8,13 +8,14 @@ public class TPJugador : MonoBehaviour
     [SerializeField] GameObject jugador;
 
     #region LIMITES PANTALLA
-    private float limiteEjeX = 9.45f;
-    private float limiteEjeYInferior = -7.85f, limiteEjeYSuperior = 3.20f;
+    [SerializeField] private float limiteEjeX /*= 9.45f*/;
+    [SerializeField] private float limiteEjeYInferior /*= -7.85f*/, limiteEjeYSuperior /*= 3.20f*/;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+       
     }
 
     // Update is called once per frame
