@@ -90,7 +90,7 @@ public class ControlJugador : MonoBehaviour
 
     [SerializeField] AudioClip soltarArmaPrincipal;
     [SerializeField] AudioClip soltarItemSecundario;
-    
+
     [SerializeField] AudioClip recogerArmaPrincipal;
     [SerializeField] AudioClip recogerItemSecundario;
 
@@ -176,8 +176,8 @@ public class ControlJugador : MonoBehaviour
 
         if (idPlayer == 1)
         {
-            animator.SetLayerWeight(0,1);
-            animator.SetLayerWeight(1,0);
+            animator.SetLayerWeight(0, 1);
+            animator.SetLayerWeight(1, 0);
 
 
         }
@@ -205,7 +205,7 @@ public class ControlJugador : MonoBehaviour
             //Te mueres
             animator.SetTrigger("Muerte");
             //TODO: (Aarón) El hitstop falla y para el juego completamente cuando desactiv el rigibody del jugador para que no caiga hacia el infinito. No se com va el hitStop, primer aviso
-            //rb.Sleep(); 
+            rb.Sleep();
             Vector2 aux = transform.position;
             gameObject.transform.position = aux;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -214,7 +214,7 @@ public class ControlJugador : MonoBehaviour
 
     }
 
-    
+
 
 
     private void FixedUpdate()
@@ -275,10 +275,7 @@ public class ControlJugador : MonoBehaviour
         {
             vida--;
 
-            //Animator
-            animator.SetTrigger("Danyo");
 
-            AudioManager.instanceAudioManager.PlaySFX(recibirDanyo);
 
             if (vida <= 0)
             {
@@ -286,7 +283,13 @@ public class ControlJugador : MonoBehaviour
                 animator.SetTrigger("Muerte");
                 AudioManager.instanceAudioManager.PlaySFX(muerteSFX);
             }
+            else
+            {
+                //Animator
+                animator.SetTrigger("Danyo");
 
+                AudioManager.instanceAudioManager.PlaySFX(recibirDanyo);
+            }
         }
     }
 

@@ -161,19 +161,19 @@ public class ArmaRayo : Objeto
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
         int aux;
         #region Para rotar la direccion
-        if (transform.parent.transform.localScale.x == 1)
+        if (transform.parent.transform.localScale.x != 1)
         {
             aux = 1;
-            punto.x += 1.5f;
+            punto.x += 3f;
         }
         else
         {
             aux = -1;
-            punto.x += -2f;
+            punto.x += -4f;
         }
         #endregion
         //Debug.Log(punto.ToString());
-        puntosDelTrail.Add(new Vector3(punto.x + aux, punto.y, 0));
+        puntosDelTrail.Add(new Vector3(punto.x * aux, punto.y, 0));
     }
     /// <summary>
     /// Se llamara para ir uniendo los puntos hasta llegar al final hasta que se no haya sufiencentes puntos o no exista el el rastro actual
