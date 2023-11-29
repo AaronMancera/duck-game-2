@@ -27,6 +27,8 @@ public class MenuController : MonoBehaviour
         
         int escena = Random.Range(1,4);
 
+        escena = 1;
+
         SceneManager.LoadScene(escena);
     }
 }
