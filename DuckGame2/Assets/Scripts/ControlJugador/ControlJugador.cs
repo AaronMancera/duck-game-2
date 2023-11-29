@@ -188,7 +188,7 @@ public class ControlJugador : MonoBehaviour
             //Te mueres
             animator.SetTrigger("Muerte");
             //TODO: (Aarón) El hitstop falla y para el juego completamente cuando desactiv el rigibody del jugador para que no caiga hacia el infinito. No se com va el hitStop, primer aviso
-            //rb.Sleep(); 
+            rb.Sleep(); 
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         }
