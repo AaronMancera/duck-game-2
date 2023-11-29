@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 1354119581}
+    - target: {fileID: 1570437824961738581, guid: ebe798338efb0774ebc7c49d9a3b6a17, type: 3}
+      propertyPath: textoRonda
+      value: 
+      objectReference: {fileID: 138723576}
     - target: {fileID: 4216140680210468001, guid: ebe798338efb0774ebc7c49d9a3b6a17, type: 3}
       propertyPath: m_Camera
       value: 
@@ -274,6 +278,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe798338efb0774ebc7c49d9a3b6a17, type: 3}
+--- !u!114 &138723576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3905940506962678021, guid: ebe798338efb0774ebc7c49d9a3b6a17, type: 3}
+  m_PrefabInstance: {fileID: 138723575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &240802388
 GameObject:
   m_ObjectHideFlags: 0

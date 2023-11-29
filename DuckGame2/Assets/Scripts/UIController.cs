@@ -50,7 +50,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private estructuraDicSpritesArmas[] dicSpritesObjetos;
     // Start is called before the first frame update
-    private TMP_Text textoRonda;
+    [SerializeField] private TMP_Text textoRonda;
     void Start()
     {
         //VidaJugador1 = Player1.vida;
