@@ -82,6 +82,8 @@ public class ControlJugador : MonoBehaviour
     private bool isRalentizando = false;
     private bool armadura;
 
+    public bool sePuedeMover = false;
+
 
     #region EVENTS SUBS
 
@@ -205,11 +207,11 @@ public class ControlJugador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (vida > 0)
+        CheckCollisions();
+        if (vida > 0 && sePuedeMover)
         {
             GetMoveInput();
 
-            CheckCollisions();
             MoveCharacter();
 
             SueloControl();

@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 7260469618542834095}
+  limiteEjeX: 8.5
+  limiteEjeYInferior: -5.42
+  limiteEjeYSuperior: 5.42
 --- !u!114 &-1183000462672364256
 MonoBehaviour:
   m_ObjectHideFlags: 0

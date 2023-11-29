@@ -15,6 +15,9 @@ public class ControlDeJuego : MonoBehaviour
     public MovimientoTelon telon;
     public bool finDePartida;
 
+    //Contol para habilitar el movimiento de los jugadores
+    [SerializeField] private GameObject[] listaJugadores;
+
     void Awake()
     {
         // Verificar si ya existe una instancia del script
@@ -39,13 +42,14 @@ public class ControlDeJuego : MonoBehaviour
         //SceneManager.LoadScene(escenaActual); // este sera el que se usará cuando tengamos las escenas en el build settings
         finDeRonda = false;
         finDePartida = false;
+        listaJugadores = GameObject.FindGameObjectsWithTag("Player");
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
-        {
-            finDeRonda = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
+        //{
+        //    finDeRonda = true;
+        //}
         // Verificar si ha terminado la ronda
         if (finDeRonda)
         {
@@ -53,6 +57,10 @@ public class ControlDeJuego : MonoBehaviour
             escenaActual = ObtenerEscenaAleatoria();
 
             StartCoroutine(ReinicioNivel());
+        }
+        foreach (GameObject gO in listaJugadores)
+        {
+            gO.GetComponent<ControlJugador>().sePuedeMover = telon.telonAbierto;
         }
 
     }
