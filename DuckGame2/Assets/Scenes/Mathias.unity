@@ -320,10 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada7a3384c7c9e4d80730272a56d788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugadores: []
   finDeRonda: 0
   numRonda: 1
-  rondas: {fileID: 0}
   telon: {fileID: 448019065}
   finDePartida: 0
 --- !u!4 &65738753
@@ -623,6 +621,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   telonIzq: {fileID: 1182131844}
   telonDcha: {fileID: 1481475950}
+  limiteDcha: 14
+  limiteIzq: -14
   controlDeJuego: {fileID: 65738752}
   telonAbierto: 0
 --- !u!1 &519420028
