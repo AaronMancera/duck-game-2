@@ -139,7 +139,7 @@ public class ControlJugador : MonoBehaviour
 
     void GetSaltoInput(InputAction.CallbackContext context)
     {
-        if (context.performed && extraJumpsValue > 0)
+        if (context.performed && extraJumpsValue > 0 && sePuedeMover)
         {
             extraJumpsValue--;
             Jump(Vector2.up);

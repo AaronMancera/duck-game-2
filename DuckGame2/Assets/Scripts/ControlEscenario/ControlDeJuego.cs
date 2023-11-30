@@ -174,16 +174,17 @@ public class ControlDeJuego : MonoBehaviour
         if (numRonda == 6)
         {
             Debug.Log("¡Vuelta al menú!");
+            SceneManager.LoadScene(0);
             finDePartida = true;
             // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
         }
         else
         {
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(ObtenerEscenaAleatoria());
             finDeRonda = false;
 
-            Debug.Log("esc" + escenaActual);
+            //Debug.Log("esc" + escenaActual);
         }
 
     }
