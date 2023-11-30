@@ -24,11 +24,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void Play(){
-        
+        Debug.Log("holaaa");
         int escena = Random.Range(1,4);
-
-        escena = 1;
-
         SceneManager.LoadScene(escena);
     }
 }

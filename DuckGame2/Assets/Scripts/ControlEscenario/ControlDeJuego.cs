@@ -102,44 +102,7 @@ public class ControlDeJuego : MonoBehaviour
         }
         else
         {
-            if (telon == null)
-            {
-                //telon = GameObject.FindObjectOfType<MovimientoTelon>();
-                telon = FindFirstObjectByType<MovimientoTelon>();
-                FindFirstObjectByType<UIController>().PanelDeVictoria(revisarSiHaGanadoYQuien());
-
-            }
-            if (telon.GetComponent<MovimientoTelon>().telonAbierto)
-            {
-                StartCoroutine(EscenaVictoria());
-
-            }
-            if (listaJugadores.Count <= 0 && !aux)
-            {
-                listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-               
-
-            }
-            if (listaJugadores != null && telon != null)
-            {
-                foreach (GameObject gO in listaJugadores)
-                {
-                    if (gO != null)
-                    {
-                        if (gO.GetComponent<ControlJugador>().idPlayer == revisarSiHaGanadoYQuien())
-                        {
-                            gO.GetComponent<ControlJugador>().sePuedeMover = true;
-                            //EnviarParticulas a su posicion
-                        }
-                        else
-                        {
-                            gO.SetActive(false);
-                        }
-                    }
-
-                }
-            }
-
+            EscenaVictria();
         }
 
     }
@@ -198,6 +161,49 @@ public class ControlDeJuego : MonoBehaviour
                 {
                     listaJugadores = new List<GameObject>();
                     break;
+                }
+
+            }
+        }
+    }
+    private void EscenaVictria()
+    {
+        if (telon == null)
+        {
+            //telon = GameObject.FindObjectOfType<MovimientoTelon>();
+            telon = FindFirstObjectByType<MovimientoTelon>();
+            FindFirstObjectByType<UIController>().PanelDeVictoria(revisarSiHaGanadoYQuien());
+            FindFirstObjectByType<UIController>().deshabilitarNumRondas();
+        }
+
+        if (telon.GetComponent<MovimientoTelon>().telonAbierto && !aux)
+        {
+            StartCoroutine(EscenaVictoria());
+
+        }
+        
+
+        if (listaJugadores != null && telon != null)
+        {
+            foreach (GameObject gO in listaJugadores)
+            {
+                if (gO != null)
+                {
+
+                    if (gO.GetComponent<ControlJugador>().idPlayer == revisarSiHaGanadoYQuien() && !aux)
+                    {
+                        gO.GetComponent<ControlJugador>().sePuedeMover = true;
+                    }
+                    else if (gO.GetComponent<ControlJugador>().idPlayer != revisarSiHaGanadoYQuien())
+                    {
+                        gO.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    listaJugadores = new List<GameObject>();
+                    listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
                 }
 
             }
@@ -300,7 +306,7 @@ public class ControlDeJuego : MonoBehaviour
     }
     IEnumerator EscenaVictoria()
     {
-        aux = false;
+        aux = true;
         yield return new WaitForSeconds(10);
         while (telon.telonAbierto)
         {
@@ -312,6 +318,7 @@ public class ControlDeJuego : MonoBehaviour
         }
         Debug.Log("¡Vuelta al menú!");
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
     private void inicializaDiccionario()
     {

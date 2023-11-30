@@ -628,14 +628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TelonEchadoDer
       objectReference: {fileID: 0}
-    - target: {fileID: 7041014703004858341, guid: 43970c9b2d6a730408722c3fb4074c27, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7041014703004858341, guid: 43970c9b2d6a730408722c3fb4074c27, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1310,14 +1302,6 @@ PrefabInstance:
     - target: {fileID: 2917416429549000298, guid: a3572dc15f32d4b48b1997dbb3d92b72, type: 3}
       propertyPath: m_Name
       value: TelonEchadoIzq
-      objectReference: {fileID: 0}
-    - target: {fileID: 2917416429549000298, guid: a3572dc15f32d4b48b1997dbb3d92b72, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2917416429549000298, guid: a3572dc15f32d4b48b1997dbb3d92b72, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8023608962531679100, guid: a3572dc15f32d4b48b1997dbb3d92b72, type: 3}
       propertyPath: m_LocalPosition.x

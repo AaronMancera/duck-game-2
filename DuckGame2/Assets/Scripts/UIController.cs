@@ -98,6 +98,10 @@ public class UIController : MonoBehaviour
     {
         textoRonda.text = rondas.ToString();
     }
+    public void deshabilitarNumRondas()
+    {
+        textoRonda.text = "";
+    }
     public void ActualizarNumeroBalas(int queJugadorEs)
     {
         if (queJugadorEs == 1)
