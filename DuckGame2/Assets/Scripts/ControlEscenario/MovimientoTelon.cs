@@ -37,7 +37,7 @@ public class MovimientoTelon : MonoBehaviour
 
     public IEnumerator AbrirTelon()
     {
-        Debug.Log("abriur");
+        //Debug.Log("abriur");
         Time.timeScale = 1.0f;
         yield return new WaitForSecondsRealtime(1f); // me gustaria que las plataformas no se movieran mientras se abre el telon pero el unsacled usado en cerrar telon aqui va mal la velocidad se pone progresiva
         while (!telonAbierto)

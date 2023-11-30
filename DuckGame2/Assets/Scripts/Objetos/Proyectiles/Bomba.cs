@@ -42,14 +42,14 @@ public class Bomba : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
-            float fuerza = 4f;
+            //float fuerza = 4f;
 
             if (rb != null)
             {
                 if (collider.GetComponent<ControlJugador>() != null)
                 {
                     ControlJugador cj = collider.GetComponent<ControlJugador>();
-                    rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
+                    //rb.AddForce(new Vector2(fuerza * (collider.transform.position.x + transform.position.x), fuerza * (collider.transform.position.y + transform.position.y)), ForceMode2D.Impulse);
                     if (cj != null)
                     {
                         cj.RecibirDanyo();
@@ -69,14 +69,14 @@ public class Bomba : MonoBehaviour
     private void Lanzada()
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        //Debug.Log(gameObject.transform.localScale);
+        Debug.Log(gameObject.transform.localScale);
         if (transform.localScale.x < 0)
         {
             fuerzaDeEmpuje *= -1;
         }
-        rigidbody2D.AddForce(Vector2.right * fuerzaDeEmpuje, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.right * new Vector2(fuerzaDeEmpuje,0), ForceMode2D.Impulse);
 
-        //rigidbody2D.AddTorque(fuerzaDeRotacion);
+        rigidbody2D.AddTorque(fuerzaDeRotacion);
     }
 
     /// <summary>

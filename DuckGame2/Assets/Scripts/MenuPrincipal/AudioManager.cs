@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
         musicaSource.volume = value;
         PlayerPrefs.SetFloat("VolumenMusica", value);
 
-        Debug.Log(PlayerPrefs.GetFloat("VolumenMusica"));
+        //Debug.Log(PlayerPrefs.GetFloat("VolumenMusica"));
     }
 
     public void AjustarVolumenSFX(float value)
