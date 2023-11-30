@@ -50,7 +50,7 @@ public class ControlDeJuego : MonoBehaviour
         finDePartida = false;
         listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         FindFirstObjectByType<UIController>().setNumRondas(numRonda);
-
+        //Application.targetFrameRate = 60;
 
 
     }

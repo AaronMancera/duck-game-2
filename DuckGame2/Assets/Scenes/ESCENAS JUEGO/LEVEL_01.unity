@@ -1328,6 +1328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 885023866}
     m_Modifications:
+    - target: {fileID: 1712666587884183477, guid: 33e3a4c67fae2e443a52c2135474136f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
     - target: {fileID: 8391322945951234687, guid: 33e3a4c67fae2e443a52c2135474136f, type: 3}
       propertyPath: m_Name
       value: TelonRecogido
@@ -1778,6 +1782,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 885023866}
     m_Modifications:
+    - target: {fileID: 4258692314448328749, guid: cfd3dddcfd615ce43bcc31b1253aac30, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
     - target: {fileID: 7549321953239194435, guid: cfd3dddcfd615ce43bcc31b1253aac30, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.92

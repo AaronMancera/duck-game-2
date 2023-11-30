@@ -32,7 +32,7 @@ public class ArmaEspada : Objeto
         //numUsos = durabilidad;
         animator = animEspada;
         puedeAtacar = true;
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         //gameObject.SetActive(false);//Activar en otro script al cogerlo ya que este estará desactivado de inicio.
 
     }

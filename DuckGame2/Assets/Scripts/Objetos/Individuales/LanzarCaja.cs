@@ -22,7 +22,7 @@ public class LanzarCaja : Objeto
     void Start()
     {
         nombre = "LanzarCaja";
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
     }
     void Update()
     {
