@@ -52,22 +52,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5101643208924720626, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
-      propertyPath: extraJumpsValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990624904670081408, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
-      propertyPath: limiteEjeX
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990624904670081408, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
-      propertyPath: limiteEjeYInferior
-      value: -5.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990624904670081408, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
-      propertyPath: limiteEjeYSuperior
-      value: 5.42
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

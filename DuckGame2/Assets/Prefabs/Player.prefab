@@ -74,7 +74,7 @@ MonoBehaviour:
   coyoteTime: 0
   canJump: 0
   extraJumps: 2
-  extraJumpsValue: 0
+  extraJumpsValue: 2
   airLinearDrag: 2.5
   objetosInventario:
   - {fileID: 8119003856251958206}
@@ -92,6 +92,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  sePuedeMover: 0
   recibirDanyo: {fileID: 8300000, guid: 693ccc7bec911f944a26d96ae01f9274, type: 3}
   soltarArmaPrincipal: {fileID: 8300000, guid: c8325ca15cf0e8b40b83ea9573912a19, type: 3}
   soltarItemSecundario: {fileID: 8300000, guid: 622ddd59feec03741aeda3b7f2d2b353, type: 3}
@@ -184,6 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 333865150358924716}
+  limiteEjeX: 8.5
+  limiteEjeYInferior: -5.42
+  limiteEjeYSuperior: 5.42
 --- !u!114 &575171206133160026
 MonoBehaviour:
   m_ObjectHideFlags: 0
