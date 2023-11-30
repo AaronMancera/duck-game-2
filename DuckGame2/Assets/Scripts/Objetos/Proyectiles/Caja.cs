@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Caja : MonoBehaviour
 {
+    SpriteRenderer spriteRenderer;
+    [SerializeField] Sprite cajaRota, cajaConGato;
 
     [SerializeField] AudioClip cajaChocarConSuelo;
     [SerializeField] AudioClip cajaChocarConJugador;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Verificar si la colisión es con el jugador
@@ -19,12 +26,17 @@ public class Caja : MonoBehaviour
 
             AudioManager.instanceAudioManager.PlaySFX(cajaChocarConJugador);
 
+            spriteRenderer.sprite = cajaRota;
+
         }
 
         // Destruir la caja solo si no es una colisión con el jugador
         if (!collision.gameObject.CompareTag("Player"))
         {
             AudioManager.instanceAudioManager.PlaySFX(cajaChocarConSuelo);
+
+            spriteRenderer.sprite = cajaConGato;
+
 
             //Destroy(gameObject);//Animacion caja se rompe
             StartCoroutine(Destruir());

@@ -78,6 +78,7 @@ public class MovimientoPollo : MonoBehaviour
     [SerializeField] float wallRaycastLength;
     public bool checkWall;
 
+
     [Header("LayerMasks")]
     [SerializeField] LayerMask groundLayer;
 
@@ -92,8 +93,11 @@ public class MovimientoPollo : MonoBehaviour
         }
 
         //Wall Check
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength / 2);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength / 2);
+
+        Gizmos.DrawLine(transform.position + wallRaycastOffset, (transform.position + wallRaycastOffset) + Vector3.right * wallRaycastLength);
+        Gizmos.DrawLine(transform.position - wallRaycastOffset, (transform.position - wallRaycastOffset) + Vector3.left * wallRaycastLength);
 
 
     }

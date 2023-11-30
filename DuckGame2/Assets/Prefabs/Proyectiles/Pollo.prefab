@@ -227,8 +227,8 @@ MonoBehaviour:
   flip: 0
   flipBool: 1
   segundosParaActivarFlip: 1
-  wallRaycastOffset: {x: 3.51, y: 0, z: 0}
-  wallRaycastLength: 0.5
+  wallRaycastOffset: {x: -0.39, y: 0.23, z: 0}
+  wallRaycastLength: 0.83
   checkWall: 0
   groundLayer:
     serializedVersion: 2

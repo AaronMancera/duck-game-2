@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690de74060b36fc4786aa1da1529f3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cajaRota: {fileID: 21300000, guid: c4a5e5c39b2957d47984073581d65ed6, type: 3}
+  cajaConGato: {fileID: 1229740831, guid: dba3bd316fca6f64a8f36b3470e8875f, type: 3}
   cajaChocarConSuelo: {fileID: 8300000, guid: 875ea7cacfd087e49bc8050bf30ddb0e, type: 3}
   cajaChocarConJugador: {fileID: 8300000, guid: 137048791a86db34f8bbc7e29e23112b, type: 3}
 --- !u!50 &4621531802648704017
