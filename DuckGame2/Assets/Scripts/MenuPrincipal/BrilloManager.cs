@@ -20,7 +20,7 @@ public class BrilloManager : MonoBehaviour
         brightness.TryGetSettings(out exposure);
         if (PlayerPrefs.GetFloat("Brillo") != 0)
         {
-            Debug.Log("holaaaa");
+            //Debug.Log("holaaaa");
 
             brightnessSlider.value = PlayerPrefs.GetFloat("Brillo");
             exposure.keyValue.value = PlayerPrefs.GetFloat("Brillo");

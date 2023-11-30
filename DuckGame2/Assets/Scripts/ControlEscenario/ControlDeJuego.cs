@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class ControlDeJuego : MonoBehaviour
 {
@@ -15,9 +17,39 @@ public class ControlDeJuego : MonoBehaviour
     public MovimientoTelon telon;
     public bool finDePartida;
     public bool aux;
-
     //Contol para habilitar el movimiento de los jugadores
     [SerializeField] private List<GameObject> listaJugadores;
+    // Estructura a
+    [Serializable]
+    public class EstructuraDicResultados
+    {
+        private int idJugador;
+        private int victorias;
+        public EstructuraDicResultados(int idJugador, int victorias)
+        {
+            this.idJugador = idJugador;
+            this.victorias = victorias;
+        }
+        public int getIdJugador()
+        {
+            return idJugador;
+        }
+        public void setVictorias(int victorias)
+        {
+            this.victorias+= victorias;
+        }
+        public int getVictorias()
+        {
+            return victorias;
+        }
+        public string ToString()
+        {
+            return "EstructuraDicResultados: [ idJugador: "+idJugador+ ", victorias: "+victorias+"]";
+        }
+    }
+    [Header("Diccionario sobre los resultads")]
+    [SerializeField] private Dictionary<int,EstructuraDicResultados> dicResultados;
+
 
     void Awake()
     {
@@ -49,8 +81,13 @@ public class ControlDeJuego : MonoBehaviour
         finDeRonda = false;
         finDePartida = false;
         listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+        //NOTE: Diccionario de control de victorias
+        dicResultados = new Dictionary<int, EstructuraDicResultados>();
+        inicializaDiccionario();
+
         FindFirstObjectByType<UIController>().setNumRondas(numRonda);
         //Application.targetFrameRate = 60;
+        
 
 
     }
@@ -102,6 +139,7 @@ public class ControlDeJuego : MonoBehaviour
                         }
 
                         //Debug.Log("SoloConVida");
+
                     }
                     //Debug.Log(gO.GetComponent<ControlJugador>().idPlayer);
                 }
@@ -134,7 +172,14 @@ public class ControlDeJuego : MonoBehaviour
     IEnumerator ReinicioNivel()
     {
         aux = false;
-
+        //NOTE: Revisa cual es el jugador que tiene vida y le da un punto de victoria
+        foreach(GameObject gameObject in listaJugadores)
+        {
+            if (gameObject.GetComponent<ControlJugador>().vida>0) 
+            {
+                actualizarResultados(gameObject.GetComponent<ControlJugador>().idPlayer,1);
+            }
+        }
         //finDeRonda = false;
         //listaJugadores.Clear();
         // Resetear la ronda
@@ -170,15 +215,25 @@ public class ControlDeJuego : MonoBehaviour
 
         //Debug.Log("despues");
         //Debug.Log(numRonda);
+
+
         // Verificar si es la quinta ronda
-        if (numRonda == 6)
-        {
-            Debug.Log("¡Vuelta al menú!");
-            SceneManager.LoadScene(0);
-            finDePartida = true;
-            // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
-        }
-        else
+        //if (numRonda == 6)
+        //{
+        //    Debug.Log("¡Vuelta al menú!");
+        //    SceneManager.LoadScene(0);
+        //    finDePartida = true;
+        //    // Agregar aquí la lógica para regresar al menu principal o una llamada al void q lo haga
+        //}
+        //else
+        //{
+        //    // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
+        //    SceneManager.LoadScene(ObtenerEscenaAleatoria());
+        //    finDeRonda = false;
+
+        //    //Debug.Log("esc" + escenaActual);
+        //}
+        if (revisarSiHaGanadoYQuien() == 0)
         {
             // Cambiar a la nueva escena esto seria lo que pondriamos cuando tengamos las escenas
             SceneManager.LoadScene(ObtenerEscenaAleatoria());
@@ -186,6 +241,43 @@ public class ControlDeJuego : MonoBehaviour
 
             //Debug.Log("esc" + escenaActual);
         }
+        else
+        {
+            Debug.Log("El jugador :"+revisarSiHaGanadoYQuien()+" ha ganado");
+            Debug.Log("¡Vuelta al menú!");
+            SceneManager.LoadScene(0);
+            finDePartida = true;
+        }
 
+    }
+    private void inicializaDiccionario()
+    {
+        foreach (GameObject jugador in listaJugadores)
+        {
+            Debug.Log(jugador.GetComponent<ControlJugador>().idPlayer);
+            dicResultados.Add(jugador.GetComponent<ControlJugador>().idPlayer,
+                new EstructuraDicResultados(jugador.GetComponent<ControlJugador>().idPlayer, 0));
+
+        }
+        foreach (var jugador in dicResultados)
+        {
+            Debug.Log(jugador.Key + " : " + jugador.Value.ToString());
+        }
+    }
+    private void actualizarResultados(int idJugador, int puntosDeVictoria)
+    {
+        dicResultados[idJugador].setVictorias(puntosDeVictoria);
+    }
+    private int revisarSiHaGanadoYQuien()
+    {
+        foreach (var jugador in dicResultados)
+        {
+            Debug.Log(jugador.Key + " : " + jugador.Value.ToString());
+            if (jugador.Value.getVictorias() >= 3)
+            {
+                return jugador.Value.getIdJugador();
+            }
+        }
+        return 0;
     }
 }
