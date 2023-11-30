@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using static Unity.Burst.Intrinsics.X86;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ArmaRayo : Objeto
@@ -58,8 +59,8 @@ public class ArmaRayo : Objeto
                 //Debug.Log(controlDelJugador.playerControls.PlayerP2.DispararPrincipal.WasPressedThisFrame());
 
                 break;
-           
-               
+
+
 
         }
         ////mantenerFire1 = Input.GetButton("Fire1");
@@ -130,17 +131,19 @@ public class ArmaRayo : Objeto
     //}
     private IEnumerator DispararRayoInstantaneo(int distancia)
     {
-        float orientacion = transform.parent.localScale.x;
+
         yield return new WaitForSeconds(tiempoDeCargaMaximo);
 
         AudioManager.instanceAudioManager.PlaySFX(dispararRayoSFX);
-
+        float orientacion = transform.parent.localScale.x;
         CrearTrailActual();
+        transform.parent.GetComponent<ControlJugador>().sePuedeMover = false;
         for (int i = 0; i < distancia; i++)
         {
             AddPunto(orientacion);
             //Debug.Log(puntosDelTrail.Count);
         }
+        transform.parent.GetComponent<ControlJugador>().sePuedeMover = true;
         numUsos--;
     }
     #endregion
@@ -151,7 +154,6 @@ public class ArmaRayo : Objeto
     private void CrearTrailActual()
     {
         lineaDeDisparoActual = Instantiate(lineaDeDisparo);
-        lineaDeDisparoActual.transform.localScale = GameObject.FindGameObjectWithTag("Player").gameObject.transform.localScale;
         //lineaDeDisparoActual.transform.SetParent(transform, true);
     }
     /// <summary>
@@ -160,27 +162,22 @@ public class ArmaRayo : Objeto
     private void AddPunto(float orientacion)
     {
         Vector2 punto = lineaDeDisparoActual != null && puntosDelTrail.Count > 0 ? puntosDelTrail.Last() : new Vector2(transform.position.x, transform.position.y);
-        int aux;
-        #region Para rotar la direccion
-        if (transform.parent.transform.localScale.x != 1)
-        {
-            //Der
-            aux = 1;
-            punto.x += 3f;
-            puntosDelTrail.Add(new Vector3(punto.x + aux, punto.y, 0));
 
+        #region Para rotar la direccion
+        Debug.Log(orientacion);
+        if (orientacion > 0)
+        {
+            puntosDelTrail.Add(new Vector3((punto.x + 1), punto.y, 0));
         }
         else
         {
-            //Izq
-            aux = -1;
-            punto.x += -4f;
-            puntosDelTrail.Add(new Vector3(punto.x - aux, punto.y, 0));
+            puntosDelTrail.Add(new Vector3((punto.x - 1), punto.y, 0));
 
         }
         #endregion
         //Debug.Log(punto.ToString());
         //puntosDelTrail.Add(new Vector3(punto.x * aux, punto.y, 0));
+
     }
     /// <summary>
     /// Se llamara para ir uniendo los puntos hasta llegar al final hasta que se no haya sufiencentes puntos o no exista el el rastro actual
@@ -221,7 +218,7 @@ public class ArmaRayo : Objeto
 
         while (puntosDelTrail.Count > 1 && distanciaLimpieza > 0)
         {
-            
+
             float distancia = (puntosDelTrail[1] - puntosDelTrail[0]).magnitude;
             if (distanciaLimpieza > distancia)
             {
