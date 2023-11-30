@@ -26,7 +26,7 @@ public class Caja : MonoBehaviour
 
             AudioManager.instanceAudioManager.PlaySFX(cajaChocarConJugador);
 
-            spriteRenderer.sprite = cajaRota;
+            spriteRenderer.sprite = cajaConGato;
 
         }
 
@@ -35,7 +35,7 @@ public class Caja : MonoBehaviour
         {
             AudioManager.instanceAudioManager.PlaySFX(cajaChocarConSuelo);
 
-            spriteRenderer.sprite = cajaConGato;
+            spriteRenderer.sprite = cajaRota;
 
 
             //Destroy(gameObject);//Animacion caja se rompe
