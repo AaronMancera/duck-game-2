@@ -36,7 +36,7 @@ public class ControlDeJuego : MonoBehaviour
         }
         public void setVictorias(int victorias)
         {
-            this.victorias+= victorias;
+            this.victorias += victorias;
         }
         public int getVictorias()
         {
@@ -44,32 +44,35 @@ public class ControlDeJuego : MonoBehaviour
         }
         public string ToString()
         {
-            return "EstructuraDicResultados: [ idJugador: "+idJugador+ ", victorias: "+victorias+"]";
+            return "EstructuraDicResultados: [ idJugador: " + idJugador + ", victorias: " + victorias + "]";
         }
     }
     [Header("Diccionario sobre los resultads")]
-    [SerializeField] private Dictionary<int,EstructuraDicResultados> dicResultados;
+    [SerializeField] private Dictionary<int, EstructuraDicResultados> dicResultados;
 
 
     void Awake()
     {
-        
+
         // Verificar si ya existe una instancia del script
         if (instancia == null)
         {
             // Si no hay instancia, asignar esta instancia como la instancia única
-            
+
             instancia = this;
 
             // Evitar que el objeto se destruya al cargar una nueva escena
-            DontDestroyOnLoad(gameObject);
+            if (!finDePartida)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
         else
         {
             // Si ya existe una instancia, destruir este objeto para mantener solo una instancia
             Destroy(gameObject);
         }
-        
+
     }
     void Start()
     {
@@ -87,13 +90,24 @@ public class ControlDeJuego : MonoBehaviour
 
         FindFirstObjectByType<UIController>().setNumRondas(numRonda);
         //Application.targetFrameRate = 60;
-        
+
 
 
     }
     void Update()
     {
+        if (!finDePartida)
+        {
+            EnPartida();
+        }
+        else
+        {
+            EscenaVictria();
+        }
 
+    }
+    private void EnPartida()
+    {
         //if (Input.GetKeyDown(KeyCode.M)) //esto es solo para probar que vaya el reinicio de escena 
         //{
         //    finDeRonda = true;
@@ -107,14 +121,14 @@ public class ControlDeJuego : MonoBehaviour
 
             StartCoroutine(ReinicioNivel());
             //Debug.Log("Heeeeeeeeeeee");
-            
+
         }
         if (telon == null)
         {
             //telon = GameObject.FindObjectOfType<MovimientoTelon>();
             telon = FindFirstObjectByType<MovimientoTelon>();
         }
-        if (listaJugadores.Count<=0 && !aux)
+        if (listaJugadores.Count <= 0 && !aux)
         {
             listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
             FindFirstObjectByType<UIController>().setNumRondas(numRonda);
@@ -122,7 +136,7 @@ public class ControlDeJuego : MonoBehaviour
             //Debug.Log("Hiiiiiiiiiiiiiiii");
 
         }
-        if (listaJugadores != null&& telon != null &&!finDeRonda)
+        if (listaJugadores != null && telon != null && !finDeRonda)
         {
             foreach (GameObject gO in listaJugadores)
             {
@@ -151,10 +165,49 @@ public class ControlDeJuego : MonoBehaviour
 
             }
         }
+    }
+    private void EscenaVictria()
+    {
+        if (telon == null)
+        {
+            //telon = GameObject.FindObjectOfType<MovimientoTelon>();
+            telon = FindFirstObjectByType<MovimientoTelon>();
+            FindFirstObjectByType<UIController>().PanelDeVictoria(revisarSiHaGanadoYQuien());
+            FindFirstObjectByType<UIController>().deshabilitarNumRondas();
+        }
+
+        if (telon.GetComponent<MovimientoTelon>().telonAbierto && !aux)
+        {
+            StartCoroutine(EscenaVictoria());
+
+        }
         
 
+        if (listaJugadores != null && telon != null)
+        {
+            foreach (GameObject gO in listaJugadores)
+            {
+                if (gO != null)
+                {
 
+                    if (gO.GetComponent<ControlJugador>().idPlayer == revisarSiHaGanadoYQuien() && !aux)
+                    {
+                        gO.GetComponent<ControlJugador>().sePuedeMover = true;
+                    }
+                    else if (gO.GetComponent<ControlJugador>().idPlayer != revisarSiHaGanadoYQuien())
+                    {
+                        gO.SetActive(false);
+                    }
 
+                }
+                else
+                {
+                    listaJugadores = new List<GameObject>();
+                    listaJugadores.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+                }
+
+            }
+        }
     }
     int ObtenerEscenaAleatoria()
     {
@@ -173,11 +226,11 @@ public class ControlDeJuego : MonoBehaviour
     {
         aux = false;
         //NOTE: Revisa cual es el jugador que tiene vida y le da un punto de victoria
-        foreach(GameObject gameObject in listaJugadores)
+        foreach (GameObject gameObject in listaJugadores)
         {
-            if (gameObject.GetComponent<ControlJugador>().vida>0) 
+            if (gameObject.GetComponent<ControlJugador>().vida > 0)
             {
-                actualizarResultados(gameObject.GetComponent<ControlJugador>().idPlayer,1);
+                actualizarResultados(gameObject.GetComponent<ControlJugador>().idPlayer, 1);
             }
         }
         //finDeRonda = false;
@@ -243,12 +296,29 @@ public class ControlDeJuego : MonoBehaviour
         }
         else
         {
-            Debug.Log("El jugador :"+revisarSiHaGanadoYQuien()+" ha ganado");
-            Debug.Log("¡Vuelta al menú!");
-            SceneManager.LoadScene(0);
+            Debug.Log("El jugador :" + revisarSiHaGanadoYQuien() + " ha ganado");
+            //Debug.Log("¡Vuelta al menú!");
+            //Carga la escena de victoria
+            SceneManager.LoadScene(arrayEscenas.Length + 1);
             finDePartida = true;
         }
 
+    }
+    IEnumerator EscenaVictoria()
+    {
+        aux = true;
+        yield return new WaitForSeconds(10);
+        while (telon.telonAbierto)
+        {
+            //    Debug.Log("while");
+            //GameObject jugadorganador = jugadores[0]; //Seleccionas el ganador
+            //Aqui se podría agregar el codigo para que haga la celebracion
+            telon.CerrarTelon();
+            yield return null;
+        }
+        Debug.Log("¡Vuelta al menú!");
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
     private void inicializaDiccionario()
     {

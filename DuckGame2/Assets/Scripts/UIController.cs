@@ -49,8 +49,12 @@ public class UIController : MonoBehaviour
     [Header("DiccionarioParaSpritesArmasPrincipales")]
 
     [SerializeField] private estructuraDicSpritesArmas[] dicSpritesObjetos;
-    // Start is called before the first frame update
+
     [SerializeField] private TMP_Text textoRonda;
+    // Paneles de victoria final
+    [SerializeField] private GameObject cosasPulpo,cosasTanuki;
+    [SerializeField] private GameObject panelDeVictoriaPulpo, panelDeVictoriaTanuki;
+
     void Start()
     {
         //VidaJugador1 = Player1.vida;
@@ -60,7 +64,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player1.principalEnMano != null)
+        if (Player1.principalEnMano != null)
         {
             numeroDeBalasJ1 = Player1.principalEnMano.GetComponent<Objeto>().numUsos;
         }
@@ -69,7 +73,7 @@ public class UIController : MonoBehaviour
             numeroDeBalasJ1 = 0;
         }
 
-        if(Player2.principalEnMano != null)
+        if (Player2.principalEnMano != null)
         {
             numeroDeBalasJ2 = Player2.principalEnMano.GetComponent<Objeto>().numUsos;
         }
@@ -92,24 +96,28 @@ public class UIController : MonoBehaviour
 
     public void setNumRondas(int rondas)
     {
-        textoRonda.text=rondas.ToString();
+        textoRonda.text = rondas.ToString();
+    }
+    public void deshabilitarNumRondas()
+    {
+        textoRonda.text = "";
     }
     public void ActualizarNumeroBalas(int queJugadorEs)
     {
-        if(queJugadorEs == 1)
+        if (queJugadorEs == 1)
         {
-            
+
             for (int i = 0; i < balasJ1.Length; i++)
             {
                 if (i < numeroDeBalasJ1)
                 {
                     //balasJ1[i].sprite=dicSpritesArmas[Player1.GetComponent<ControlJugador>().principalEnMano.name];
-                    
-                    foreach(estructuraDicSpritesArmas j in dicSpritesArmas)
+
+                    foreach (estructuraDicSpritesArmas j in dicSpritesArmas)
                     {
-                        if(j.nombre== Player1.GetComponent<ControlJugador>().principalEnMano.name)
+                        if (j.nombre == Player1.GetComponent<ControlJugador>().principalEnMano.name)
                         {
-                            balasJ1[i].sprite=j.sprite; break;
+                            balasJ1[i].sprite = j.sprite; break;
                         }
                     }
 
@@ -123,7 +131,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < balasJ2.Length; i++)
+            for (int i = 0; i < balasJ2.Length; i++)
             {
                 if (i < numeroDeBalasJ2)
                 {
@@ -143,14 +151,14 @@ public class UIController : MonoBehaviour
                 }
             }
         }
-            
+
     }
 
     public void ActualizarNumeroVidas(int queJugadorEs)
     {
-        if(queJugadorEs == 1)
+        if (queJugadorEs == 1)
         {
-            for(int i = 0; i < VidasJ1.Length; i++)
+            for (int i = 0; i < VidasJ1.Length; i++)
             {
                 if (i < Player1.vida)
                 {
@@ -164,7 +172,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < VidasJ2.Length; i++)
+            for (int i = 0; i < VidasJ2.Length; i++)
             {
                 if (i < Player2.vida)
                 {
@@ -176,6 +184,20 @@ public class UIController : MonoBehaviour
                 }
             }
         }
-            
+
+    }
+    public void PanelDeVictoria(int idJugador)
+    {
+        cosasPulpo.SetActive(false); cosasTanuki.SetActive(false);
+        if (idJugador == 1)
+        {
+            panelDeVictoriaTanuki.SetActive(false);
+            panelDeVictoriaPulpo.SetActive(true);
+        }
+        else
+        {
+            panelDeVictoriaPulpo.SetActive(false);
+            panelDeVictoriaTanuki.SetActive(true);
+        }
     }
 }
