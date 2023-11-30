@@ -6,9 +6,13 @@ public class MovimientoPlataformas : MonoBehaviour
 {
     public Transform[] plataformasPaArriba;
     public Transform[] plataformasPaAbajo;
-    public Transform[] plataformasPaDcha;
-    public Transform[] plataformasPaIzq;
-    public float velocidadMovimiento = 3f;
+    //public Transform[] plataformasPaDcha;
+    //public Transform[] plataformasPaIzq;
+    [SerializeField]private float velocidadMovimiento = 3f;
+
+
+
+    //OLD VERSION
     //private Vector3[] posicionesIniciales;
     //private int plataformaActual;
     //private bool DetectarVueltaAPosicion;
@@ -20,7 +24,7 @@ public class MovimientoPlataformas : MonoBehaviour
     //private bool plataformaEnMovimiento;
     void Start()
     {
-        //Antigua Version
+        //OLD VERSION
         //posicionesIniciales = new Vector3[plataformas.Length];
 
         //// Guardar las posiciones iniciales de las plataformas
@@ -70,6 +74,7 @@ public class MovimientoPlataformas : MonoBehaviour
                 plataformasPaArriba[i].position = posicionActual;
             }
         }
+
         for (int i = 0; i < plataformasPaAbajo.Length; i++)
         {
             Vector3 posicionActual = plataformasPaAbajo[i].position;
@@ -83,37 +88,46 @@ public class MovimientoPlataformas : MonoBehaviour
                 posicionActual.y = 5.5f;
                 plataformasPaAbajo[i].position = posicionActual;
             }
-        }
-        for (int i = 0; i < plataformasPaIzq.Length; i++)
-        {
-            Vector3 posicionActual = plataformasPaIzq[i].position;
-            posicionActual.x += velocidadMovimiento * Time.deltaTime;
-            plataformasPaIzq[i].position = posicionActual;
 
-            // Si la plataforma alcanza la posición yDestino
-            if (posicionActual.x > -9.89f)
-            {
-                // Reposicionar la plataforma por abajo
-                posicionActual.x = 9.89f;
-                plataformasPaIzq[i].position = posicionActual;
-            }
         }
-        for (int i = 0; i < plataformasPaDcha.Length; i++)
-        {
-            Vector3 posicionActual = plataformasPaDcha[i].position;
-            posicionActual.x += velocidadMovimiento * Time.deltaTime;
-            plataformasPaDcha[i].position = posicionActual;
+            //LO MISMO QUE ARRIBA Y ABAJO PERO IZQUIERDA Y DERECHA FUNCIONA PERFECTAMENTE NEW VERSION
+        //for (int i = 0; i < plataformasPaIzq.Length; i++)
+        //{
+        //    Vector3 posicionActual = plataformasPaIzq[i].position;
+        //    posicionActual.x -= velocidadMovimiento * Time.deltaTime;
+        //    plataformasPaIzq[i].position = posicionActual;
 
-            // Si la plataforma alcanza la posición yDestino
-            if (posicionActual.x > -9.89f)
-            {
-                // Reposicionar la plataforma por abajo
-                posicionActual.x = 9.89f;
-                plataformasPaDcha[i].position = posicionActual;
-            }
-        }
+        //    // Si la plataforma alcanza la posición xDestino
+        //    if (posicionActual.x < -9.89f)
+        //    {
+        //        // Reposicionar la plataforma por la Derecha
+        //        posicionActual.x = 9.89f;
+        //        plataformasPaIzq[i].position = posicionActual;
+        //    }
+        //}
+
+        //for (int i = 0; i < plataformasPaDcha.Length; i++)
+        //{
+        //    Vector3 posicionActual = plataformasPaDcha[i].position;
+        //    posicionActual.x += velocidadMovimiento * Time.deltaTime;
+        //    plataformasPaDcha[i].position = posicionActual;
+
+        //    // Si la plataforma alcanza la posición xDestino
+        //    if (posicionActual.x > 9.89f)
+        //    {
+        //        // Reposicionar la plataforma por la Izquierda
+        //        posicionActual.x = -9.89f;
+        //        plataformasPaDcha[i].position = posicionActual;
+        //    }
+        //}
+
+
+
+
+
+
+        //OLD VERSION
         //Obtener la posición actual de la plataforma seleccionada
-        //Antigua version
         ////Debug.Log("entra en funcion movplat");
 
         ////Debug.Log("La dirección elegida es: " + direccionElegida);
@@ -216,7 +230,7 @@ public class MovimientoPlataformas : MonoBehaviour
         //        //plataformaEnMovimiento = false;
     }
 }
-//Antigua Version
+//OLD VERSION
 //    void CambiarDireccion()
 //    {
 //        // Invertir la dirección de la plataforma según la dirección actual
