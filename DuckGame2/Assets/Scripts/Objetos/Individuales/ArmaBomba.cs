@@ -17,7 +17,7 @@ public class ArmaBomba : Objeto
     void Start()
     {
         nombre = "ArmaBomba";
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
     }
 
     private void OnEnable()

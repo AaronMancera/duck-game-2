@@ -38,7 +38,7 @@ public class ArmaRayo : Objeto
         //numUsos = 50;
         //interactuable = true;
         nombre = "ArmaRayo";
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame

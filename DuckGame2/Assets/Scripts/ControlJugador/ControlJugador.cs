@@ -168,7 +168,7 @@ public class ControlJugador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
 
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
 
         inventario.Add("Arma", null);
         inventario.Add("Objeto", null);
