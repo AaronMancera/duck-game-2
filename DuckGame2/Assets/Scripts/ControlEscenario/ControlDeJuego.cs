@@ -103,7 +103,7 @@ public class ControlDeJuego : MonoBehaviour
 
                         //Debug.Log("SoloConVida");
                     }
-                    Debug.Log(gO.GetComponent<ControlJugador>().idPlayer);
+                    //Debug.Log(gO.GetComponent<ControlJugador>().idPlayer);
                 }
                 else
                 {
