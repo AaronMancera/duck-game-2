@@ -65,9 +65,8 @@ public class ArmaBomba : Objeto
     {
         Bomba componenteBomba = bomba.gameObject.GetComponent<Bomba>();
 
-        Instantiate(componenteBomba, puntoDeLanzar.transform.position, /*bomba.gameObject.transform.rotation*/ Quaternion.identity);
-        componenteBomba.transform.localScale = transform.parent.localScale;
-
+        Bomba bombaInvocada = Instantiate(componenteBomba, puntoDeLanzar.transform.position, /*bomba.gameObject.transform.rotation*/ Quaternion.identity);
+        bombaInvocada.transform.localScale = new Vector3(transform.parent.localScale.x, componenteBomba.transform.localScale.y, componenteBomba.transform.localScale.z);
         AudioManager.instanceAudioManager.PlaySFX(lanzarBomba);
 
 
