@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ESCENAS JUEGO/LEVEL_03.unity
     guid: 8174458f2a6df4f45a09637293c51166
+  - enabled: 1
+    path: Assets/Scenes/ESCENAS JUEGO/LEVEL_VICTORIA.unity
+    guid: bf245106f11f1e54bbffb51432b11b0a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 59235ffef9090e34aa083f1bbc304183, type: 2}
