@@ -85,6 +85,7 @@ public class ControlJugador : MonoBehaviour
 
     public bool sePuedeMover = false;
 
+
     [Header("Sonidos")]
     [SerializeField] AudioClip recibirDanyo;
 
@@ -125,7 +126,6 @@ public class ControlJugador : MonoBehaviour
         if (idPlayer == 1)
         {
             playerControls.Player.Saltar.performed -= GetSaltoInput;
-
         }
         else if (idPlayer == 2)
         {
@@ -133,6 +133,7 @@ public class ControlJugador : MonoBehaviour
             playerControls.PlayerP2.Saltar.performed -= GetSaltoInput;
         }
     }
+
     #endregion
 
     #region GETEO INPUTS
@@ -211,6 +212,9 @@ public class ControlJugador : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         }
+
+
+        
 
     }
 

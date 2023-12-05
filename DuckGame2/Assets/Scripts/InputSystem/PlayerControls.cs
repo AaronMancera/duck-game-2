@@ -658,6 +658,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pausar"",
+                    ""type"": ""Button"",
+                    ""id"": ""947ca63c-7a09-4cac-8cc4-1aa603fd8e01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -748,6 +757,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""DispararSecundario"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2617f62-3bf4-41c0-af41-08cf052dc0a3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pausar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -763,6 +783,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pausar"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2b75b87-4caa-43f6-a546-abe488466150"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Saltar"",
@@ -880,6 +909,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Saltar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b48715d-b71f-4f16-a379-9f24eb2a33f3"",
+                    ""path"": ""<Keyboard>/delete"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pausar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -936,9 +976,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Saltar = m_Player.FindAction("Saltar", throwIfNotFound: true);
         m_Player_DispararPrincipal = m_Player.FindAction("DispararPrincipal", throwIfNotFound: true);
         m_Player_DispararSecundario = m_Player.FindAction("DispararSecundario", throwIfNotFound: true);
+        m_Player_Pausar = m_Player.FindAction("Pausar", throwIfNotFound: true);
         // PlayerP2
         m_PlayerP2 = asset.FindActionMap("PlayerP2", throwIfNotFound: true);
         m_PlayerP2_Movement = m_PlayerP2.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerP2_Pausar = m_PlayerP2.FindAction("Pausar", throwIfNotFound: true);
         m_PlayerP2_Saltar = m_PlayerP2.FindAction("Saltar", throwIfNotFound: true);
         m_PlayerP2_DispararPrincipal = m_PlayerP2.FindAction("DispararPrincipal", throwIfNotFound: true);
         m_PlayerP2_DispararSecundario = m_PlayerP2.FindAction("DispararSecundario", throwIfNotFound: true);
@@ -1157,6 +1199,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Saltar;
     private readonly InputAction m_Player_DispararPrincipal;
     private readonly InputAction m_Player_DispararSecundario;
+    private readonly InputAction m_Player_Pausar;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1165,6 +1208,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Saltar => m_Wrapper.m_Player_Saltar;
         public InputAction @DispararPrincipal => m_Wrapper.m_Player_DispararPrincipal;
         public InputAction @DispararSecundario => m_Wrapper.m_Player_DispararSecundario;
+        public InputAction @Pausar => m_Wrapper.m_Player_Pausar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1186,6 +1230,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DispararSecundario.started += instance.OnDispararSecundario;
             @DispararSecundario.performed += instance.OnDispararSecundario;
             @DispararSecundario.canceled += instance.OnDispararSecundario;
+            @Pausar.started += instance.OnPausar;
+            @Pausar.performed += instance.OnPausar;
+            @Pausar.canceled += instance.OnPausar;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1202,6 +1249,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DispararSecundario.started -= instance.OnDispararSecundario;
             @DispararSecundario.performed -= instance.OnDispararSecundario;
             @DispararSecundario.canceled -= instance.OnDispararSecundario;
+            @Pausar.started -= instance.OnPausar;
+            @Pausar.performed -= instance.OnPausar;
+            @Pausar.canceled -= instance.OnPausar;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1224,6 +1274,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerP2;
     private List<IPlayerP2Actions> m_PlayerP2ActionsCallbackInterfaces = new List<IPlayerP2Actions>();
     private readonly InputAction m_PlayerP2_Movement;
+    private readonly InputAction m_PlayerP2_Pausar;
     private readonly InputAction m_PlayerP2_Saltar;
     private readonly InputAction m_PlayerP2_DispararPrincipal;
     private readonly InputAction m_PlayerP2_DispararSecundario;
@@ -1232,6 +1283,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public PlayerP2Actions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerP2_Movement;
+        public InputAction @Pausar => m_Wrapper.m_PlayerP2_Pausar;
         public InputAction @Saltar => m_Wrapper.m_PlayerP2_Saltar;
         public InputAction @DispararPrincipal => m_Wrapper.m_PlayerP2_DispararPrincipal;
         public InputAction @DispararSecundario => m_Wrapper.m_PlayerP2_DispararSecundario;
@@ -1247,6 +1299,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Pausar.started += instance.OnPausar;
+            @Pausar.performed += instance.OnPausar;
+            @Pausar.canceled += instance.OnPausar;
             @Saltar.started += instance.OnSaltar;
             @Saltar.performed += instance.OnSaltar;
             @Saltar.canceled += instance.OnSaltar;
@@ -1263,6 +1318,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Pausar.started -= instance.OnPausar;
+            @Pausar.performed -= instance.OnPausar;
+            @Pausar.canceled -= instance.OnPausar;
             @Saltar.started -= instance.OnSaltar;
             @Saltar.performed -= instance.OnSaltar;
             @Saltar.canceled -= instance.OnSaltar;
@@ -1330,10 +1388,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSaltar(InputAction.CallbackContext context);
         void OnDispararPrincipal(InputAction.CallbackContext context);
         void OnDispararSecundario(InputAction.CallbackContext context);
+        void OnPausar(InputAction.CallbackContext context);
     }
     public interface IPlayerP2Actions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnPausar(InputAction.CallbackContext context);
         void OnSaltar(InputAction.CallbackContext context);
         void OnDispararPrincipal(InputAction.CallbackContext context);
         void OnDispararSecundario(InputAction.CallbackContext context);
