@@ -1552,7 +1552,7 @@ PrefabInstance:
     - target: {fileID: 5138678083632692164, guid: 6102e87c67810e742baa2370136a8671, type: 3}
       propertyPath: musicaFondo
       value: 
-      objectReference: {fileID: 8300000, guid: bd12403bdf3373647b432ae1056d94fe, type: 3}
+      objectReference: {fileID: 8300000, guid: c2f5775f5bf6fbf49bceb5424213e497, type: 3}
     - target: {fileID: 5138678083632692164, guid: 6102e87c67810e742baa2370136a8671, type: 3}
       propertyPath: VolumeSFXSlider
       value: 
@@ -1614,6 +1614,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2142056723082966691, guid: bdaea0109413738429693b03ceffcc49, type: 3}
+      propertyPath: saltoSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d029015e2291c574f8d82862ea98bb45, type: 3}
     - target: {fileID: 4661928249836515963, guid: bdaea0109413738429693b03ceffcc49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -2589,6 +2593,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7677702877068683925, guid: bb0155f7829bb76419f0ba52685c9c67, type: 3}
+      propertyPath: saltoSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d029015e2291c574f8d82862ea98bb45, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
