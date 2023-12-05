@@ -191,8 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plataformasPaArriba: []
   plataformasPaAbajo: []
-  plataformasPaDcha: []
-  plataformasPaIzq: []
   velocidadMovimiento: 3
 --- !u!61 &25729225
 BoxCollider2D:
@@ -302,6 +300,10 @@ PrefabInstance:
     - target: {fileID: 2429130794073829732, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_Name
       value: InvocadorDeObjeto (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351061111642939655, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+      propertyPath: generaArma
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6891214642872965616, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,8 +839,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plataformasPaArriba: []
   plataformasPaAbajo: []
-  plataformasPaDcha: []
-  plataformasPaIzq: []
   velocidadMovimiento: 3
 --- !u!61 &314533062
 BoxCollider2D:
@@ -948,6 +948,10 @@ PrefabInstance:
     - target: {fileID: 2429130794073829732, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_Name
       value: InvocadorDeObjeto (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351061111642939655, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+      propertyPath: generaArma
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6891214642872965616, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1328,8 +1332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plataformasPaArriba: []
   plataformasPaAbajo: []
-  plataformasPaDcha: []
-  plataformasPaIzq: []
   velocidadMovimiento: 3
 --- !u!61 &466140113
 BoxCollider2D:
@@ -1702,6 +1704,10 @@ PrefabInstance:
     - target: {fileID: 2429130794073829732, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_Name
       value: InvocadorDeObjeto (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351061111642939655, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+      propertyPath: generaArma
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6891214642872965616, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2497,8 +2503,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plataformasPaArriba: []
   plataformasPaAbajo: []
-  plataformasPaDcha: []
-  plataformasPaIzq: []
   velocidadMovimiento: 3
 --- !u!61 &1743256384
 BoxCollider2D:

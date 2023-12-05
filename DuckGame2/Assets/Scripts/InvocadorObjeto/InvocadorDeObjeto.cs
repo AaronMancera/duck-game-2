@@ -14,6 +14,9 @@ public class InvocadorDeObjeto : MonoBehaviour
     [SerializeField] private float segundosEspera;
     private bool regenerando;
 
+
+    [SerializeField] bool generaArma;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,13 +68,37 @@ public class InvocadorDeObjeto : MonoBehaviour
         {
             int rangoObjetos = Enum.GetNames(typeof(EnumObjetos)).Length;   //NUMERO DE OBJETOS DISPONIBLES
             int objetoAleatorio = UnityEngine.Random.Range(0, rangoObjetos);    //GENERAR OBJETO ALEATORIO
-            //string nombreObjeto = Enum.GetName(typeof(EnumObjetos), objetoAleatorio);   //COGER EL NOMBRE DEL OBJETO ALEATORIO
 
-            //Debug.Log($"El objeto generado es:  {nombreObjeto}");
-            Vector3 posicionDeInicio = transform.position + new Vector3(-0.20f, 0.3f, 0);
-            objetoInvocado = Instantiate(objetos[objetoAleatorio], /*objetoInvocado.transform.position*/posicionDeInicio, Quaternion.identity, parent);
+            
+            if (objetoAleatorio <= 3) //Son Armas
+            {
+                if (generaArma)
+                {
+                    Vector3 posicionDeInicio = transform.position + new Vector3(-0.20f, 0.3f, 0);
+                    objetoInvocado = Instantiate(objetos[objetoAleatorio], posicionDeInicio, Quaternion.identity, parent);
 
-            tengoArma = true;
+                    tengoArma = true;
+                }
+                else
+                {
+                    InvocarObjeto();
+                }
+            }
+            else if (objetoAleatorio >= 3) //Son Objetos
+            {
+                if (!generaArma)
+                {
+                    Vector3 posicionDeInicio = transform.position + new Vector3(-0.20f, 0.3f, 0);
+                    objetoInvocado = Instantiate(objetos[objetoAleatorio], posicionDeInicio, Quaternion.identity, parent);
+
+                    tengoArma = true;
+                }
+                else
+                {
+                    InvocarObjeto();
+
+                }
+            }
         }
         //Debug.Log("DESPUÉS GENERAR - Tengo Arma: " + tengoArma + " - Regenerando: " + regenerando + " - Objeto: " + objetoInvocado.name);
     }
