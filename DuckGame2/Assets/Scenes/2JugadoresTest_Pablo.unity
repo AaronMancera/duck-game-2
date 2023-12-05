@@ -207,6 +207,14 @@ PrefabInstance:
       propertyPath: segundosEspera
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5351061111642939655, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+      propertyPath: objetos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351061111642939655, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
+      propertyPath: objetos.Array.data[0]
+      value: 
+      objectReference: {fileID: 7260469618542834095, guid: fbce9c513461b5e4f99c971912596607, type: 3}
     - target: {fileID: 6891214642872965616, guid: 7fb1da8ccc8d602479f16f611e71913a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.73
@@ -1356,6 +1364,8 @@ MonoBehaviour:
   numRonda: 1
   telon: {fileID: 0}
   finDePartida: 0
+  aux: 0
+  listaJugadores: []
 --- !u!4 &1542234399
 Transform:
   m_ObjectHideFlags: 0
