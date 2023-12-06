@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.06
+      value: -3.93
       objectReference: {fileID: 0}
     - target: {fileID: 2000952070545877290, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51,6 +51,14 @@ PrefabInstance:
     - target: {fileID: 2000952070545877290, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101643208924720626, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: saltoSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d029015e2291c574f8d82862ea98bb45, type: 3}
+    - target: {fileID: 5101643208924720626, guid: d58a6f8adf1553e4bb632eaf76699ce4, type: 3}
+      propertyPath: hitStopTiempo
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

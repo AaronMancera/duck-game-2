@@ -99,6 +99,7 @@ public class ControlJugador : MonoBehaviour
 
     [SerializeField] AudioClip saltoSFX;
 
+    [SerializeField] float hitStopTiempo = 0.1f;
 
 
     #region EVENTS SUBS
@@ -292,9 +293,19 @@ public class ControlJugador : MonoBehaviour
                 //Animator
                 animator.SetTrigger("Danyo");
 
+                //Llamada al HitStop
+                StartCoroutine(HitStop());
+
                 AudioManager.instanceAudioManager.PlaySFX(recibirDanyo);
             }
         }
+    }
+
+    IEnumerator HitStop()
+    {
+        Time.timeScale = 0.0f; // ralentiza el tiempo
+        yield return new WaitForSecondsRealtime(hitStopTiempo);
+        Time.timeScale = 1.0f; // restaura el tiempo normal
     }
 
     #region MOVIMIENTO

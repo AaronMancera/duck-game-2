@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicaSource: {fileID: 562216603034878561}
   sfxSource: {fileID: 2572737862107011755}
-  musicaFondo: {fileID: 8300000, guid: bd12403bdf3373647b432ae1056d94fe, type: 3}
+  musicaFondo: {fileID: 8300000, guid: 81532598a4bcbb7438bd7409e11c5d23, type: 3}
   muerte: {fileID: 8300000, guid: 14d0fa5fdaf2c2e449852db8abeb9a94, type: 3}
+  VolumeMusicaSlider: {fileID: 0}
+  VolumeSFXSlider: {fileID: 0}
 --- !u!1 &5373140805376817942
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +98,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

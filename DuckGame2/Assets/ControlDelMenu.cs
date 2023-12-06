@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlDelMenu : MonoBehaviour
 {
@@ -25,12 +26,19 @@ public class ControlDelMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             panelPausa.SetActive(pausa);
+            AudioManager.instanceAudioManager.musicaSource.Pause();
         }
         else
         {
             Time.timeScale = 1;
             panelPausa.SetActive(pausa);
+            AudioManager.instanceAudioManager.musicaSource.Play();
 
         }
+    }
+
+    public void VolverAlMenu()
+    {
+
     }
 }

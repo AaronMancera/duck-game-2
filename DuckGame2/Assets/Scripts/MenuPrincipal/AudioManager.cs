@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instanceAudioManager;
 
     [Header("----Audio Source----")]
-    [SerializeField] AudioSource musicaSource;
+    [SerializeField] public AudioSource musicaSource;
     [SerializeField] AudioSource sfxSource;
 
     [Header("----Audio Clip----")]
